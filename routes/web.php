@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 //発注管理
 Route::get('/order_search', 'OrderController@index');
+Route::get('/order_create', 'OrderController@create');
 Route::get('/order_detail', 'OrderController@show');
 Route::get('/order_edit', 'OrderController@update');
 Route::get('/order_delete', 'OrderController@destroy');
