@@ -82,3 +82,7 @@ Route::get('/size_search', function () {
 Route::get('/stock_shelf_search', function () {
 	return view('stock_shelf/stock_shelf_search');
 });
+//不良品管理
+Route::resource('waste', 'WasteController');
+Route::get('/waste_search','WasteController@index');
+Route::get('/waste_detail','WasteController@show');
