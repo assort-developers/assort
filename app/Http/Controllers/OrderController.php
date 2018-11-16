@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -14,7 +15,11 @@ class OrderController extends Controller
     public function index()
     {
 				//
-				return view('order/order_search');
+				$orders = Order::all();
+				//return ('<pre>'.var_dump($order));
+				return view('order/order_search', [
+					'orders' => $orders
+				]);
     }
 
     /**
@@ -24,7 +29,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+			//
+			return view('order/order')->width([
+				'order' => $order
+			]);
     }
 
     /**
@@ -57,7 +65,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+			//
+			return view('order/order')->width([
+				'order' => $order
+			]);
     }
 
     /**

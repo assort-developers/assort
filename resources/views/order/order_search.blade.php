@@ -100,29 +100,30 @@
 		</tr>
 		<tr class="table-header">
 			<th>発注伝票ID</th>
-			<th>カテゴリ</th>
+			<th>ブランド名</th>
 			<th class="table_main_col">商品名</th>
-			<th >発注数</th>
+			<th >発注日</th>
 			<th >ステータス</th>
 			<th >納品予定日</th>
 			<th >最終更新者</th>
 			<th >最終更新日</th>
 			<th class="btn-outer">操作</th>
 		</tr>
-		<tr>
-			<td>OD001</td>
-			<td>トップス / シャツ</td>
-			<td>かなりいい感じのTシャツ</td>
-			<td>10 <span class="unit">着</span></td>
-			<td>着荷待ち</td>
-			<td>本日</td>
-			<td>村上透</td>
-			<td>2018-11-09</td>
-			<td class="btn-outer">
-				<a href="" class="btn btn-success">入荷登録</a>
-			</td>
+		@foreach($orders as $order)
+			<tr>
+				<td>{{$order->id}}</td>
+				<td>{{$order->bland_id}}</td>
+				<td>かなりいい感じのTシャツ</td>
+				<td>{{$order->order_date}}</td>
+				<td>着荷待ち</td>
+				<td>{{$order->delivery_date}}</td>
+				<td>{{$order->ordered_staffid}}</td>
+				<td>2018-11-09</td>
+				<td class="btn-outer">
+					<a href="/order/edit/{{$order->id}}" class="btn btn-success">入荷登録</a>
+				</td>
 			</tr>
-		</tr>
+		@endforeach
 	</table>
 </div>
 @endsection
