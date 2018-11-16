@@ -14,7 +14,7 @@ class RecievedController extends Controller
     public function index()
     {
         //
-        return view('Recieved/recieved');
+        return view('Recieved/recieved_search');
 
     }
 
@@ -26,6 +26,7 @@ class RecievedController extends Controller
     public function create()
     {
         //
+        return('create');
     }
 
     /**
@@ -48,6 +49,7 @@ class RecievedController extends Controller
     public function show($id)
     {
         //
+        return view('Recieved/received');
     }
 
     /**
