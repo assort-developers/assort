@@ -1,17 +1,19 @@
 @extends('layout.common')
-@section('title', '小カテゴリ管理画面')
-@section('header_title', '小カテゴリ管理画面')
+@section('title', 'カテゴリ管理画面')
+@section('header_title', 'カテゴリ管理画面')
 
 @section('content')
 	<div class="content_wrapper">
 	<table class="table-bordered">
 		<tbody>
 		<tr>
-			<th colspan="2">小カテゴリ情報</th>
+			<th colspan="2">カテゴリ情報</th>
 		</tr>
 		<tr>
 		<th class="left">カテゴリコード</th>
-		<td></td>
+		<td>
+			<input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="カテゴリコード">
+		</td>
 		</tr>
 		<tr>
 			<th class="left">カテゴリ名</th>

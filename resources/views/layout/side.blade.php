@@ -27,11 +27,7 @@
         <a href="/sales" class="menu_block_name">売上管理</a>
     </div>
     <div class="menu_item">
-        <a class="menu_block_name has_submenu">カテゴリ管理</a>
-        <div class="menu_block_hiden">
-            <a href="/category_search" class="menu_block_subitem">子カテゴリ管理</a>
-            <a href="/parent_category" class="menu_block_subitem">親カテゴリ管理</a>
-        </div>
+        <a href="/category_search" class="menu_block_name">カテゴリ管理</a>
     </div>
     <div class="menu_item">
         <a class="menu_block_name has_submenu">マスター管理</a>
