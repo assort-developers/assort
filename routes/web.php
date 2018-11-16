@@ -46,9 +46,10 @@ Route::get('/payment_detail','PaymentController@show');
 
 
 //入金管理
-Route::get('/spending_search', function () {
-	return view('spendging/spending_search');
-});
+Route::resource('spending', 'SpendingController');
+Route::get('/spending_search','SpendingController@index');
+Route::get('/spending_detail','SpendingController@show');
+
 
 //売上管理
 Route::get('/sales','SalesController@index');
