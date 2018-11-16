@@ -13,12 +13,8 @@ class SalesController extends Controller
      */
     public function index()
     {
-        return view('sales');
+        return view('sales/sales_search');
         //
-    }
-
-    public function sales_detail(){
-        return view('sales');
     }
 
     /**
