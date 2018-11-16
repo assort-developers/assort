@@ -3,7 +3,7 @@
 
 @section('content')
 	<div class="main_content">
-		<h1 id="title">サイズ管理画面</h1>
+		<h1 id="title">サイズ管理画面やで</h1>
 
 		<table>
 			<tbody>
