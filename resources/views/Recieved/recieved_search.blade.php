@@ -9,7 +9,7 @@
             <tbody>
             <tr>
                 <th colspan="2">注文内容</th>
-
+                <td><input class="form-control" type="text" name="" size="50" maxlength="50" value="" placeholder="注文内容"></td>
             </tr>
             <tr>
                 <th class="left">注文番号</th>
@@ -29,8 +29,8 @@
             </tr>
             　<tr>
                 <th class="left">お届け先</th>
-                <td><input type="text" name="" size="40" maxlength="40" value="市区町村"></td>
-                <td><input type="text" name="" size="40" maxlength="40" value="番地建物名">
+                <td><input type="text" name="" size="40" maxlength="40" value="市区町村"><br>
+                <input type="text" name="" size="40" maxlength="40" value="番地建物名"><br>
                 </td>
             </tr>
 
