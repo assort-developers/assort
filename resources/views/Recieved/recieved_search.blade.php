@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th class="left">注文番号</th>
-
+                <td>ON-00</td>
             </tr>
             <tr>
                 <th class="left">注文日</th>
@@ -32,8 +32,8 @@
                 <td><input type="text" name="" size="40" maxlength="40" value="市区町村"><br>
                 <input type="text" name="" size="40" maxlength="40" value="番地建物名"><br>
                 </td>
-            </tr>
 
+            </tr>
             　<tr>
                 <th class="left">電話番号</th>
                 <td class="row">
