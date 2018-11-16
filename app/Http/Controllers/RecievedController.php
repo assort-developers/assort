@@ -14,7 +14,7 @@ class RecievedController extends Controller
     public function index()
     {
         //
-        return view('recieved/recieved');
+        return view('recieved/recieved_blade');
 
     }
 
@@ -49,7 +49,7 @@ class RecievedController extends Controller
     public function show($id)
     {
         //
-        return view('Recieved/received');
+        return view('recieved/received');
     }
 
     /**
