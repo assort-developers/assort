@@ -91,7 +91,7 @@
 	<div class="controll_buttons">
 		<a href="#" class="square_btn btn">
 			<i class="fa fa-caret-right"></i>検索</a>
-		<a href="#" class="square_btn btn">
+		<a href="/order_create" class="square_btn btn">
 			<i class="fa fa-caret-right"></i>新規登録</a>
 	</div>
 	<table class="table-bordered search_result">
@@ -113,14 +113,14 @@
 			<tr>
 				<td>{{$order->id}}</td>
 				<td>{{$order->bland_id}}</td>
-				<td>かなりいい感じのTシャツ</td>
+				<td>かなりいい感じのTシャツ 他</td>
 				<td>{{$order->order_date}}</td>
-				<td>着荷待ち</td>
+				<td>{{$order->status}}</td>
 				<td>{{$order->delivery_date}}</td>
-				<td>{{$order->ordered_staffid}}</td>
-				<td>2018-11-09</td>
+				<td>{{$order->latest_updated}}</td>
+				<td>{{$order->update}}</td>
 				<td class="btn-outer">
-					<a href="/order/edit/{{$order->id}}" class="btn btn-success">入荷登録</a>
+					<a href="/order/show/{{$order->id}}" class="btn btn-success">入荷登録</a>
 				</td>
 			</tr>
 		@endforeach
