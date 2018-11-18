@@ -23,8 +23,9 @@
 			<tr>
 			<tr>
 				<th class="left">棚位置</th>
-				<td><input class="form-control" type="text" name="" size=5 maxlength="2" value="" placeholder="横位置">
-						<input class="form-control" type="text" name="" size="5" maxlength="2" value="" placeholder="縦位置">
+				<td class="row">
+					<div class="col-sm-6 no-padding"><input class="form-control" type="text" name="" size=5 maxlength="2" value="" placeholder="横位置"></div>
+					<div class="col-sm-6 no-padding"><input class="form-control" type="text" name="" size="5" maxlength="2" value="" placeholder="縦位置"></div>
 				</td>
 			</tr>
 			<tr>
