@@ -59,7 +59,6 @@ class OrderController extends Controller
     {
 			$order = Order::where('id', '=', $order_id)->get();
 			$order_contents = OrderContent::where('order_id', '=', $order_id)->get();
-				//
 			return view('order/order', [
 				'order' => $order[0],
 				'order_contents' => $order_contents
@@ -87,9 +86,14 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+			//
+			$order = Order::find($request->order_id)->update([
+				'delivery_date' => $request->delivery_date,
+				'latest_updated' => 1
+			]);
+			return redirect('/order/show/'.$request->order_id);
 		}
 		public function content_update(Request $request)
     {
