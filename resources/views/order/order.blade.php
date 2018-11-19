@@ -92,7 +92,7 @@
 							<input class="form-control" type="number" readonly name="" value="0">
 						@else
 							<input class="form-control" type="number" name="arrival_amount" value="{{$content->amount - $content->is_arrival}}"
-								min="1" max="{{$content->amount}}"
+								min="1" max="{{$content->getArrivableCount()}}"
 							>
 						@endif
 					</td>

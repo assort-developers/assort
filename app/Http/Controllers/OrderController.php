@@ -99,6 +99,13 @@ class OrderController extends Controller
     {
 			// 指定されたcontentレコードの更新
 			$content = OrderContent::where('id', '=', $request->content_id);
+
+			//validation
+			$max_arrival = $content->get()[0]->amount - $content->get()[0]->is_arrival;
+			$request->validate([
+				'arrival_amount' => "required|numeric|between:1,$max_arrival",
+			]);
+
 			$content->increment(
 				'is_arrival', $request->arrival_amount, 
 				[

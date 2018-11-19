@@ -19,4 +19,8 @@ class OrderContent extends Model
 		$date = new DatetimeImmutable($this->arrival_date);
 		return $date->format('Y-m-d');
 	}
+
+	public function getArrivableCount(){
+		return $this->amount - $this->is_arrival;
+	}
 }
