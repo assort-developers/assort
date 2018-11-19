@@ -42,9 +42,10 @@ Route::delete('product/{product_id?}/size/{size_id?}', 'ProductsController@size_
 Route::get('/recieved_search','RecievedController@index');
 
 //出金管理
-Route::get('/payment_search', function () {
-	return view('payment/payment_search');
-});
+Route::resource('payment', 'PaymentController');
+Route::get('/payment_search','PaymentController@index');
+Route::get('/payment_detail','PaymentController@show');
+
 
 //入金管理
 Route::get('/spending_search', function () {
@@ -84,3 +85,7 @@ Route::get('/size_search', function () {
 Route::get('/stock_shelf_search', function () {
 	return view('stock_shelf/stock_shelf_search');
 });
+//不良品管理
+Route::resource('waste', 'WasteController');
+Route::get('/waste_search','WasteController@index');
+Route::get('/waste_detail','WasteController@show');
