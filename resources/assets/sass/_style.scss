@@ -5,10 +5,10 @@ article{
 	display: flex;
 	flex-wrap: wrap;
 }
-h1, h2, h3, h4, h5, h6, div, p{
-	margin: 0;
-}
 
+.no-padding{
+	padding: 0 !important;
+}
 table {
   border: 1px solid #ccc;
   border-collapse: separate;
@@ -19,13 +19,48 @@ table {
 	background-color: #f8fafc;
   //margin-left: auto;
   // margin-right: auto;
-  // margin-top: 10px;
+	// margin-top: 10px;
+	
+	.table-header{
+		line-height: 20px;
+		th{
+			width: 10%;
+		}
+		.table_main_col{
+			width: 30%;
+		}
+	}
+	.btn-outer{
+		text-align: center;
+		width: 100px !important;
+		.btn{
+			width: 80px !important;
+		}
+	}
+}
+.search_result{
+	font-size: 12px;
 }
 
 table th,table td {
   border-bottom: 1px solid #ccc;
 	padding: 10px 20px;
 	font-weight: 100;
+
+	.search_box{
+		width: calc( 100% - 60px );
+		display: inline-block;
+	}
+	.search_button{
+		display: inline-block;
+	}
+
+}
+
+.table-bordered th, .table-bordered td{
+	padding: 5px;
+	font-size: 12px;
+	line-height: 12px;
 }
 
 table th {
@@ -231,6 +266,13 @@ h1 {
 .main_content::-webkit-scrollbar{
 	/* display: none; */
 }
+.search_box{
+	width: calc( 100% - 69px );
+	display: inline-block;
+}
+.search_button{
+	width: 20%;
+}
 .content_wrapper{
 	max-width: 768px;
 	margin: 0 auto;
@@ -238,24 +280,33 @@ h1 {
 	font-family: sans-serif;
 	font-weight: normal;
 }
-.btn{
-	&:hover{
-		background-color: #fff;
-		border: gray 1px solid;
-		color: gray;
-	}
-}
 .controll_buttons{
 	//padding: 10px;
 	text-align: right;
+	margin: 5px 0 20px 0;
 
 	.btn{
 		width: 75px;
 		font-weight: 100;
 		&:hover{
-			background-color: #29e6ff;
+			background-color: gray;
 			color: #fff;
 		}
+	}
+	.btn-danger{
+		&:hover{
+			background-color: crimson;
+		}
+	}
+	.btn-success{
+		&:hover{
+			background-color: limegreen;
+		}
+	}
+}
+.overflow_btn{
+	.btn{
+		width: inherit;
 	}
 }
 .row{
@@ -270,5 +321,8 @@ h1 {
 	}
 }
 .select2{
-	width: 100px;
+	width: 100%;
+}
+.hide{
+	display: none;
 }

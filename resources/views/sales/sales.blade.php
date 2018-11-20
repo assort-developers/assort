@@ -14,19 +14,19 @@
 			<th class="left">期間開始日</th>
 			<td><input type="date" name="date" value="2018-01-01"></td>
 			</tr>
-		　<tr>
+		<tr>
 				<th class="left">期間終了日</th>
 				<td><input type="date" name="date" value="2018-01-01"></td>
 			</tr>
-		　<tr>
+		<tr>
 				<th class="left">総利益</th>
 				<td></td>
 			</tr>
-		　<tr>
+		<tr>
 				<th class="left">売上純利益</th>
 				<td></td>
 			</tr>
-		　<tr>
+		<tr>
 				<th class="left">売上計上日</th>
 				<td></td>
 			</tr>

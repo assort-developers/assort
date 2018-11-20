@@ -18,27 +18,27 @@
                 <th class="left">注文日</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">注文者</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">発送日</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">お届け先</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">電話番号</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">支払い方法</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">支払い金額</th>
                 <td></td>
             </tr>

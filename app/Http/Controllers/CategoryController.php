@@ -18,12 +18,12 @@ class CategoryController extends Controller
     
     public function category_detail()
     {
-        if(){
-            return view('category');
-        }
-        else{
-            return view('parent_category');
-        }
+        // if(){
+        //     return view('category');
+        // }
+        // else{
+        //     return view('parent_category');
+        // }
         
     }
 

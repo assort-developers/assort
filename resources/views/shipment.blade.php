@@ -18,15 +18,15 @@
                 <th class="left">注文番号</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">注文日時</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">顧客ID</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">合計金額</th>
                 <td></td>
             </tr>
@@ -38,7 +38,7 @@
                 <th class="left">パッキング完了日</th>
                 <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">伝票出力日</th>
                 <td></td>
             </tr>

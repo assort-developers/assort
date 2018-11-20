@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<th class="left">氏名（カナ）</th>
-				<td><input type="text" name="" size="40" maxlength="60" value="" placeholder="オオアイシー　"></td>
+				<td><input type="text" name="" size="40" maxlength="60" value="" placeholder="オオアイシー"></td>
 			</tr>
 			<tr>
 				<th class="left">生年月日</th>
@@ -29,7 +29,7 @@
 			<tr>
 				<th class="left">郵便番号</th>
 				<td>
-						<input type="tel" name="" size="3" maxlength="3"　value="" placeholder="000">-
+						<input type="tel" name="" size="3" maxlength="3"value="" placeholder="000">-
 						<input type="text" name="" size="4" maxlength="4" value="" placeholder="0000">
 				</td>
 			</tr>

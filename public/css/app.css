@@ -10487,15 +10487,8 @@ article {
       flex-wrap: wrap;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-div,
-p {
-  margin: 0;
+.no-padding {
+  padding: 0 !important;
 }
 
 table {
@@ -10508,11 +10501,54 @@ table {
   background-color: #f8fafc;
 }
 
+table .table-header {
+  line-height: 20px;
+}
+
+table .table-header th {
+  width: 10%;
+}
+
+table .table-header .table_main_col {
+  width: 30%;
+}
+
+table .btn-outer {
+  text-align: center;
+  width: 100px !important;
+}
+
+table .btn-outer .btn {
+  width: 80px !important;
+}
+
+.search_result {
+  font-size: 12px;
+}
+
 table th,
 table td {
   border-bottom: 1px solid #ccc;
   padding: 10px 20px;
   font-weight: 100;
+}
+
+table th .search_box,
+table td .search_box {
+  width: calc( 100% - 60px);
+  display: inline-block;
+}
+
+table th .search_button,
+table td .search_button {
+  display: inline-block;
+}
+
+.table-bordered th,
+.table-bordered td {
+  padding: 5px;
+  font-size: 12px;
+  line-height: 12px;
 }
 
 table th {
@@ -10728,6 +10764,15 @@ h1 {
   /* display: none; */
 }
 
+.search_box {
+  width: calc( 100% - 69px);
+  display: inline-block;
+}
+
+.search_button {
+  width: 20%;
+}
+
 .content_wrapper {
   max-width: 768px;
   margin: 0 auto;
@@ -10736,14 +10781,9 @@ h1 {
   font-weight: normal;
 }
 
-.btn:hover {
-  background-color: #fff;
-  border: gray 1px solid;
-  color: gray;
-}
-
 .controll_buttons {
   text-align: right;
+  margin: 5px 0 20px 0;
 }
 
 .controll_buttons .btn {
@@ -10752,8 +10792,20 @@ h1 {
 }
 
 .controll_buttons .btn:hover {
-  background-color: #29e6ff;
+  background-color: gray;
   color: #fff;
+}
+
+.controll_buttons .btn-danger:hover {
+  background-color: crimson;
+}
+
+.controll_buttons .btn-success:hover {
+  background-color: limegreen;
+}
+
+.overflow_btn .btn {
+  width: inherit;
 }
 
 .row {
@@ -10768,6 +10820,10 @@ h1 {
 }
 
 .select2 {
-  width: 100px;
+  width: 100%;
+}
+
+.hide {
+  display: none;
 }
 

@@ -13,19 +13,19 @@
             <th class="left">商品コード</th>
             <td></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">商品名</th>
                 <td><input type="text" name="" size="40" maxlength="40" value="" placeholder="商品名"></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">変更予定日</th>
                 <td><input type="date" name="date" value="2018-01-01"></td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">棚配置場所（前回）</th>
                 <td>X-00</td>
             </tr>
-            　<tr>
+            <tr>
                 <th class="left">棚配置場所（現在）</th>
                 <td><input type="text" name="" size=5 maxlength="2" value="" placeholder="横位置">
                                     <input type="text" name="" size="5" maxlength="2" value="" placeholder="縦位置"></td>

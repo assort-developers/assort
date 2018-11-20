@@ -8,15 +8,19 @@ class ProductsController extends Controller
 {
 	// 商品検索
 	public function index(){
-		return view('product_search');
+		return view('product/product_search');
 	}
 	// 商品デザイン管理
 	public function show(){
-		return view('product');
+		return view('product/product');
+	}
+	public function size_show($product_id, $size_id){
+		return view('product/product_size');
 	}
 	public function create()
     {
-        //
+				//
+				return('create');
     }
 
     /**
@@ -61,6 +65,12 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+				//
+			return('designdestroy');
+		}
+		public function size_destroy($product_id, $size_id)
+    {
+				//
+			return('size'.$product_id.$size_id.'destroy');
     }
 }

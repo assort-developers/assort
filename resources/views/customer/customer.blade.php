@@ -39,7 +39,7 @@
 		<tr> 
 			<th class="left">郵便番号</th>
 			<td>
-			<input type="tel" name="" size="3" maxlength="3"　value="" placeholder="000">-
+			<input type="tel" name="" size="3" maxlength="3"value="" placeholder="000">-
 					<input type="text" name="" size="4" maxlength="4" value="" placeholder="0000">  
 			</td>
 		</tr>
