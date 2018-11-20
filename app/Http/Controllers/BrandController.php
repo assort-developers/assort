@@ -49,10 +49,10 @@ class BrandController extends Controller
      */
     public function show($brand_id)
     {
-        $brand = Brand::where('id',$brand_id)->get();
+        $brand = Brand::where('id',$brand_id)->first();
 
         return view('brand/brand', [
-            'brand' => $brand[0]
+            'brand' => $brand
         ]);
     }
 

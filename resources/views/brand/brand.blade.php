@@ -13,20 +13,21 @@
 				<tr>
 					<th>ブランドコード</th>
 					<td colspan="3">
-						<div class="search_box"><input class="form-control" type="text" name="brand_code"></div>
+						<?=$brand->id?>
 					</td>
 				</tr>
 				<tr>
 					<th>ブランド名</th>
 					<td colspan="3">
-						<div class="search_box"><input class="form-control" type="text"></div>
+						<?=$brand->name?>
 					</td>
 				</tr>
 				<tr>
 				<tr>
 					<th>ブランド名（カナ）</th>
-					<td colspan="3"><input class="form-control" type="text" name="" size="40" maxlength="60" value="" placeholder="oic tarou"></td>
-			</tr>
+					<td colspan="3">
+						<?=$brand->kana?>
+					</td>
 				</tr>
 				<tr>
 					<th class="left">郵便番号</th>

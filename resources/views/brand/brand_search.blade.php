@@ -5,7 +5,7 @@
 @section('content')
 <div class="content_wrapper">
 	<form action='/brand' method='GET'>
-		
+	<?= csrf_field()?>
 		<table class="table-bordered">
 			<tbody>
 				<tr>
