@@ -23,9 +23,11 @@ Route::get('/', function () {
 
 //発注管理
 Route::get('/order_search', 'OrderController@index');
-Route::get('/order_detail', 'OrderController@show');
-Route::get('/order_edit', 'OrderController@update');
-Route::get('/order_delete', 'OrderController@destroy');
+Route::get('/order/create', 'OrderController@create');
+Route::get('/order/show/{id?}', 'OrderController@show');
+Route::post('/order/update', 'OrderController@update');
+Route::post('/order/content/update', 'OrderController@content_update');
+// Route::get('/order_delete', 'OrderController@destroy');
 
 //商品管理
 // Route::get('/product_search', 'ProductsController@index');
