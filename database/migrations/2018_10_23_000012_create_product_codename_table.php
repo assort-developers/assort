@@ -26,10 +26,10 @@ class CreateProductCodenameTable extends Migration
             $table->increments('id');
             $table->string('name', 45);
             $table->integer('category_id');
-            $table->integer('brand_id');
+            $table->integer('bland_id');
             $table->integer('price');
 
-            $table->index(["brand_id"], 'fk_product_codename_brand1_idx');
+            $table->index(["bland_id"], 'fk_product_codename_brand1_idx');
 
             $table->index(["category_id"], 'fk_product_codename_category1_idx');
 

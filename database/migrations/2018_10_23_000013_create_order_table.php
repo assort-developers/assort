@@ -25,12 +25,12 @@ class CreateOrderTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('total')->default('0');
-            $table->integer('brand_id');
+            $table->integer('bland_id');
             $table->integer('delivery_charge');
             $table->integer('ordered_staffid');
             $table->dateTime('create');
 
-            $table->index(["brand_id"], 'fk_order_brand1_idx');
+            $table->index(["bland_id"], 'fk_order_brand1_idx');
 
         });
     }
