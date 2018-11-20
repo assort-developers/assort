@@ -31,6 +31,9 @@
 			</tr>
 		</tbody>
 		</table>
+        <div class="controll_buttons overflow_btn">
+			<input class="btn btn-success" type="submit" value="検索">
+		</div>
 		<img src="images/graph.png" alt="折れ線グラフ" width="70%">
 	</div>
 @endsection
