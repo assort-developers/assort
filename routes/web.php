@@ -23,9 +23,11 @@ Route::get('/', function () {
 
 //発注管理
 Route::get('/order_search', 'OrderController@index');
-Route::get('/order_detail', 'OrderController@show');
-Route::get('/order_edit', 'OrderController@update');
-Route::get('/order_delete', 'OrderController@destroy');
+Route::get('/order/create', 'OrderController@create');
+Route::get('/order/show/{id?}', 'OrderController@show');
+Route::post('/order/update', 'OrderController@update');
+Route::post('/order/content/update', 'OrderController@content_update');
+// Route::get('/order_delete', 'OrderController@destroy');
 
 //商品管理
 // Route::get('/product_search', 'ProductsController@index');
@@ -40,23 +42,24 @@ Route::delete('product/{product_id?}/size/{size_id?}', 'ProductsController@size_
 Route::get('/recieved_search','RecievedController@index');
 
 //出金管理
-Route::get('/payment_search', function () {
-	return view('payment/payment_search');
-});
+Route::resource('payment', 'PaymentController');
+Route::get('/payment_search','PaymentController@index');
+Route::get('/payment_detail','PaymentController@show');
+
 
 //入金管理
-Route::get('/spending_search', function () {
-	return view('spendging/spending_search');
-});
+Route::resource('spending', 'SpendingController');
+Route::get('/spending_search','SpendingController@index');
+Route::get('/spending_detail','SpendingController@show');
+
 
 //売上管理
 Route::get('/sales','SalesController@index');
 
 
 //カテゴリ管理
-Route::get('/category_search', function () {
-	return view('category/category_search');
-});
+Route::get('/category_search', 'CategoryController@index');
+Route::get('/category/create','CategoryController@create');
 
 //仕入先管理
 Route::get('/brand_search', function () {
@@ -86,3 +89,8 @@ Route::get('/stock_shelf_search', function () {
 Route::resource('waste', 'WasteController');
 Route::get('/waste_search','WasteController@index');
 Route::get('/waste_detail','WasteController@show');
+
+//棚卸し管理
+Route::resource('inventory', 'InventoryController');
+Route::get('/inventory_search','InventoryController@index');
+Route::get('/inventory_detail','InventoryController@show');
