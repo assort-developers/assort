@@ -58,9 +58,8 @@ Route::get('/sales','SalesController@index');
 
 
 //カテゴリ管理
-Route::get('/category_search', function () {
-	return view('category/category_search');
-});
+Route::get('/category_search', 'CategoryController@index');
+Route::get('/category/create','CategoryController@create');
 
 //仕入先管理
 Route::get('/brand_search', function () {
