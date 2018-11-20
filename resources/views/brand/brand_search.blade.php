@@ -41,6 +41,8 @@
 						<div class="col-xs-2">
 							<input class="form-control" type="tel" name="" size="4" maxlength="4"value="" placeholder="0000">
 						</div>
+				</tr>
+				<tr>
 					<th class="left">都道府県</th>
 					<td>
 						<select class="form-control" name="prefecture">
@@ -49,12 +51,16 @@
 							<option value="">琵琶湖</option>
 						</select>
 					</td>
+					<th class="left">市区町村</th>
+					<td>
+						<input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="市区町村">
+					</td>
 				</tr>
 				<tr>
-					<th class="left">市区町村</th>
-					<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="市区町村"></td>
-					<th class="left">番地建物名</th>
-					<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="番地建物名"></td>
+					<th class="left">番地</th>
+					<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="番地"></td>
+					<th class="left">建物名</th>
+					<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="建物名"></td>
 				</tr>
 				<tr>
 					<th class="left">メールアドレス</th>

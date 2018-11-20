@@ -66,6 +66,7 @@ Route::get('/category_search', function () {
 Route::resource('brand','BrandController');
 Route::get('/brand_search','BrandController@index');
 Route::get('/brand/show/{id?}', 'BrandController@show');
+Route::post('/brand/update', 'BrandController@update');
 
 //顧客管理
 Route::get('/customer_search', function () {

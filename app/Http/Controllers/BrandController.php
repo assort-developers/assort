@@ -74,9 +74,12 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $update_brand=$request->all();
+
+        return (var_dump($update_brand));
+
     }
 
     /**
