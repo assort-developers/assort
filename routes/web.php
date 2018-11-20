@@ -62,10 +62,11 @@ Route::get('/category_search', function () {
 	return view('category/category_search');
 });
 
-//仕入先管理
-Route::get('/brand_search', function () {
-	return view('brand/brand_search');
-});
+//ブランド管理
+Route::resource('brand','BrandController');
+Route::get('/brand_search','BrandController@index');
+Route::get('/brand/show/{id?}', 'BrandController@show');
+
 //顧客管理
 Route::get('/customer_search', function () {
 	return view('customer/customer_search');
