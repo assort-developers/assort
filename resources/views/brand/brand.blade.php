@@ -35,7 +35,7 @@
 				</td>
 				<th class="left">都道府県</th>
 				<td>
-					<?=$brand->address_pref?>
+					<?=$brand->getPrefName()?>
 				</td>
 			</tr>
 			<tr>
@@ -125,22 +125,23 @@
 				<tr>
 					<th class="left">都道府県</th>
 					<td>
-						<select class="form-control" name="prefecture">
-							<option value="">大阪府</option>
-							<option value="">奈良県</option>
-							<option value="">琵琶湖</option>
+						<select class="form-control" name="address_pref">
+							<option value="<?=$brand->address_pref?>"><?=$brand->getPrefName()?></option>
+							<?php foreach($prefs as $index => $name): ?>
+							<option value="<?=$index?>"><?=$name?></option>
+							<?php endforeach; ?>
 						</select>
 					</td>
 					<th class="left">市区町村</th>
 					<td>
-						<input class="form-control" type="text" name="address_city" size="40" maxlength="40" value="<?=$brand->city?>">
+						<input class="form-control" type="text" name="address_city" size="40" maxlength="40" value="<?=$brand->address_city?>">
 					</td>
 				</tr>
 				<tr>
 					<th class="left">番地</th>
-					<td><input class="form-control" type="text" name="address_town" size="40" maxlength="40" value="<?=$brand->town?>"></td>
+					<td><input class="form-control" type="text" name="address_town" size="40" maxlength="40" value="<?=$brand->address_town?>"></td>
 					<th class="left">建物名</th>
-					<td><input class="form-control" type="text" name="address_build" size="40" maxlength="40" value="<?=$brand->build?>"></td>
+					<td><input class="form-control" type="text" name="address_build" size="40" maxlength="40" value="<?=$brand->address_build?>"></td>
 				</tr>
 				<tr>
 					<th class="left">メールアドレス</th>
@@ -175,9 +176,9 @@
 				</tr>
 				<tr>
 					<th class="left">更新者</th>
-					<td><input class="form-control" type="text" name="updateby" size="40" maxlength="40" value=""></td>
+					<td>自動入力にしたいよね</td>
 					<th class="left">更新日</th>
-					<td><?=$date?></td><!-- 時刻はどうするか不明 -->
+					<td><?=$date?>(自動入力)</td><!-- 時刻はどうするか不明 -->
 				</tr>
 			</tbody>
 		</table>

@@ -13,4 +13,8 @@ class Brand extends Model
 		$date = new DatetimeImmutable($this->brand_date);
 		return $date->format('Y-m-d');
 	}
+
+	public function getPrefName() {
+		return config('pref.'.$this->address_pref);
+	}
 }
