@@ -161,13 +161,13 @@
 				<tr>
 					<th class="left">FAX</th>
 					<td class="row">
-						<div class="col-xs-3"><input class="form-control" type="tel" name="fax1" size="4" maxlength="4" value="">
+						<div class="col-xs-3"><input class="form-control" type="tel" name="fax1" size="4" maxlength="4" value="<?=$fax[0]??''?>">
 						</div>
 						<div class="hyphen">-</div>
-						<div class="col-xs-3"><input class="form-control" type="tel" name="fax2" size="4" maxlength="4" value="">
+						<div class="col-xs-3"><input class="form-control" type="tel" name="fax2" size="4" maxlength="4" value="<?=$fax[1]??''?>">
 						</div>
 						<div class="hyphen">-</div>
-						<div class="col-xs-3"><input class="form-control" type="tel" name="fax3" size="4" maxlength="4" value=""></div>
+						<div class="col-xs-3"><input class="form-control" type="tel" name="fax3" size="4" maxlength="4" value="<?=$fax[2]??''?>"></div>
                     </div>
 					</td>
 					<th class="left">社内担当者</th>
@@ -177,7 +177,7 @@
 					<th class="left">更新者</th>
 					<td><input class="form-control" type="text" name="updateby" size="40" maxlength="40" value=""></td>
 					<th class="left">更新日</th>
-					<td><input class="form-control" type="date" name="date" value=""></td><!-- 時刻はどうするか不明 -->
+					<td><?=$date?></td><!-- 時刻はどうするか不明 -->
 				</tr>
 			</tbody>
 		</table>

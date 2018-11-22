@@ -52,24 +52,25 @@ class BrandController extends Controller
         $brand = Brand::where('id',$brand_id)->first();
         //以下の処理は微妙
         $tel=explode("-", $brand['tel']);
-        $fax=explode("-", $brand['fax']);
         $zip_code=explode("-", $brand['zip_code']);
+        $fax=explode("-", $brand['fax']);
+        if(empty($fax)){
+            $fax=array(
+                "",
+                "",
+                ""
+            );
+        }
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
 
-        //if($fax!=""){
-            return view('brand/brand', [
-                'brand' => $brand,
-                'tel'=>$tel,
-                'fax'=>$fax,
-                'zip_code'=>$zip_code
+        return view('brand/brand', [
+            'brand' => $brand,
+            'tel'=>$tel,
+            'fax'=>$fax,
+            'zip_code'=>$zip_code,
+            'date'=>$date
             ]);
-        /* }else{
-            return view('brand/brand', [
-                'brand' => $brand,
-                'tel'=>$tel,
-            ]);
-        } */
-        
-        
     }
 
     /**
@@ -98,8 +99,11 @@ class BrandController extends Controller
         // prefの処理不明
         $update_address_pref='1';
         $update_tel=$update_data['tel1']."-".$update_data['tel2']."-".$update_data['tel3'];
-        $update_fax=$update_data['fax1']."-".$update_data['fax2']."-".$update_data['fax3'];
-        
+        if(!empty($update_data['fax1'])&!empty($update_data['fax2'])&!empty($update_data['fax3'])){
+            $update_fax=$update_data['fax1']."-".$update_data['fax2']."-".$update_data['fax3'];
+        }else{
+            $update_fax="";
+        }
         //db修正後"adres_*"と"bild"を修正する必要がある
         //$brand = Brand::find($request->$brand_id)->update([
         $brand = Brand::where('id',$brand_id)->update([
@@ -115,7 +119,7 @@ class BrandController extends Controller
             'fax'=>$update_fax,
             'staff_id'=>$update_data['staff_id'],
             'updateby'=>$update_data['updateby'],
-            //'update'=>$update_data['update']
+            'update'=>NOW(),
         ]);
         return redirect('/brand/show/'.$brand_id);
         

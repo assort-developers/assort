@@ -10,7 +10,7 @@ class Brand extends Model
     public $timestamps = false;
     public function getBrandDate()
 	{
-		$date = new DatetimeImmutable($this->order_date);
+		$date = new DatetimeImmutable($this->brand_date);
 		return $date->format('Y-m-d');
 	}
 }
