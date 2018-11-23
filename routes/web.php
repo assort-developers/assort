@@ -70,7 +70,7 @@ Route::get('/customer_search', function () {
 	return view('customer/customer_search');
 });
 //従業員管理
-Route::get('/staff', function () {
+Route::get('/staff_search', function () {
 	return view('staff/staff_search');
 });
 //色管理
