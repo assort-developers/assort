@@ -70,9 +70,10 @@ Route::get('/customer_search', function () {
 	return view('customer/customer_search');
 });
 //従業員管理
-Route::get('/staff_search', function () {
-	return view('staff/staff_search');
-});
+Route::resource('staff', 'StaffController');
+Route::get('/staff_search','StaffController@index');
+Route::get('/staff_detail','StaffController@show');
+
 //色管理
 Route::get('/color_search', function () {
 	return view('color/color_search');
