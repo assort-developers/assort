@@ -15,10 +15,6 @@ class CustomerController extends Controller
     {
         //
         return view('customer/customer_search');
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
     }
 
     /**
@@ -49,16 +45,10 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-    public function show()
-    {
-        //
-=======
     public function show($id)
     {
         //
         return view('customer/customer');
->>>>>>> develop
     }
 
     /**
