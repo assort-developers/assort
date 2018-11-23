@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     protected $table = 'brand';
-    public $timestamps = false;
+	public $timestamps = false;
+	//protected $fillable = ['code','name','kana','zip_code','address_pref','address_city','address_town',''];
+	protected $guarded = ['id'];
+
     public function getBrandDate()
 	{
 		$date = new DatetimeImmutable($this->brand_date);

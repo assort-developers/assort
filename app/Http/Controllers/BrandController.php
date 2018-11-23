@@ -15,7 +15,7 @@ class BrandController extends Controller
     public function index()
     {
         $brands=Brand::all();
-        return view('brand/brand_search', [
+        return view('brand.brand_search', [
             'brands' => $brands
         ]);
     }
@@ -27,7 +27,14 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
+        $prefs = config('pref');
+
+        return view('brand.brand_register',[
+            'date'=>$date,
+            'prefs'=>$prefs
+            ]);
     }
 
     /**
@@ -38,7 +45,63 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $create_brand=$request->all();
+        $create_zip_code=($create_brand['zip_code1']."-".$create_brand['zip_code2']);
+        
+        //telの結合処理
+        $create_tel=$create_brand['tel1']."-".$create_brand['tel2']."-".$create_brand['tel3'];
+        
+        //faxのnullチェックと結合処理
+        if(!empty($create_brand['fax1'])&!empty($create_brand['fax2'])&!empty($create_brand['fax3'])){
+            $create_fax=$create_brand['fax1']."-".$create_brand['fax2']."-".$create_brand['fax3'];
+        }else{
+            $create_fax="";
+        }
+        
+        $brand_id=Brand::insertGetId([
+            'code' => $create_brand['brand_code'],
+            'name' => $create_brand['brand_name'],
+            'kana' => $create_brand['brand_kana'],
+            'zip_code' => $create_zip_code,
+            'address_pref' => $create_brand['address_pref'],
+            'address_city' => $create_brand['address_city'],
+            'address_town' => $create_brand['address_town'],
+            'address_build' => $create_brand['address_build'],
+            'tel' => $create_tel,
+            'mail' => $create_brand['mail'],
+            'fax' => $create_fax,
+            'updateby' => '1',
+            'update' => NOW(),
+            'staff_id' =>$create_brand['staff_id'],
+        ]);
+        return redirect('/brand/show/'.$brand_id);
+        //$brand = Brand::where('id',$brand_id)->first();
+        //return(var_dump($brand));
+        //以下の処理は微妙
+        /* $tel=explode("-", $brand['tel']);
+        $zip_code=explode("-", $brand['zip_code']);
+        $fax=explode("-", $brand['fax']);
+        if(empty($fax)){
+            $fax=array(
+                "",
+                "",
+                ""
+            );
+        }
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
+        $prefs = config('pref');
+
+        
+        return redirect('/brand/show/'.$brand_id,[
+            'brand' => $brand,
+            'tel'=>$tel,
+            'fax'=>$fax,
+            'zip_code'=>$zip_code,
+            'date'=>$date,
+            'prefs'=>$prefs
+            ]); */
     }
 
     /**
@@ -66,7 +129,7 @@ class BrandController extends Controller
         $prefs = config('pref');
 
 
-        return view('brand/brand', [
+        return view('brand.brand', [
             'brand' => $brand,
             'tel'=>$tel,
             'fax'=>$fax,
@@ -96,7 +159,7 @@ class BrandController extends Controller
      */
     public function update(Request $request)
     {
-        $brand_id=$request->input('brand_code');
+        $brand_id=$request->input('brand_id');
         $update_data=$request->all();
         
         //zip_codeの結合処理
@@ -115,7 +178,7 @@ class BrandController extends Controller
 
         //DB更新処理
         $brand = Brand::where('id',$brand_id)->update([
-            //'id' => $update_data['brand_code'],
+            'code' => $update_data['brand_code'],
             'name' => $update_data['brand_name'],
             'zip_code'=>$update_zip_code,
             'address_pref'=>$update_data['address_pref'],

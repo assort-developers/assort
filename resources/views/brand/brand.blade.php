@@ -12,7 +12,7 @@
 			<tr>
 				<th>ブランドコード</th>
 				<td colspan="3">
-					<?=$brand->id?>
+					<?=$brand->code?>
 				</td>
 			</tr>
 			<tr>
@@ -94,9 +94,13 @@
 					<th colspan="4">ブランド情報</th>
 				</tr>
 				<tr>
+					<th>ID</th>
+					<td>
+						<div class="search_box"><input class="form-control" type="text" name="brand_id" readonly="readonly" value="<?=$brand->id?>"></div>
+					</td>
 					<th>ブランドコード</th>
-					<td colspan="3">
-						<div class="search_box"><input class="form-control" type="text" name="brand_code" readonly="readonly" value="<?=$brand->id?>"></div>
+					<td>
+						<div class="search_box"><input class="form-control" type="text" name="brand_code" value="<?=$brand->code?>"></div>
 					</td>
 				</tr>
 				<tr>
