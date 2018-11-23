@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th class="left">注文番号</th>
-                <td>ON-00</td>
+                <td></td>
             </tr>
             <tr>
                 <th class="left">注文日</th>
