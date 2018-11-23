@@ -1,5 +1,6 @@
 @extends('layout.common')
 @section('title', '顧客管理画面')
+@section('header_title', '顧客管理画面')
 
 @section('content')
 	<div class="content_wrapper">
@@ -24,9 +25,9 @@
 			<th class="left">性別</th>
 			<td>
 					<select class="form-control" name="gender">
-							<option value="">メンズ</option>
-							<option value="">レディース</option>
-							<option value="">ユニセックス</option>
+							<option value="">男性</option>
+							<option value="">女性</option>
+							<option value="">その他</option>
 					</select>  
 			</td>
 		</tr>
