@@ -66,7 +66,7 @@ Route::get('/brand_search', function () {
 	return view('brand/brand_search');
 });
 //顧客管理
-Route::resource('customer','Customer');
+Route::resource('customer','CustomerController');
 Route::get('/customer_search','CustomerController@index');
 Route::get('/customer_detail','CustomerController@show');
 
