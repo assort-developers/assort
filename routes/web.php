@@ -66,9 +66,10 @@ Route::get('/brand_search', function () {
 	return view('brand/brand_search');
 });
 //顧客管理
-Route::get('/customer_search', function () {
-	return view('customer/customer_search');
-});
+Route::resource('customer','CustomerController');
+Route::get('/customer_search','CustomerController@index');
+Route::get('/customer_detail','CustomerController@show');
+
 //従業員管理
 Route::get('/staff', function () {
 	return view('staff/staff_search');
@@ -90,7 +91,9 @@ Route::resource('waste', 'WasteController');
 Route::get('/waste_search','WasteController@index');
 Route::get('/waste_detail','WasteController@show');
 
+
 //棚卸し管理
 Route::resource('inventory', 'InventoryController');
 Route::get('/inventory_search','InventoryController@index');
 Route::get('/inventory_detail','InventoryController@show');
+
