@@ -103,3 +103,4 @@ Route::get('/stock_shelf_change_search',
            'Stock_shelf_changeController@index');
 Route::get('/stock_shelf_change_detail',
            'Stock_shelf_changeController@show');
+
