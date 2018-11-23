@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderContent;
+use App\Models\ArrivalContent;
 
 class OrderController extends Controller
 {
@@ -13,8 +16,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-				//
-				return view('order/order_search');
+			//
+			$orders = Order::all();
+			//return ('<pre>'.var_dump($order));
+			return view('order/order_search', [
+				'orders' => $orders
+			]);
     }
 
     /**
@@ -24,7 +31,11 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+			//
+
+			return view('order/order', [
+				'test' => 'test'
+			]);
     }
 
     /**
@@ -44,9 +55,14 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($order_id)
     {
-        //
+			$order = Order::where('id', '=', $order_id)->get();
+			$order_contents = OrderContent::where('order_id', '=', $order_id)->get();
+			return view('order/order', [
+				'order' => $order[0],
+				'order_contents' => $order_contents
+			]);
     }
 
     /**
@@ -57,7 +73,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+			//
+			return view('order/order')->width([
+				'order' => $order[0]
+			]);
     }
 
     /**
@@ -67,10 +86,46 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
-    }
+			//
+			$order = Order::find($request->order_id)->update([
+				'delivery_date' => $request->delivery_date,
+				'latest_updated' => 1
+			]);
+			return redirect('/order/show/'.$request->order_id);
+		}
+		public function content_update(Request $request)
+    {
+			// 指定されたcontentレコードの更新
+			$content = OrderContent::where('id', '=', $request->content_id);
+
+			//validation
+			$max_arrival = $content->get()[0]->amount - $content->get()[0]->is_arrival;
+			$request->validate([
+				'arrival_amount' => "required|numeric|between:1,$max_arrival",
+			]);
+
+			$content->increment(
+				'is_arrival', $request->arrival_amount, 
+				[
+					'arrival_date' => ($request->order_amount == $content->get()[0]->is_arrival + $request->arrival_amount)? NOW() : NULL,
+					'arrival_check_staffid' => 1
+				]);
+			// 親 : orderテーブルレコードの更新
+			$order = Order::where('id', '=', $content->get()[0]->order_id)
+			->update([
+				'latest_updated' => 1
+			]);
+			// arrival レコードの挿入
+			ArrivalContent::create([
+				'order_content_id' => $request->content_id,
+				'amount' => $request->arrival_amount
+			]);
+
+			// 処理完了後リダイレクト
+			return redirect('/order/show/'.$request->order_id);
+		}
 
     /**
      * Remove the specified resource from storage.

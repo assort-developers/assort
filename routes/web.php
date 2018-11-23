@@ -66,9 +66,10 @@ Route::get('/brand_search', function () {
 	return view('brand/brand_search');
 });
 //顧客管理
-Route::get('/customer_search', function () {
-	return view('customer/customer_search');
-});
+Route::resource('customer','CustomerController');
+Route::get('/customer_search','CustomerController@index');
+Route::get('/customer_detail','CustomerController@show');
+
 //従業員管理
 Route::get('/staff', function () {
 	return view('staff/staff_search');
@@ -102,3 +103,4 @@ Route::get('/stock_shelf_change_search',
            'Stock_shelf_changeController@index');
 Route::get('/stock_shelf_change_detail',
            'Stock_shelf_changeController@show');
+
