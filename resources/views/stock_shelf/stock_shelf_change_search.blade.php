@@ -1,5 +1,6 @@
 @extends('layout.common')
 @section('title', '棚配置変更画面')
+@section('header_title', '棚配置変更画面')
 
 @section('content')
     <div class="content_wrapper">
@@ -7,7 +8,7 @@
 		<table class="table-bordered">
             <tbody>
             <tr>
-                <th colspan="2">棚配置情報</th>
+                <th colspan="4">棚配置情報</th>
             </tr>
             <tr>
             <th class="left">商品コード</th>
