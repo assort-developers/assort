@@ -22,10 +22,10 @@
 		<a href="/recieved_search" class="menu_block_name">注文管理</a>
 	</div>
 	<div class="menu_item">
-		<a href="/payment" class="menu_block_name">入金管理</a>
+		<a href="/spending" class="menu_block_name">入金管理</a>
 	</div>
 	<div class="menu_item">
-		<a href="/spending" class="menu_block_name">出金管理</a>
+		<a href="/payment" class="menu_block_name">出金管理</a>
 	</div>
 	<div class="menu_item">
 		<a href="/sales" class="menu_block_name">売上管理</a>
