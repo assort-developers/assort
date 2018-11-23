@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category_search');
+        return view('category/category_search');
     }
     
     public function category_detail()
@@ -34,7 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+      return('create');
     }
 
     /**

@@ -10487,6 +10487,10 @@ article {
       flex-wrap: wrap;
 }
 
+.no-padding {
+  padding: 0 !important;
+}
+
 table {
   border: 1px solid #ccc;
   border-collapse: separate;
@@ -10817,5 +10821,9 @@ h1 {
 
 .select2 {
   width: 100%;
+}
+
+.hide {
+  display: none;
 }
 
