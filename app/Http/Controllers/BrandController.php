@@ -12,11 +12,16 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brands=Brand::all();
+        $request->all();
+        $prefs = config('pref');
+        $brands=Brand::getJoinAll($request);
+        
         return view('brand.brand_search', [
-            'brands' => $brands
+            'prefs'=>$prefs,
+            'brands' => $brands,
+            'request'=>$request
         ]);
     }
 
@@ -76,32 +81,6 @@ class BrandController extends Controller
             'staff_id' =>$create_brand['staff_id'],
         ]);
         return redirect('/brand/show/'.$brand_id);
-        //$brand = Brand::where('id',$brand_id)->first();
-        //return(var_dump($brand));
-        //以下の処理は微妙
-        /* $tel=explode("-", $brand['tel']);
-        $zip_code=explode("-", $brand['zip_code']);
-        $fax=explode("-", $brand['fax']);
-        if(empty($fax)){
-            $fax=array(
-                "",
-                "",
-                ""
-            );
-        }
-        $date = date_create(NOW()); 
-        $date = date_format($date , 'Y-m-d');
-        $prefs = config('pref');
-
-        
-        return redirect('/brand/show/'.$brand_id,[
-            'brand' => $brand,
-            'tel'=>$tel,
-            'fax'=>$fax,
-            'zip_code'=>$zip_code,
-            'date'=>$date,
-            'prefs'=>$prefs
-            ]); */
     }
 
     /**
@@ -208,4 +187,5 @@ class BrandController extends Controller
     {
         //
     }
+
 }

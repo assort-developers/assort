@@ -70,6 +70,7 @@ Route::post('/brand/update', 'BrandController@update');
 Route::get('/brand/create', 'BrandController@create');
 Route::post('/brand/store', 'BrandController@store');
 
+
 //顧客管理
 Route::get('/customer_search', function () {
 	return view('customer/customer_search');
