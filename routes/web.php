@@ -63,10 +63,15 @@ Route::get('/sales','SalesController@index');
 Route::get('/category_search', 'CategoryController@index');
 Route::get('/category/create','CategoryController@create');
 
-//仕入先管理
-Route::get('/brand_search', function () {
-	return view('brand/brand_search');
-});
+//ブランド管理
+Route::resource('brand','BrandController');
+Route::get('/brand_search','BrandController@index');
+Route::get('/brand/show/{id?}', 'BrandController@show');
+Route::post('/brand/update', 'BrandController@update');
+Route::get('/brand/create', 'BrandController@create');
+Route::post('/brand/store', 'BrandController@store');
+
+
 //顧客管理
 Route::resource('customer','CustomerController');
 Route::get('/customer_search','CustomerController@index');
