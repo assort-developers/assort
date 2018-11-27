@@ -91,7 +91,9 @@ Route::resource('waste', 'WasteController');
 Route::get('/waste_search','WasteController@index');
 Route::get('/waste_detail','WasteController@show');
 
-//棚配置変更管理
-Route::get('/stock_shelf_change', function () {
-    return view('stock_shelf/stock_shelf_change_search');
-});
+
+//棚卸し管理
+Route::resource('inventory', 'InventoryController');
+Route::get('/inventory_search','InventoryController@index');
+Route::get('/inventory_detail','InventoryController@show');
+
