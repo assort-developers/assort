@@ -21,6 +21,8 @@ class AddColumnStaffTable extends Migration
             $table->string('address_city', 45)->after('address_pref');
             $table->string('address_town', 100)->after('address_city');
             $table->string('address_build', 100)->nullable()->default(NULL)->after('address_town');
+            $table->integer('updateby')->after('hiredate');
+            $table->dateTime('update')->after('updateby');
         });
     }
 
@@ -36,9 +38,11 @@ class AddColumnStaffTable extends Migration
             $table->dropColumn('hiredate');
             $table->dropColumn('zip_code');
             $table->dropColumn('address_pref');
-            $table->dropColumn('addres_city');
-            $table->dropColumn('addres_town');
-            $table->dropColumn('addres_bild');
+            $table->dropColumn('address_city');
+            $table->dropColumn('address_town');
+            $table->dropColumn('address_build');
+            $table->dropColumn('updateby');
+            $table->dropColumn('update');
         });    
     }
 }
