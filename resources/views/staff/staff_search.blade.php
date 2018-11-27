@@ -1,12 +1,14 @@
 @extends('layout.common')
 @section('title', '従業員管理画面')
+@section('header_title', '従業員管理画面')
 
 @section('content')
 	<div class="content_wrapper">
+		<form action='/staff' method='GET'>
 		<table class="table-bordered">
 			<tbody>
 			<tr>
-				<th colspan="2">従業員情報</th>
+				<th colspan="4">従業員情報</th>
 			</tr>
 			<tr>
 			<th class="">従業員コード</th>
@@ -90,6 +92,7 @@
 		<a href="#" class="delete_btn btn">
 			<i class="fa fa-caret-right"></i>削除</a>
 		</div>
+		</form>
 	</div>
 	<script>
         $(document).ready(function() {
