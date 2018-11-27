@@ -29,6 +29,8 @@ Route::post('/order/update', 'OrderController@update');
 Route::post('/order/content/update', 'OrderController@content_update');
 // Route::get('/order_delete', 'OrderController@destroy');
 
+Route::get('/arrival_search', 'ArrivalController@index');
+
 //商品管理
 // Route::get('/product_search', 'ProductsController@index');
 // 	// 商品デザイン検索

@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
 			$this->call(OrderTableSeeder::class);
 			$this->call(OrderContentSeeder::class);
+			$this->call(ProductsSeeder::class);
     }
 }

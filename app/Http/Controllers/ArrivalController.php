@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\ArrivalContent;
 class ArrivalController extends Controller
 {
     /**
@@ -12,9 +12,12 @@ class ArrivalController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(){
-        
-        return view('aririval_search');
+    public function index(Request $request){
+			$arrivals = ArrivalContent::getJoinAll($request);
+			return view('arrival/arrival_search', [
+				'arrivals' => $arrivals,
+				'request' => $request
+			]);
     }
 
     public function arrival_detail(){

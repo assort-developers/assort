@@ -37,6 +37,11 @@ $(function(){
 			toggle_submenu($(this));
 		}
 	});
+	$('#query_reset_button').click(function(){
+		$('form').find('input[type=text] , input[type=date] , input[type=number]').each(function(idx, target){
+			$(target).val('');
+		});
+	});
 
 });
 
