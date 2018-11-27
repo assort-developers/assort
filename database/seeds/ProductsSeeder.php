@@ -29,3 +29,4 @@ class ProductsSeeder extends Seeder
 			]);
     }
 }
+
