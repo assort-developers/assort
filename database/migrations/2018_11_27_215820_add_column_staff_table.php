@@ -14,9 +14,13 @@ class AddColumnStaffTable extends Migration
     public function up()
     {
         Schema::table('staff', function (Blueprint $table) {
-            $table->date('birthday')->after('first_name_kana');
-            $table->date('hiredate')->after('mail_address');
-
+            $table->date('birthday')->default(NULL)->after('first_name_kana');
+            $table->date('hiredate')->default(NULL)->after('mail_address');
+            $table->string('zip_code', 8)->after('birthday');
+            $table->integer('address_pref')->after('zip_code');
+            $table->string('address_city', 45)->after('address_pref');
+            $table->string('address_town', 100)->after('address_city');
+            $table->string('address_build', 100)->nullable()->default(NULL)->after('address_town');
         });
     }
 
@@ -30,6 +34,11 @@ class AddColumnStaffTable extends Migration
         Schema::table('staff', function (Blueprint $table) {
             $table->dropColumn('birthday');
             $table->dropColumn('hiredate');
-        });
+            $table->dropColumn('zip_code');
+            $table->dropColumn('address_pref');
+            $table->dropColumn('addres_city');
+            $table->dropColumn('addres_town');
+            $table->dropColumn('addres_bild');
+        });    
     }
 }
