@@ -28,12 +28,17 @@ class OrderTableSeeder extends Seeder
 				'staff_id' => 1
 			]);
 			DB::table('order')->insert([
+				'code' => 'OD001',
 				'total' => 100,
 				'brand_id' => 1,
-				'delivery_charge' => 1,
+				'status' => 0,
+				'total_pay' => 110,
+				'delivery_charge' => 10,
 				'delivery_date' => '2018-12-31',
 				'ordered_staffid' => 1,
 				'order_date' => '2018-12-15 10:15:30',
+				'latest_updated' => 0,
+				'update' => NOW(),
 				'create' => NOW()
 		 ]);
     }
