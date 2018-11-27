@@ -7,12 +7,14 @@
         <table class="table-bordered">
             <tbody>
             <tr>
-                <th>注文内容</th>
-                <td><input class="form-control" type="text" name="" size="50" maxlength="50" value="" placeholder="注文内容"></td>
+                <th colspan="4">注文情報</th>
             </tr>
             <tr>
-                <th class="left">注文番号</th>
-                <td>ON-00</td>
+                <th>注文コード</th>
+                <td>
+                    <div class="search_box"><input class="form-control" type="text" name="recieved_code"></div>
+                    <div class="search_button"><button class="btn btn-dark">検索</button></div>
+                </td>
             </tr>
             <tr>
                 <th class="left">注文日</th>
@@ -70,15 +72,6 @@
             </tr>
             </tbody>
         </table>
-        <div align="right">
-            <a href="#" class="square_btn btn">
-                <i class="fa fa-caret-right"></i>登録</a>
-            <a href="#" class="reseto_btn btn">
-                <i class="fa fa-caret-right"></i>リセット</a>
-            <a href="#" class="update_btn btn">
-                <i class="fa fa-caret-right"></i>更新</a>
-            <a href="#" class="delete_btn btn">
-                <i class="fa fa-caret-right"></i>削除</a>
         </div>
     </div>
 @endsection
