@@ -11,10 +11,16 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        Return view('staff/staff_search');
+        $request->all();
+        $prefs = config('pref');
+        $staffs=Staff::getJoinAll($request);
+        return view('staff.staff_search', [
+            'prefs'=>$prefs,
+            'request'=>$request,
+            'staffs'=>$staff
+        ]);
     }
 
     /**
