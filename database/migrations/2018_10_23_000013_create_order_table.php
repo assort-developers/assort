@@ -30,7 +30,7 @@ class CreateOrderTable extends Migration
             $table->integer('ordered_staffid');
             $table->dateTime('create');
 
-            $table->index(["bland_id"], 'fk_order_bland1_idx');
+            $table->index(["bland_id"], 'fk_order_brand1_idx');
 
         });
     }

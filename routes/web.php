@@ -29,6 +29,8 @@ Route::post('/order/update', 'OrderController@update');
 Route::post('/order/content/update', 'OrderController@content_update');
 // Route::get('/order_delete', 'OrderController@destroy');
 
+Route::get('/arrival_search', 'ArrivalController@index');
+
 //商品管理
 // Route::get('/product_search', 'ProductsController@index');
 // 	// 商品デザイン検索
@@ -58,9 +60,8 @@ Route::get('/sales','SalesController@index');
 
 
 //カテゴリ管理
-Route::get('/category_search', function () {
-	return view('category/category_search');
-});
+Route::get('/category_search', 'CategoryController@index');
+Route::get('/category/create','CategoryController@create');
 
 //ブランド管理
 Route::resource('brand','BrandController');
@@ -72,20 +73,22 @@ Route::post('/brand/store', 'BrandController@store');
 
 
 //顧客管理
-Route::get('/customer_search', function () {
-	return view('customer/customer_search');
-});
+Route::resource('customer','CustomerController');
+Route::get('/customer_search','CustomerController@index');
+Route::get('/customer_detail','CustomerController@show');
+
 //従業員管理
-Route::get('/staff', function () {
-	return view('staff/staff_search');
-});
+Route::resource('staff', 'StaffController');
+Route::get('/staff_search','StaffController@index');
+Route::get('/staff_detail','StaffController@show');
+
 //色管理
 Route::get('/color_search', function () {
 	return view('color/color_search');
 });
 //サイズ管理
 Route::get('/size_search', function () {
-	return view('size/size_search');
+    return view('size/size_search');
 });
 //棚番号管理
 Route::get('/stock_shelf_search', function () {
@@ -95,3 +98,16 @@ Route::get('/stock_shelf_search', function () {
 Route::resource('waste', 'WasteController');
 Route::get('/waste_search','WasteController@index');
 Route::get('/waste_detail','WasteController@show');
+
+//棚卸し管理
+Route::resource('inventory', 'InventoryController');
+Route::get('/inventory_search','InventoryController@index');
+Route::get('/inventory_detail','InventoryController@show');
+
+//棚配置変更
+Route::resource('stock_shelf_change',
+                'Stock_shelf_changeController');
+Route::get('/stock_shelf_change_search',
+           'Stock_shelf_changeController@index');
+Route::get('/stock_shelf_change_detail',
+           'Stock_shelf_changeController@show');
