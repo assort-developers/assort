@@ -15,7 +15,6 @@ class CustomerController extends Controller
     {
         //
         return view('customer/customer_search');
-
     }
 
     /**

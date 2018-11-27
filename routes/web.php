@@ -81,7 +81,7 @@ Route::get('/color_search', function () {
 });
 //サイズ管理
 Route::get('/size_search', function () {
-	return view('size/size_search');
+    return view('size/size_search');
 });
 //棚番号管理
 Route::get('/stock_shelf_search', function () {
@@ -93,9 +93,9 @@ Route::get('/waste_search','WasteController@index');
 Route::get('/waste_detail','WasteController@show');
 
 //棚卸し管理
-Route::resource('iventory', 'IventoryController');
-Route::get('/iventory_search','IventoryController@index');
-Route::get('/iventory_detail','IventoryController@show');
+Route::resource('inventory', 'InventoryController');
+Route::get('/inventory_search','InventoryController@index');
+Route::get('/inventory_detail','InventoryController@show');
 
 //棚配置変更
 Route::resource('stock_shelf_change',
@@ -104,5 +104,3 @@ Route::get('/stock_shelf_change_search',
            'Stock_shelf_changeController@index');
 Route::get('/stock_shelf_change_detail',
            'Stock_shelf_changeController@show');
-
-
