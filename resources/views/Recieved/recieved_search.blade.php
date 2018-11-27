@@ -7,7 +7,7 @@
         <table class="table-bordered">
             <tbody>
             <tr>
-                <th colspan="2">注文内容</th>
+                <th>注文内容</th>
                 <td><input class="form-control" type="text" name="" size="50" maxlength="50" value="" placeholder="注文内容"></td>
             </tr>
             <tr>
@@ -16,7 +16,7 @@
             </tr>
             <tr>
                 <th class="left">注文日</th>
-                <td><input type="date" name="date" value="2018-01-01"></td>
+                <td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
             </tr>
             <tr>
                 <th class="left">注文者</th>
@@ -24,12 +24,12 @@
             </tr>
             <tr>
                 <th class="left">発送日</th>
-                <td><input type="date" name="date" value="2018-01-01"></td>
+                <td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
             </tr>
             <tr>
                 <th class="left">お届け先</th>
-                <td><input type="text" name="" size="40" maxlength="40" value="市区町村"><br>
-                <input type="text" name="" size="40" maxlength="40" value="番地建物名"><br>
+                <td><input class="form-control" type="text" name="" size="40" maxlength="40" value=""placeholder="市区町村"><br>
+                <input class="form-control " type="text" name="" size="40" maxlength="40" value=""placeholder="番地建物名"><br>
                 </td>
 
             </tr>
@@ -44,7 +44,7 @@
             <tr>
                 <th class="left">支払い方法</th>
                 <td>
-                    <select name="payment">
+                    <select class="form-control" name="payment">
                         <option value="">クレジットカード</option>
                         <option value="">口座</option>
                         <option value="">後払い</option>
@@ -66,7 +66,7 @@
             </tr>
             <tr>
                 <th class="left">更新日</th>
-                <td><input type="date" name="date" value="2018-01-01"></td>
+                <td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
             </tr>
             </tbody>
         </table>
