@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Staff;
+use Carbon\Carbon;
 
 class StaffController extends Controller
 {
@@ -17,10 +18,12 @@ class StaffController extends Controller
         $request->all();
         $prefs = config('pref');
         $staffs=Staff::getJoinAll($request);
+        $now=Carbon::today()->toDateString();
         return view('staff.staff_search', [
             'prefs'=>$prefs,
             'request'=>$request,
-            'staffs'=>$staff
+            'staffs'=>$staffs,
+            'now'=>$now
         ]);
     }
 
@@ -52,10 +55,28 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($staff_id)
     {
-        //
-        Return view('staff/staff');
+        //$staff = Staff::where('id',$staff_id)->first();
+        //$staff_updateby=Staff::where('id',$staff->updateby)->first();
+        $staff2=Staff::getJoinAll_show($staff_id);
+        $tel=explode("-", $staff2['contact_tel']);
+        $zip_code=explode("-", $staff2['zip_code']);
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
+        $prefs = config('pref');
+        
+        return view('staff.staff', [
+            //'staff' => $staff,
+            //'staff_updateby'=>$staff_updateby,
+            
+            'staff2'=>$staff2,
+            'tel'=>$tel,
+            'zip_code'=>$zip_code,
+            'date'=>$date,
+            'prefs'=>$prefs,
+            
+            ]);
     }
 
     /**
@@ -78,7 +99,7 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('/staff/show/'.$staff_id);
     }
 
     /**

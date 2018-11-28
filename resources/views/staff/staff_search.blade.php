@@ -24,9 +24,9 @@
 				</td>
 				<th class="">氏名（カナ）</th>
 				<td class="row">
-					<div class="col-xs-1"><input class="form-control" type="text" name="familly_kana" size="10" maxlength="40" value="" placeholder="セイ"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="familly_name_kana" size="10" maxlength="40" value="" placeholder="セイ"></div>
 					<div class="hyphen"> </div>
-					<div class="col-xs-1"><input class="form-control" type="text" name="first_kana" size="10" maxlength="40" value="" placeholder="メイ"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="first_name_kana" size="10" maxlength="40" value="" placeholder="メイ"></div>
 				</td>
 			</tr>
 			<tr>
@@ -82,8 +82,8 @@
 			<tr>
 				<th class="left">入社年月日</th>
 				<td><input class="form-control" type="date" name="hire_date" value="2018-01-01"></td>
-				<th class="left">所属部署</th>
-				<td><input class="form-control" type="text" name="staff_role" size="40" maxlength="40" value="" placeholder="所属部署名"></td>
+				<th class="left">役職</th>
+				<td><input class="form-control" type="text" name="staff_role" size="40" maxlength="40" value="" placeholder="役職"></td>
 			</tr>
 			<tr>
 				<th class="left">更新者</th>
@@ -93,15 +93,9 @@
 			</tr>
 			</tbody>
 		</table>
-		<div class="controll_buttons">
-		<a href="#" class="square_btn btn">
-			<i class="fa fa-caret-right"></i>登録</a>
-		<a href="#" class="reseto_btn btn">
-			<i class="fa fa-caret-right"></i>リセット</a> 
-		<a href="#" class="update_btn btn">
-			<i class="fa fa-caret-right"></i>更新</a>
-		<a href="#" class="delete_btn btn">
-			<i class="fa fa-caret-right"></i>削除</a>
+		<div class="controll_buttons overflow_btn">
+			<a class="btn btn-dark" href="/staff/create">従業員登録</a>
+			<input class="btn btn-success" type="submit" value="検索">
 		</div>
 	</form>
 	<table class="table-bordered">
@@ -114,22 +108,20 @@
 			<th>年齢</th>
 			<th>メールアドレス</th>
 			<th>電話番号</th>
-			<th>所属部署</th>
+			<th>役職</th>
 			<th>入社年月日</th>
-			<th>最終更新日</th>
 			<th>詳細</th>
 		</tr>
 		
 		<?php foreach($staffs as $staff): ?>
 			<tr>
 				<td><?=$staff->code?></td>
-				<td><?=$staff->familly_name?> <?=$staff->first_name?></td>
-				<td><?=$staff->getPrefName()?></td>
+				<td><?=$staff->family_name?> <?=$staff->first_name?></td>
+				<td><?=$staff->getAge($staff->birthday)?></td>
 				<td><?=$staff->mail_address?></td>
 				<td><?=$staff->contact_tel?></td>
 				<td><?=$staff->staff_role?></td>
 				<td><?=$staff->hiredate?></td>
-				<td><?=$staff->update?></td>
 				<td class="btn-outer">
 					<a href="/staff/show/<?=$staff->id?>" class="btn btn-success" >詳細</a>
 				</td>
