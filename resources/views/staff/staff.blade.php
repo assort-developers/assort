@@ -11,7 +11,9 @@
 		</tr>
 		<tr>
 			<th>従業員コード</th>
-			<td colspan="3"><?=$staff2->code?></td>
+			<td><?=$staff2->code?></td>
+			<th class="left">役職</th>
+			<td><?=$staff2->staff_role?></td>
 		</tr>
 		<tr>
 			<th class="">氏名</th>
@@ -46,8 +48,8 @@
 		<tr>
 			<th class="left">入社年月日</th>
 			<td><?=$staff2->hiredate?></td>
-			<th class="left">役職</th>
-			<td><?=$staff2->staff_role?></td>
+			<th class="left">退社年月日</th>
+			<td><?=$staff2->resigndate?></td>
 		</tr>
 		<tr>
 			<th class="left">更新者</th>
@@ -70,9 +72,18 @@
 			</tr>
 			<tr>
 				<th>従業員コード</th>
-				<td colspan="3">
+				<td>
 				<input class="form-control" type="text" name="staff_code" value="<?=$staff2->code?>">
 				<input class="form-control" type="hidden" name="id" value="<?=$staff2->id?>">
+				</td>
+				<th class="left">役職</th>
+				<td>
+					<select class="form-control" name="staff_role_id">
+						<option value="<?=$staff2->staff_role_id?>"><?=$staff2->staff_role?></option>
+						<?php foreach($staffroles as $staffrole): ?>
+						<option value="<?=$staffrole->id?>"><?=$staffrole->name?></option>
+						<?php endforeach; ?>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -143,14 +154,8 @@
 			<tr>
 				<th class="left">入社年月日</th>
 				<td><input class="form-control" type="date" name="hiredate" value="<?=$staff2->hiredate?>"></td>
-				<th class="left">役職</th>
-				<td><select class="form-control" name="staff_role_id">
-					<option value="<?=$staff2->staff_role_id?>"><?=$staff2->staff_role?></option>
-					<?php foreach($staffroles as $staffrole): ?>
-					<option value="<?=$staffrole->id?>"><?=$staffrole->name?></option>
-					<?php endforeach; ?>
-				</select>
-				</td>
+				<th class="left">退社年月日</th>
+				<td><input class="form-control" type="date" name="resigndate" value="<?=$staff2->resigndate?>"></td>
 			</tr>
 			<tr>
 				<th class="left">更新者</th>

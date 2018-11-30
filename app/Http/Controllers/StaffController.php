@@ -19,12 +19,14 @@ class StaffController extends Controller
         $request->all();
         $prefs = config('pref');
         $staffs=Staff::getJoinAll($request);
+        $staffroles=Staffrole::all();
         $now=Carbon::today()->toDateString();
         return view('staff.staff_search', [
             'prefs'=>$prefs,
             'request'=>$request,
             'staffs'=>$staffs,
-            'now'=>$now
+            'now'=>$now,
+            'staffroles'=>$staffroles
         ]);
     }
 
@@ -144,7 +146,12 @@ class StaffController extends Controller
         
         //telの結合処理
         $update_tel=$update_data['tel1']."-".$update_data['tel2']."-".$update_data['tel3'];
-
+        
+        //退職者の役職を'役職なし'にする処理
+        if($update_data['resigndate']!=null){
+            $update_data['staff_role_id']='1';
+        }
+        
         $staff = Staff::where('id',$update_data['id'])->update([
             'code' => $update_data['staff_code'],
             'family_name' => $update_data['family_name'],
@@ -160,6 +167,7 @@ class StaffController extends Controller
             'contact_tel'=>$update_tel,
             'mail_address'=>$update_data['mail'],
             'hiredate'=>$update_data['hiredate'],
+            'resigndate'=>$update_data['resigndate'],
             //staff_roll_idの処理はあとで考える
             'staff_role_id'=>$update_data['staff_role_id'],
             //'staff_id'=>$update_data['staff_id'],

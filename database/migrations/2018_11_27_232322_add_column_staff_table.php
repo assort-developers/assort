@@ -16,6 +16,7 @@ class AddColumnStaffTable extends Migration
         Schema::table('staff', function (Blueprint $table) {
             $table->date('birthday')->default(NULL)->after('first_name_kana');
             $table->date('hiredate')->default(NULL)->after('mail_address');
+            $table->date('resigndate')->nullable()->default(NULL)->after('hiredate');
             $table->string('zip_code', 8)->after('birthday');
             $table->integer('address_pref')->after('zip_code');
             $table->string('address_city', 45)->after('address_pref');
@@ -36,6 +37,7 @@ class AddColumnStaffTable extends Migration
         Schema::table('staff', function (Blueprint $table) {
             $table->dropColumn('birthday');
             $table->dropColumn('hiredate');
+            $table->dropColumn('resigndate');
             $table->dropColumn('zip_code');
             $table->dropColumn('address_pref');
             $table->dropColumn('address_city');

@@ -13,8 +13,16 @@
 			</tr>
 			<tr>
 				<th>従業員コード</th>
-				<td colspan="3">
+				<td>
 				<input class="form-control" type="text" name="staff_code" value="" required>
+				</td>
+                <th class="left">役職</th>
+				<td><select class="form-control" name="staff_role_id">
+					<option value="">--</option>
+					<?php foreach($staffroles as $staffrole): ?>
+					<option value="<?=$staffrole->id?>"><?=$staffrole->name?></option>
+					<?php endforeach; ?>
+				</select>
 				</td>
 			</tr>
 			<tr>
@@ -85,14 +93,8 @@
 			<tr>
 				<th class="left">入社年月日</th>
 				<td><input class="form-control" type="date" name="hiredate" value=""></td>
-				<th class="left">役職</th>
-				<td><select class="form-control" name="staff_role_id">
-					<option value="">--</option>
-					<?php foreach($staffroles as $staffrole): ?>
-					<option value="<?=$staffrole->id?>"><?=$staffrole->name?></option>
-					<?php endforeach; ?>
-				</select>
-				</td>
+				<th class="left">退社年月日</th>
+				<td><input class="form-control" type="date" name="resigndate" value=""readonly></td>
 			</tr>
 			<tr>
 				<th class="left">更新者</th>
@@ -103,7 +105,8 @@
 			</tbody>
 		</table>
 		<div class="controll_buttons overflow_btn">
-			<input class="btn btn-success" type="submit" value="従業員更新">
+            <a class="btn btn-dark" href="/staff_search">戻る</a>
+			<input class="btn btn-success" type="submit" value="従業員登録">
 		</div>
 	</form>
 </div>
