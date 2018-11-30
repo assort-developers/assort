@@ -14,6 +14,16 @@ class Order extends Model
 
 	protected $fillable= array('delivery_date','ordered_staffid', 'latest_updated');
 
+	public function brand()
+	{
+		return $this->belongsTo('\App\Models\Brand');
+	}
+
+	public function order_content()
+	{
+		return $this->hasMany('\App\Models\OrderContent');
+	}
+
 	public function getOrderDate()
 	{
 		$date = new DatetimeImmutable($this->order_date);
