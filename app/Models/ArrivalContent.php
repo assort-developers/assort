@@ -38,11 +38,11 @@ class ArrivalContent extends Model
 		if($request->order_id != NULL) $arrival->where('order.id', '=', $request->order_id);
 		if($request->product_code != NULL) $arrival->where('product_codename.id', '=', $request->product_code);
 		if($request->brand_id != NULL) $arrival->where('brand.id', '=', $request->brand_id);
-		if($request->arrival_date_start != NULL){
-			$arrival->whereDate('arrival_content.arrival_at', $request->arrival_date_start);
+		 if($request->arrival_date_start != NULL){
+			$arrival->whereDate('arrival_content.arrival_at', '>=',$request->arrival_date_start);
 		}
 		if($request->arrival_date_end != NULL){
-			$arrival->whereDate('arrival_content.arrival_at',  $request->arrival_date_end);
+			$arrival->whereDate('arrival_content.arrival_at','<=',  $request->arrival_date_end);
 		}
 		if($request->update != NULL) $arrival->whereDate('order.update', $request->update);
 		return $arrival->get();
