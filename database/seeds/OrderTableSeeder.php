@@ -13,6 +13,7 @@ class OrderTableSeeder extends Seeder
     {
 			//
 			DB::table('brand')->insert([
+				'code' => 'BR001',
 				'name' => 'やばくないTシャツ屋さん',
 				'kana' => 'ヤバクナイティーシャツヤサン',
 				'zip_code' => '100-8111',
