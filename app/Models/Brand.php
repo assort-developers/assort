@@ -11,6 +11,11 @@ class Brand extends Model
 	//protected $fillable = ['code','name','kana','zip_code','address_pref','address_city','address_town',''];
 	protected $guarded = ['id'];
 
+	public function product_codename()
+	{
+		return hasMany('\App\Models\ProductCodename');
+	}
+
     public function getBrandDate()
 	{
 		$date = new DatetimeImmutable($this->brand_date);
