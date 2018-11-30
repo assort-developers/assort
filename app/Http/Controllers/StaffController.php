@@ -97,8 +97,42 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $update_data=$request->all();
+        
+        //zip_codeの結合処理
+        $update_zip_code=($update_data['zip_code1']."-".$update_data['zip_code2']);
+        
+        //telの結合処理
+        $update_tel=$update_data['tel1']."-".$update_data['tel2']."-".$update_data['tel3'];
+
+        $staff = Staff::where('id',$update_data['id'])->update([
+            'code' => $update_data['staff_code'],
+            'family_name' => $update_data['family_name'],
+            'first_name' => $update_data['first_name'],
+            'familly_name_kana'=>$update_data['familly_name_kana'],
+            'first_name_kana'=>$update_data['first_name_kana'],
+            'birthday'=>$update_data['birthday'],
+            'zip_code'=>$update_zip_code,
+            'address_pref'=>$update_data['address_pref'],
+            'address_city'=>$update_data['address_city'],
+            'address_town'=>$update_data['address_town'],
+            'address_build'=>$update_data['address_build'],
+            'contact_tel'=>$update_tel,
+            'mail_address'=>$update_data['mail'],
+            'hiredate'=>$update_data['hiredate'],
+            //staff_roll_idの処理はあとで考える
+            'staff_roll_id'=>'1',
+            //'staff_id'=>$update_data['staff_id'],
+            //'updateby'=>$update_data['updateby'],
+            'updateby'=>'1',
+            'update'=>NOW(),
+        ]);
+
+
+        
+        
         return redirect('/staff/show/'.$staff_id);
     }
 

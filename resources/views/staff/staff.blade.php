@@ -35,7 +35,7 @@
 			<th class="left">番地</th>
 			<td><?=$staff2->address_town?></td>
 			<th class="left">建物名</th>
-			<td><?=$staff2->address_buid?></td>
+			<td><?=$staff2->address_build?></td>
 		</tr>
 		<tr>
 			<th class="left">メールアドレス</th>
@@ -70,7 +70,10 @@
 			</tr>
 			<tr>
 				<th>従業員コード</th>
-				<td colspan="3"><?=$staff2->code?></td>
+				<td colspan="3">
+				<input class="form-control" type="text" name="staff_code" value="<?=$staff2->code?>">
+				<input class="form-control" type="hidden" name="id" value="<?=$staff2->id?>">
+				</td>
 			</tr>
 			<tr>
 				<th class="">氏名</th>
