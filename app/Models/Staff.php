@@ -48,6 +48,7 @@ class Staff extends Model
 			'staff2.family_name as updateby_family_name',
 			'staff2.first_name as updateby_first_name',
 			'staff.update',
+			'staff_role.id as staff_role_id',
 			'staff_role.name as staff_role'
 		)->leftjoin('staff_role', 'staff.staff_role_id', '=', 'staff_role.id')
 		->leftjoin('staff as staff2', 'staff.updateby', '=', 'staff2.id');

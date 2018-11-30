@@ -81,6 +81,9 @@ Route::get('/customer_detail','CustomerController@show');
 Route::resource('staff', 'StaffController');
 Route::get('/staff_search','StaffController@index');
 Route::get('/staff/show/{id?}','StaffController@show');
+Route::post('/staff/update','StaffController@update');
+Route::get('/staff/create', 'StaffController@create');
+Route::post('/staff/store','StaffController@store');
 
 //色管理
 Route::get('/color_search', function () {

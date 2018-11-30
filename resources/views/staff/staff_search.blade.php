@@ -18,20 +18,20 @@
 			<tr>
 				<th class="">氏名</th>
 				<td class="row">
-					<div class="col-xs-1"><input class="form-control" type="text" name="familly_name" size="10" maxlength="40" value="" placeholder="性"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name" size="10" maxlength="40" value="" placeholder="性"></div>
 					<div class="hyphen"> </div>
 					<div class="col-xs-1"><input class="form-control" type="text" name="first_name" size="10" maxlength="40" value="" placeholder="名"></div>
 				</td>
 				<th class="">氏名（カナ）</th>
 				<td class="row">
-					<div class="col-xs-1"><input class="form-control" type="text" name="familly_name_kana" size="10" maxlength="40" value="" placeholder="セイ"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name_kana" size="10" maxlength="40" value="" placeholder="セイ"></div>
 					<div class="hyphen"> </div>
 					<div class="col-xs-1"><input class="form-control" type="text" name="first_name_kana" size="10" maxlength="40" value="" placeholder="メイ"></div>
 				</td>
 			</tr>
 			<tr>
 				<th class="left">生年月日</th>
-				<td><input class="form-control" type="date" name="birthdate" value="2018-01-01"></td>
+				<td><input class="form-control" type="date" name="birthday" value="2018-01-01"></td>
 				<th class="left">郵便番号</th>
 				<td class="row">
 					<div class="col-xs-2">
@@ -81,7 +81,7 @@
 			</tr>
 			<tr>
 				<th class="left">入社年月日</th>
-				<td><input class="form-control" type="date" name="hire_date" value="2018-01-01"></td>
+				<td><input class="form-control" type="date" name="hiredate" value="2018-01-01"></td>
 				<th class="left">役職</th>
 				<td><input class="form-control" type="text" name="staff_role" size="40" maxlength="40" value="" placeholder="役職"></td>
 			</tr>

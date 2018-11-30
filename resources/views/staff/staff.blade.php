@@ -61,7 +61,7 @@
 		<a class="btn btn-dark" href="/staff_search">戻る</a>
 	</div>
 
-	<form action='/staff/update' method='GET'>
+	<form action='/staff/update' method='post'>
 		<?= csrf_field()?>
 		<table class="table-bordered">
 			<tbody>
@@ -78,20 +78,20 @@
 			<tr>
 				<th class="">氏名</th>
 				<td class="row">
-					<div class="col-xs-1"><input class="form-control" type="text" name="familly_name" size="10" maxlength="40" value="<?=$staff2->family_name?>" placeholder="性" required></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name" size="10" maxlength="40" value="<?=$staff2->family_name?>" placeholder="性" required></div>
 					<div class="hyphen"> </div>
 					<div class="col-xs-1"><input class="form-control" type="text" name="first_name" size="10" maxlength="40" value="<?=$staff2->first_name?>" placeholder="名" required></div>
 				</td>
 				<th class="">氏名（カナ）</th>
 				<td class="row">
-					<div class="col-xs-1"><input class="form-control" type="text" name="familly_name_kana" size="10" maxlength="40" value="<?=$staff2->family_name_kana?>" placeholder="セイ" required></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name_kana" size="10" maxlength="40" value="<?=$staff2->family_name_kana?>" placeholder="セイ" required></div>
 					<div class="hyphen"> </div>
 					<div class="col-xs-1"><input class="form-control" type="text" name="first_name_kana" size="10" maxlength="40" value="<?=$staff2->first_name_kana?>" placeholder="メイ" required></div>
 				</td>
 			</tr>
 			<tr>
 				<th class="left">生年月日</th>
-				<td><input class="form-control" type="date" name="birthdate" value="<?=$staff2->birthday?>"></td>
+				<td><input class="form-control" type="date" name="birthday" value="<?=$staff2->birthday?>"></td>
 				<th class="left">郵便番号</th>
 				<td class="row">
 					<div class="col-xs-2">
@@ -142,9 +142,15 @@
 			</tr>
 			<tr>
 				<th class="left">入社年月日</th>
-				<td><input class="form-control" type="date" name="hire_date" value="<?=$staff2->hiredate?>"></td>
+				<td><input class="form-control" type="date" name="hiredate" value="<?=$staff2->hiredate?>"></td>
 				<th class="left">役職</th>
-				<td><input class="form-control" type="text" name="staff_role" size="40" maxlength="40" value="<?=$staff2->staff_role?>" required placeholder="役職"></td>
+				<td><select class="form-control" name="staff_role_id">
+					<option value="<?=$staff2->staff_role_id?>"><?=$staff2->staff_role?></option>
+					<?php foreach($staffroles as $staffrole): ?>
+					<option value="<?=$staffrole->id?>"><?=$staffrole->name?></option>
+					<?php endforeach; ?>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<th class="left">更新者</th>
