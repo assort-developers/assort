@@ -1,6 +1,10 @@
 <div class="side_menu">
     <div class="menu_item">
-        <a href="/order_search" class="menu_block_name">発注管理</a>
+        <a class="menu_block_name has_submenu">発注管理</a>
+        <div class="menu_block_hiden">
+            <a href="/order_search" class="menu_block_subitem">発注検索</a>
+            <a href="/order/create" class="menu_block_subitem">発注登録</a>
+        </div>
     </div>
     <div class="menu_item">
         <a href="/arrival_search" class="menu_block_name">入庫管理</a>
