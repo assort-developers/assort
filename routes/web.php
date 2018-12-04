@@ -86,9 +86,12 @@ Route::get('/staff/create', 'StaffController@create');
 Route::post('/staff/store','StaffController@store');
 
 //色管理
-Route::get('/color_search', function () {
-	return view('color/color_search');
-});
+Route::get('/color_search','ColorController@index');
+Route::get('/color/show/{id?}','ColorController@show');
+Route::post('/color/update','ColorController@update');
+Route::get('/color/create', 'ColorController@create');
+Route::post('/color/store','ColorController@store');
+
 //サイズ管理
 Route::get('/size_search', function () {
     return view('size/size_search');
