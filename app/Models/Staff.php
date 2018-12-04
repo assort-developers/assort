@@ -28,7 +28,7 @@ class Staff extends Model
 		return $age;
 	}
 
-	public static function getJoinAll_show($request=null){
+	public static function getJoinAll_show($staff_id=null){
 		$staff = Staff::select(
 			'staff.id',
 			'staff.code',
@@ -52,7 +52,8 @@ class Staff extends Model
 			'staff_role.id as staff_role_id',
 			'staff_role.name as staff_role'
 		)->leftjoin('staff_role', 'staff.staff_role_id', '=', 'staff_role.id')
-		->leftjoin('staff as staff2', 'staff.updateby', '=', 'staff2.id');
+		->leftjoin('staff as staff2', 'staff.updateby', '=', 'staff2.id')
+		->where('staff.id', '=', $staff_id);
 		//->toSql();
 		//dd($staff);
 		

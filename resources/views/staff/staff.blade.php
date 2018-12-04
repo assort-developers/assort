@@ -106,7 +106,7 @@
 				<th class="left">郵便番号</th>
 				<td class="row">
 					<div class="col-xs-2">
-						<input class="form-control" type="tel" name="zip_code1" size="3" maxlength="3" value="<?=$zip_code[0]?>" required>
+						<input class="form-control" type="tel" name="zip_code1" size="3" maxlength="3" value="{{$zip_code[0]}}" required>
 					</div>
 					<div class="hyphen">-</div>
 					<div class="col-xs-2">

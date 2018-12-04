@@ -95,6 +95,7 @@ class StaffController extends Controller
      */
     public function show($staff_id)
     {
+        //dd($staff_id);
         //$staff = Staff::where('id',$staff_id)->first();
         //$staff_updateby=Staff::where('id',$staff->updateby)->first();
         $staff2=Staff::getJoinAll_show($staff_id);
@@ -104,7 +105,7 @@ class StaffController extends Controller
         $date = date_create(NOW()); 
         $date = date_format($date , 'Y-m-d');
         $prefs = config('pref');
-        
+        // dd($staff2->staff_role);
         return view('staff.staff', [
             //'staff' => $staff,
             //'staff_updateby'=>$staff_updateby,
