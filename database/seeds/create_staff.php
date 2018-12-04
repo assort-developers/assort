@@ -47,7 +47,7 @@ class create_staff extends Seeder
             'hiredate'=>'1926-12-25',
             'updateby'=>'2',
             'update'=>'2018-11-27 23:25:46',
-            'staff_role_id' => 2
+            'staff_role_id' => 1
             ]
         ]);
     }
