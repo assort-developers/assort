@@ -26,7 +26,7 @@ class RecievedController extends Controller
 	public function create()
 	{
 		//
-		return view('Recieved/recieved_registerc');
+		return view('Recieved/recieved_register');
 	}
 
 	/**
@@ -46,10 +46,10 @@ class RecievedController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show()
 	{
 		//
-		return view('recieved/received');
+		return view('Recieved/recieved_recieved');
 	}
 
 	/**

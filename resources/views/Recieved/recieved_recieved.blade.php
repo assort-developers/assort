@@ -1,9 +1,70 @@
 @extends('layout.common')
-@section('title', '受注登録画面')
-@section('header_title', '受注登録画面')
+@section('title', '受注管理詳細画面')
+@section('header_title', '受注登管理詳細画面')
 
 @section('content')
     <div class="content_wrapper">
+
+        <form>
+            <table class="table-bordered">
+                <tbody>
+                <tr>
+                    <th colspan='4'>受注情報</th>
+                </tr>
+                <tr>
+                    <th>受注コード</th>
+                    <td></td>
+                    <th class="left">受注者</th>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <th class="left">注文日</th>
+                    <td></td>
+                    <th class="left">発送日</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>郵便番号</th>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th class="left">メールアドレス</th>
+                    <td></td>
+                    <th>電話番号</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th class="left">都道府県</th>
+                    <td></td>
+                    <th class="left">市区町村</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th class="left">番地</th>
+                    <td></td>
+                    <th class="left">建物名</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th class="left">支払い金額</th>
+                    <td>受注から取ってくる</td>
+                    <th class="left">支払い方法</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th class="left">更新者</th>
+                    <td>取得したみ</td>
+                    <th class="left">更新日</th>
+                    <td>取得したいなぁ</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="controll_buttons overflow_btn">
+                <a class="btn btn-dark" href="/recieved_search">戻る</a>
+            </div>
+        </form>
+
         <form>
         <table class="table-bordered">
             <tbody>
@@ -89,7 +150,7 @@
             </tbody>
         </table>
         <div class="controll_buttons overflow_btn">
-            <input class="btn btn-success" type="submit" value="受注登録">
+            <input class="btn btn-success" type="submit" value="受注更新">
         </div>
         </form>
         </div>

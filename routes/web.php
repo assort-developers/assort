@@ -40,11 +40,13 @@ Route::resource('product', 'ProductsController');
 Route::get('product/{product_id?}/size/{size_id?}', 'ProductsController@size_show');
 Route::delete('product/{product_id?}/size/{size_id?}', 'ProductsController@size_destroy');
 
-//注文管理
+//受注管理
 Route::get('/recieved_search','RecievedController@index');
-Route::get('/recived/create','RecievedController@create');
+Route::get('/recieved/create','RecievedController@create');
+Route::get('/recieved/show', 'RecievedController@show');
 
 //出金管理
+
 Route::resource('payment', 'PaymentController');
 Route::get('/payment_search','PaymentController@index');
 Route::get('/payment_detail','PaymentController@show');
