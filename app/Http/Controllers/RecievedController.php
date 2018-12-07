@@ -26,7 +26,7 @@ class RecievedController extends Controller
 	public function create()
 	{
 		//
-		return('create');
+		return view('Recieved/recieved_registerc');
 	}
 
 	/**

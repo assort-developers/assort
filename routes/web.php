@@ -42,6 +42,7 @@ Route::delete('product/{product_id?}/size/{size_id?}', 'ProductsController@size_
 
 //注文管理
 Route::get('/recieved_search','RecievedController@index');
+Route::get('/recived/create','RecievedController@create');
 
 //出金管理
 Route::resource('payment', 'PaymentController');

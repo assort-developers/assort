@@ -1,6 +1,6 @@
 @extends('layout.common')
-@section('title', '注文確認画面')
-@section('header_title', '注文確認画面')
+@section('title', '注文登録画面')
+@section('header_title', '注文登録画面')
 
 @section('content')
     <div class="content_wrapper">
@@ -86,9 +86,8 @@
             </tbody>
         </table>
         <div class="controll_buttons overflow_btn">
-            <a class="btn btn-dark" href="/recived/create">注文登録</a>
-            <input class="btn btn-success" type="submit" value="注文検索">
-            </div>
+            <input class="btn btn-success" type="submit" value="注文更新">
+        </div>
         </form>
         </div>
     </div>
