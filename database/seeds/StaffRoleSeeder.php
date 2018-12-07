@@ -13,7 +13,7 @@ class StaffRoleSeeder extends Seeder
     {
         DB::table('staff_role')->insert([
             [
-                'name' => '天皇'
+                'name' => '株主'
             ],[
                 'name'=>'会長'
             ],[
