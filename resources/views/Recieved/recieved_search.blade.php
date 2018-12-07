@@ -57,9 +57,7 @@
             </tr>
             　<tr>
                 <th class="left">支払い金額</th>
-                <td>
-
-                </td>
+                <td><input type="text" name="name" size="11" maxlength="7"></td>
             </tr>
             <tr>
                 <th class="left">更新者</th>
