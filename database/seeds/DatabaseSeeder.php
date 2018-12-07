@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+  
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
       $this->call(OrderContentSeeder::class);
       $this->call(create_staff::class);
       $this->call(ProductsSeeder::class);
+      $this->call(StaffRoleSeeder::class);
     }
 }

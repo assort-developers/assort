@@ -13,6 +13,11 @@ class ArrivalContent extends Model
 	const CREATED_AT = 'arrival_at';
 	protected $fillable= array('order_content_id','amount');
 
+	public function order_content()
+	{
+		return $this->belongsTo('App\Models\OrderContent');
+	}
+
 	public static function getJoinAll($request = null){
 		$arrival = ArrivalContent::select(
 			'arrival_content.id',
@@ -30,14 +35,14 @@ class ArrivalContent extends Model
 		->join('product_codename', 'product.product_codename_id', '=', 'product_codename.id');
 		
 		if($request->arrival_id != NULL) $arrival->where('arrival_content.id', '=', $request->arrival_id);
-		if($request->order_id != NULL) $arrival->where('order.id', '=', $request->order);
+		if($request->order_id != NULL) $arrival->where('order.id', '=', $request->order_id);
 		if($request->product_code != NULL) $arrival->where('product_codename.id', '=', $request->product_code);
 		if($request->brand_id != NULL) $arrival->where('brand.id', '=', $request->brand_id);
-		if($request->arrival_date_start != NULL){
-			$arrival->whereDate('arrival_content.arrival_at', $request->arrival_date_start);
+		 if($request->arrival_date_start != NULL){
+			$arrival->whereDate('arrival_content.arrival_at', '>=',$request->arrival_date_start);
 		}
 		if($request->arrival_date_end != NULL){
-			$arrival->whereDate('arrival_content.arrival_at',  $request->arrival_date_end);
+			$arrival->whereDate('arrival_content.arrival_at','<=',  $request->arrival_date_end);
 		}
 		if($request->update != NULL) $arrival->whereDate('order.update', $request->update);
 		return $arrival->get();

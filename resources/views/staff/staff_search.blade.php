@@ -3,100 +3,90 @@
 @section('header_title', '従業員管理画面')
 
 @section('content')
-	<div class="content_wrapper">
-		<form action='/staff' method='GET'>
+<div class="content_wrapper">
+	<form action='/staff' method='GET'>
+		<?= csrf_field()?>
 		<table class="table-bordered">
 			<tbody>
 			<tr>
 				<th colspan="4">従業員情報</th>
 			</tr>
 			<tr>
-			<th class="">従業員コード</th>
-			<td></td>
+				<th>従業員コード</th>
+				<td><input class="form-control" type="text" name="staff_code" value="<?=$request->staff_code?>">
+				</td>
+				<th class="left">役職</th>
+				<td><select class="form-control" name="staff_role_id">
+					<option value="">--</option>
+					<?php foreach($staffroles as $staffrole): ?>
+					<option value="<?=$staffrole->id?>"><?=$staffrole->name?></option>
+					<?php endforeach; ?>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<th class="">氏名</th>
-				<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="OIC 太郎"></td>
-			</tr>
-			<tr>
-				<th class="left">氏名（カナ）</th>
-				<td><input class="form-control" type="text" name="" size="40" maxlength="60" value="" placeholder="オオアイシー"></td>
-			</tr>
-			<tr>
-				<th class="left">生年月日</th>
-				<td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
-			</tr>
-			<tr>
-				<th class="left">郵便番号</th>
 				<td class="row">
-					<div class="col-xs-2"><input class="form-control " type="tel" name="" size="3" maxlength="3"value="" placeholder="000"></div>
-					<div class="hyphen">-</div>
-					<div class="col-xs-3"><input class="form-control" type="text" name="" size="4" maxlength="4" value="" placeholder="0000"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name" size="10" maxlength="40" value="<?=$request->family_name?>" placeholder="性"></div>
+					<div class="hyphen"> </div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="first_name" size="10" maxlength="40" value="<?=$request->first_name?>" placeholder="名"></div>
 				</td>
-			</tr>
-			<tr>
-				<th class="left">都道府県</th>
-				<td>
-					<select class="select2" name="prefecture">
-								<option value="">大阪府</option>
-								<option value="">奈良県</option>
-								<option value="">琵琶湖</option>
-						</select>
-				</td>
-			</tr>
-			<tr>
-				<th class="left">市区町村</th>
-				<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="市区町村"></td>
-			</tr>
-			<tr>
-				<th class="left">番地建物名</th>
-				<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="番地建物名"></td>
-			</tr>
-			<tr>
-				<th class="left">メールアドレス</th>
-				<td><input class="form-control" type="email" name="" size="20" maxlength="40" value="" placeholder="xxxxx@xxx.xxx"></td>
-			</tr>
-			<tr>
-				<th class="left">電話番号</th>
+				<th class="">氏名（カナ）</th>
 				<td class="row">
-					<div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value="" placeholder="0000"></div><div class="hyphen">-</div>
-					<div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value="" placeholder="1111"></div><div class="hyphen">-</div>
-					<div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value="" placeholder="2222"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name_kana" size="10" maxlength="40" value="<?=$request->family_name_kana?>" placeholder="セイ"></div>
+					<div class="hyphen"> </div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="first_name_kana" size="10" maxlength="40" value="<?=$request->first_name_kana?>" placeholder="メイ"></div>
 				</td>
 			</tr>
 			<tr>
 				<th class="left">入社年月日</th>
-						<td><input class="form-control" type="date" name="hire_date" value="2018-01-01"></td>
+				<td><input class="form-control" type="date" name="hiredate_from" value="<?=$request->hiredate_from?>"></td>
+				<th class="left">〜</th>
+				<td><input class="form-control" type="date" name="hiredate_to" value="<?=$request->hiredate_to?>"></td>
 			</tr>
 			<tr>
-				<th class="left">所属部署</th>
-				<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="所属部署名"></td>
-			</tr>
-			<tr>
-				<th class="left">更新者</th>
-				<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="OIC 太郎"></td>
-			</tr>
-			<tr>
-				<th class="left">更新日</th>
-				<td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
+				<th class="left">退社年月日</th>
+				<td><input class="form-control" type="date" name="resigndate_from" value="<?=$request->resigndate_from?>"></td>
+				<th class="left">〜</th>
+				<td><input class="form-control" type="date" name="resigndate_to" value="<?=$request->resigndate_to?>"></td>
 			</tr>
 			</tbody>
 		</table>
-		<div class="controll_buttons">
-		<a href="#" class="square_btn btn">
-			<i class="fa fa-caret-right"></i>登録</a>
-		<a href="#" class="reseto_btn btn">
-			<i class="fa fa-caret-right"></i>リセット</a> 
-		<a href="#" class="update_btn btn">
-			<i class="fa fa-caret-right"></i>更新</a>
-		<a href="#" class="delete_btn btn">
-			<i class="fa fa-caret-right"></i>削除</a>
+		<div class="controll_buttons overflow_btn">
+		<button type="button"id="query_reset_button" class="btn btn-dark">項目リセット</button>
+			<a class="btn btn-dark" href="/staff/create">従業員登録</a>
+			<input class="btn btn-success" type="submit" value="検索">
 		</div>
-		</form>
-	</div>
-	<script>
-        $(document).ready(function() {
-            $('.select2').select2();
-        });
-	</script>
+	</form>
+	<table class="table-bordered">
+		<tr>
+			<th colspan="9">検索結果</th>
+		</tr>
+		<tr>
+			<th>従業員コード</th>
+			<th>従業員名</th>
+			<th>メールアドレス</th>
+			<th>電話番号</th>
+			<th>役職</th>
+			<th>入社年月日</th>
+			<th>退社年月日</th>
+			<th>詳細</th>
+		</tr>
+		
+		<?php foreach($staffs as $staff): ?>
+			<tr>
+				<td><?=$staff->code?></td>
+				<td><?=$staff->family_name?> <?=$staff->first_name?></td>
+				<td><?=$staff->mail_address?></td>
+				<td><?=$staff->contact_tel?></td>
+				<td><?=$staff->staff_role?></td>
+				<td><?=$staff->hiredate?></td>
+				<td><?=$staff->resigndate?></td>
+				<td class="btn-outer">
+					<a href="/staff/show/<?=$staff->id?>" class="btn btn-success" >詳細</a>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+</div>
 @endsection

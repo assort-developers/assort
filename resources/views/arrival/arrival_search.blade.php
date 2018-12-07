@@ -10,17 +10,17 @@
 				<th colspan="4">入庫情報</th>
 			</tr>
 			<tr>
-				<th>入庫コード</th>
+				<th>入庫ID</th>
 				<td><input type="text" name="arrival_id" class="form-control" value="{{$request->arrival_id}}"></td>
-				<th>発注コード</th>
+				<th>発注ID</th>
 				<td>
 					<input type="text" name="order_id" class="form-control"  value="{{$request->order_id}}">
 				</td>
 			</tr>
 			<tr>
-				<th>商品コード</th>
-				<td><input type="text" class="form-control" name="product_code" value="{{$request->product_code}}" placeholder="商品コード"></td>
-				<th>ブランドコード</th>
+				<th>商品ID</th>
+				<td><input type="text" class="form-control" name="product_code" value="{{$request->product_code}}" placeholder="商品ID"></td>
+				<th>ブランドID</th>
 				<td><input type="text" name="brand_id" class="form-control" value="{{$request->brand_id}}"></td>
 			</tr>
 			<tr>
@@ -44,8 +44,8 @@
 			<th colspan="7">検索結果</th>
 		</tr>
 		<tr>
-			<th>入庫コード</th>
-			<th>出庫コード</th>
+			<th>入庫ID</th>
+			<th>出庫ID</th>
 			<th>ブランド名</th>
 			<th>商品名</th>
 			<th>入庫日</th>

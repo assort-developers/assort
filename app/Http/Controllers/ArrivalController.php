@@ -13,6 +13,8 @@ class ArrivalController extends Controller
      */
 
     public function index(Request $request){
+            //$arrival = ArrivalContent::find(4);
+            //dd($arrival->order_content->order->brand->name);
 			$arrivals = ArrivalContent::getJoinAll($request);
 			return view('arrival/arrival_search', [
 				'arrivals' => $arrivals,
