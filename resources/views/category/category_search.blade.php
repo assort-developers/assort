@@ -14,7 +14,7 @@
 			<tr>
 				<th>カテゴリコード</th>
 				<td colspan="3">
-					<input type="text" class="form-control" name="category_code">
+					<input type="text" class="form-control" name="id" value="" placeholder="カテゴリID">
 				</td>
 			</tr>
 			<tr>
@@ -32,17 +32,31 @@
 	</form>
 	<table class="table-bordered">
 		<tr>
-			<th colspan="5">検索結果</th>
+			<th colspan="9">検索結果</th>
 		</tr>
 		<tr>
-			<th>カテゴリコード</th>
-			<th class="table_main_col">カテゴリ名</th>
-			<th>親カテゴリ名</th>
+			<th>カテゴリーID</th>
+			<th>カテゴリー名</th>
+			<th>親カテゴリーID</th>
+			<th>親カテゴリー名</th>
 			<th>最終更新者</th>
 			<th>最終更新日</th>
-			<th>削除</th>
-			<th>編集</th>
+			<th>詳細</th>
 		</tr>
+		
+		<?php foreach($categorys as $category): ?>
+			<tr>
+				<td><?=$category->id?></td>
+				<td><?=$category->name?></td>
+				<td><?=$category->parent_cat_id?></td>
+				<td><?=$category->parent_cat_name?></td>
+				<td><?=$category->staff_family_name?><?=$category->staff_first_name?></td>
+				<td><?=$category->update?></td>
+				<td class="btn-outer">
+					<a href="/category/show/<?=$category->id?>" class="btn btn-success" >詳細</a>
+				</td>
+			</tr>
+		<?php endforeach; ?>
 	</table>
 </div>
 @endsection

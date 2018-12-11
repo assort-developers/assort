@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -11,20 +12,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('category/category_search');
-    }
-    
-    public function category_detail()
-    {
-        // if(){
-        //     return view('category');
-        // }
-        // else{
-        //     return view('parent_category');
-        // }
+        $request->all();
+        $categorys=Category::getJoinAll($request);
         
+        return view('category.category_search', [
+            'categorys' => $categorys,
+            'request'=>$request
+        ]);
     }
 
     /**
@@ -56,7 +52,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category=Category::where('id',$id)->first();
+
+        return view('category.category',[
+            'category'=>$category
+        ]);
     }
 
     /**

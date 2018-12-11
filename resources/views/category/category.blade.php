@@ -5,29 +5,24 @@
 @section('content')
 	<div class="content_wrapper">
 	<table class="table-bordered">
-		<tbody>
-		<tr>
-			<th colspan="2">カテゴリ情報</th>
-		</tr>
-		<tr>
-			<th>カテゴリ名</th>
-			<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="カテゴリ名"></td>
-		</tr>
-		<tr>
-			<th>親カテゴリ</th>
-			<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="親カテゴリ名"></td>
-		</tr>
-		<tr>
-		</tr>
-		<tr>
-			<th>更新者</th>
-			<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="OIC 太郎"></td>
-		</tr>
-		<tr>
-			<th>更新日</th>
-			<td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
-		</tr>
-		</tbody>
+			<tbody>
+			<tr>
+				<th colspan="4">カテゴリ検索</th>
+			</tr>
+			<tr>
+				<th>カテゴリコード</th>
+				<td colspan="3">
+					<input type="text" class="form-control" name="category_code">
+				</td>
+			</tr>
+			<tr>
+				<th>カテゴリ名</th>
+				<td><input class="form-control" type="text" name="category_name" value="" placeholder="カテゴリ名"></td>
+				<th>親カテゴリ</th>
+				<td><input class="form-control" type="text" name="parent_category_name"  value="" placeholder="親カテゴリ名"></td>
+			</tr>
+			</tbody>
+		</table>
 	</table>
 	<div class="controll_buttons">
 	<a href="#" class="square_btn btn">
