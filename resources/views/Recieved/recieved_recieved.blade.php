@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <th class="left">支払い金額</th>
-                    <td>受注から取ってくる</td>
+                    <td></td>
                     <th class="left">支払い方法</th>
                     <td></td>
                 </tr>

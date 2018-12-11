@@ -28,7 +28,6 @@ class CreateRecievedTable extends Migration
             $table->integer('customer_address_id');
 
             $table->index(["customer_id"], 'fk_table1_customer1_idx');
-
             $table->index(["customer_address_id"], 'fk_recieved_customer_address1_idx');
 
         });

@@ -67,7 +67,7 @@
             </tr>
             <tr>
             <th class="left">支払い金額</th>
-            <td>受注から取ってくる</td>
+            <td><input class="form-control" type="number" name="price" value=""></td>
                 <th class="left">支払い方法</th>
                 <td>
                     <select class="form-control" name="payment">

@@ -21,7 +21,7 @@
             </tbody>
         </table>
         <div class="controll_buttons overflow_btn">
-            <a class="btn btn-dark" href="/recived/create">受注登録</a>
+            <a class="btn btn-dark" href="/recieved/create">受注登録</a>
             <input class="btn btn-success" type="submit" value="受注検索">
             </div>
         </form>
