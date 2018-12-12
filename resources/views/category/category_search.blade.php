@@ -12,16 +12,16 @@
 				<th colspan="4">カテゴリ検索</th>
 			</tr>
 			<tr>
-				<th>カテゴリコード</th>
-				<td colspan="3">
-					<input type="text" class="form-control" name="id" value="" placeholder="カテゴリID">
-				</td>
+				<th>カテゴリID</th>
+				<td><input type="text" class="form-control" name="id" value="" placeholder="カテゴリID"></td>
+				<th>カテゴリ名</th>
+				<td><input class="form-control" type="text" name="name" value="" placeholder="カテゴリ名"></td>
 			</tr>
 			<tr>
-				<th>カテゴリ名</th>
-				<td><input class="form-control" type="text" name="category_name" value="" placeholder="カテゴリ名"></td>
-				<th>親カテゴリ</th>
-				<td><input class="form-control" type="text" name="parent_category_name"  value="" placeholder="親カテゴリ名"></td>
+				<th>親カテゴリID</th>
+				<td><input type="text" class="form-control" name="parent_cat_id" value="" placeholder="親カテゴリID"></td>
+				<th>親カテゴリ名</th>
+				<td><input class="form-control" type="text" name="parent_cat_name"  value="" placeholder="親カテゴリ名"></td>
 			</tr>
 			</tbody>
 		</table>
