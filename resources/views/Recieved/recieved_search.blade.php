@@ -12,7 +12,7 @@
             </tr>
             <tr>
                 <th class="left">注文番号</th>
-                <td>ON-00</td>
+                <td><input type="text" name="" size="9" maxlength="10" value="" placeholder="X-00"></td>
             </tr>
             <tr>
                 <th class="left">注文日</th>
