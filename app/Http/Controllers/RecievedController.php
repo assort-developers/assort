@@ -72,9 +72,11 @@ class RecievedController extends Controller
 	{
         $recieved = DB::select("SELECT * FROM recieved WHERE id = $id");
         $tel=explode("-", $recieved[0]->tel);
+        $address_code=explode("-", $recieved[0]->address_code);
         return view("recieved/recieved",[
             "recieved" => $recieved[0],
-            "tel" => $tel
+            "tel" => $tel,
+            "address_code" => $address_code
         ]);
 	}
 

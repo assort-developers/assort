@@ -21,7 +21,12 @@ class recieved_seeder extends Seeder
                 'update_day'=>NOW(),
                 'code'=>'RE001',
                 'tel'=>'00-000-00000',
-                'custmer_address_id' => '1'
+                'custmer_address_id' => '1',
+                'address_code' => '000-0000',
+                'ken' => '大阪',
+                'town' => '東大阪市瓢箪山町',
+                'number' => '9-11',
+                'builld' => 'おうち'
         ]);
 
         DB::table('recieved')->insert([
@@ -34,7 +39,12 @@ class recieved_seeder extends Seeder
             'update_day'=>NOW(),
             'code'=>'RE002',
             'tel'=>'11-1111-1111',
-            'custmer_address_id' => '2'
+            'custmer_address_id' => '2',
+            'address_code'=>'000-0000',
+                'ken'=>'大阪',
+                'town'=>'東大阪市瓢箪山町',
+                'number'=>'9-11',
+                'builld'=>'おうち'
         ]);
 
         DB::table('recieved')->insert([
@@ -47,7 +57,12 @@ class recieved_seeder extends Seeder
             'update_day'=>NOW(),
             'code'=>'RE003',
             'tel'=>'22-2222-2222',
-            'custmer_address_id' => '0'
+            'custmer_address_id' => '0',
+            'address_code'=>'000-0000',
+                'ken'=>'大阪',
+                'town'=>'東大阪市瓢箪山町',
+                'number'=>'9-11',
+                'builld'=>'おうち'
         ]);
     }
 }

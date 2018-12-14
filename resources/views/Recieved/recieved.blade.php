@@ -13,38 +13,38 @@
                 </tr>
                 <tr>
                     <th>受注コード</th>
-                    <td><?=$recieved->code?></td>
+                    <td>{{$recieved->code}}</td>
                     <th class="left">受注者</th>
-                    <td><?=$recieved->staff_name?></td>
+                    <td>{{$recieved->staff_name}}</td>
                 </tr>
 
                 <tr>
                     <th class="left">注文日</th>
                     <td><?=$recieved->order_day?></td>
                     <th class="left">発送日</th>
-                    <td><?=$recieved->shipment_day?></td>
+                    <td>{{$recieved->shipment_day}}</td>
                 </tr>
                 <tr>
                     <th>郵便番号</th>
-                    <td colspan="3"></td>
+                    <td colspan="3">{{$recieved->address_code}}</td>
                 </tr>
                 <tr>
                     <th class="left">メールアドレス</th>
-                    <td><?=$recieved->mail?></td>
+                    <td>{{$recieved->mail}}</td>
                     <th>電話番号</th>
                     <td><?=$recieved->tel?></td>
                 </tr>
                 <tr>
                     <th class="left">都道府県</th>
-                    <td></td>
+                    <td>{{$recieved->ken}}</td>
                     <th class="left">市区町村</th>
-                    <td></td>
+                    <td>{{$recieved->town}}</td>
                 </tr>
                 <tr>
                     <th class="left">番地</th>
-                    <td></td>
+                    <td>{{$recieved->number}}</td>
                     <th class="left">建物名</th>
-                    <td></td>
+                    <td>{{$recieved->builld}}</td>
                 </tr>
                 <tr>
                     <th class="left">支払い金額</th>
@@ -75,24 +75,24 @@
                 <th>受注コード</th>
                 <td>{{$recieved->code}}</td>
                 <th class="left">受注者</th>
-                <td><input class="form-control" type="text" name="" size="40" maxlength="40" value="<?=$recieved->staff_name?>"></td>
+                <td><input class="form-control" type="text" name="" size="40" maxlength="40" value="{{$recieved->staff_name}}"></td>
             </tr>
 
             <tr>
                 <th class="left">注文日</th>
                 <td>{{$recieved->order_day}}</td>
                 <th class="left">発送日</th>
-                <td><input class="form-control" type="date" name="date" value="<?=$recieved->shipment_day?>"></td>
+                <td><input class="form-control" type="date" name="date" value="{{$recieved->shipment_day}}"></td>
             </tr>
             <tr>
                 <th class="left">郵便番号</th>
                 <td class="row">
                     <div class="col-xs-2">
-                        <input class="form-control" type="tel" name="zip_code1" size="3" maxlength="3" value="">
+                        <input class="form-control" type="tel" name="zip_code1" size="3" maxlength="3" value="{{$address_code[0]}}">
                     </div>
                     <div class="hyphen">-</div>
                     <div class="col-xs-2">
-                        <input class="form-control" type="tel" name="zip_code2" size="4" maxlength="4"value="">
+                        <input class="form-control" type="tel" name="zip_code2" size="4" maxlength="4"value="{{$address_code[1]}}">
                     </div>
                 </td>
             </tr>
@@ -116,13 +116,13 @@
                         <option value="">沖縄</option>
                     </select>
                 <th class="left">市区町村</th>
-                <td><input class="form-control" type="text" name="addres_city" value=""></td>
+                <td><input class="form-control" type="text" name="addres_city" value="{{$recieved->town}}"></td>
             </tr>
             <tr>
                 <th class="left">番地</th>
-                <td><input class="form-control" type="text" name="addres_town" value=""></td>
+                <td><input class="form-control" type="text" name="addres_town" value="{{$recieved->number}}"></td>
                 <th class="left">建物名</th>
-                <td><input class="form-control" type="text" name="addres_build" value=""></td>
+                <td><input class="form-control" type="text" name="addres_build" value="{{$recieved->builld}}"></td>
             </tr>
             <tr>
             <th class="left">支払い金額</th>
@@ -141,7 +141,7 @@
             </tr>
             <tr>
                 <th class="left">更新者</th>
-                <td>取得したみ</td>
+                <td>{{$recieved->update_day}}</td>
                 <th class="left">更新日</th>
                 <td>取得したいなぁ</td>
             </tr>
