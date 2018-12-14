@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="content_wrapper">
-        <form>
+        <form action="/recieved_search">
         <table class="table-bordered">
             <tbody>
             <tr>
@@ -16,7 +16,7 @@
                     <input class="form-control" type="text" name="recieved_code">
                 </td>
                 <th class="left">受注者</th>
-                <td><input class="form-control" type="text" name="" size="40" maxlength="40" value=""></td>
+                <td><input class="form-control" type="text" name="staff_name" size="40" maxlength="40"></td>
             </tr>
             </tbody>
         </table>
@@ -33,16 +33,19 @@
             <tr>
                 <th>受注コード</th>
                 <th>受注者</th>
-                <th>都道府県</th>
                 <th>電話番号</th>
-                <th>最終更新者</th>
+                <th>最終日</th>
+                <th>詳細</th>
             </tr>
+            <?php foreach($recieved as $recieved):?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$recieved->code}}</td>
+                <td>{{$recieved->staff_name}}</td>
+                <td>{{$recieved->tel}}</td>
+                <td>{{$recieved->update_day}}</td>
+                <td><a class="btn btn-success" href="/recieved/show/{{$recieved->id}}">詳細</a></td>
             </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
         </div>

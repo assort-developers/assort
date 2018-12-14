@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 
 use Illuminate\Http\Request;
 
@@ -11,10 +12,31 @@ class RecievedController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
-	{
-		//
-		return view('Recieved/recieved_search');
+	public function index(Request $request)
+    {
+        //dd($request);
+        if ($request->recieved_code == NULL && $request->staff_name == NULL) {
+            $recieved = DB::select("SELECT * FROM recieved");
+            return view("recieved/recieved_search", [
+                "recieved" => $recieved
+            ]);
+        }else if($request->staff_name == NULL){
+            $recieved = DB::select("SELECT * FROM recieved WHERE code = '$request->recieved_code'");
+            return view("recieved/recieved_search", [
+                "recieved" => $recieved
+            ]);
+        }else if($request->recieved_code == NULL){
+            $recieved = DB::select("SELECT * FROM recieved WHERE staff_name = '$request->staff_name'");
+            return view("recieved/recieved_search", [
+                "recieved" => $recieved
+                ]);
+        }else{
+            $recieved = DB::select("SELECT * FROM recieved WHERE staff_name = '$request->staff_name'and code = '$request->recieved_code'");
+            return view("recieved/recieved_search", [
+                "recieved" => $recieved
+            ]);
+        }
+
 
 	}
 
@@ -46,10 +68,14 @@ class RecievedController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show()
+	public function show($id)
 	{
-		//
-		return view('Recieved/recieved_recieved');
+        $recieved = DB::select("SELECT * FROM recieved WHERE id = $id");
+        $tel=explode("-", $recieved[0]->tel);
+        return view("recieved/recieved",[
+            "recieved" => $recieved[0],
+            "tel" => $tel
+        ]);
 	}
 
 	/**

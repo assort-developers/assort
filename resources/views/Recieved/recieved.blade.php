@@ -1,6 +1,6 @@
 @extends('layout.common')
-@section('title', '受注管理詳細画面')
-@section('header_title', '受注登管理詳細画面')
+@section('title', '受注管詳細画面')
+@section('header_title', '受注詳細画面')
 
 @section('content')
     <div class="content_wrapper">
@@ -13,16 +13,16 @@
                 </tr>
                 <tr>
                     <th>受注コード</th>
-                    <td></td>
+                    <td><?=$recieved->code?></td>
                     <th class="left">受注者</th>
-                    <td></td>
+                    <td><?=$recieved->staff_name?></td>
                 </tr>
 
                 <tr>
                     <th class="left">注文日</th>
-                    <td></td>
+                    <td><?=$recieved->order_day?></td>
                     <th class="left">発送日</th>
-                    <td></td>
+                    <td><?=$recieved->shipment_day?></td>
                 </tr>
                 <tr>
                     <th>郵便番号</th>
@@ -30,9 +30,9 @@
                 </tr>
                 <tr>
                     <th class="left">メールアドレス</th>
-                    <td></td>
+                    <td><?=$recieved->mail?></td>
                     <th>電話番号</th>
-                    <td></td>
+                    <td><?=$recieved->tel?></td>
                 </tr>
                 <tr>
                     <th class="left">都道府県</th>
@@ -48,15 +48,15 @@
                 </tr>
                 <tr>
                     <th class="left">支払い金額</th>
-                    <td></td>
+                    <td><?=$recieved->price?></td>
                     <th class="left">支払い方法</th>
-                    <td></td>
+                    <td><?=$recieved->pay?></td>
                 </tr>
                 <tr>
                     <th class="left">更新者</th>
                     <td>取得したみ</td>
                     <th class="left">更新日</th>
-                    <td>取得したいなぁ</td>
+                    <td><?=$recieved->update_day?></td>
                 </tr>
                 </tbody>
             </table>
@@ -73,18 +73,16 @@
             </tr>
             <tr>
                 <th>受注コード</th>
-                <td>
-                    <input class="form-control" type="text" name="recieved_code">
-                </td>
+                <td>{{$recieved->code}}</td>
                 <th class="left">受注者</th>
-                <td><input class="form-control" type="text" name="" size="40" maxlength="40" value=""></td>
+                <td><input class="form-control" type="text" name="" size="40" maxlength="40" value="<?=$recieved->staff_name?>"></td>
             </tr>
 
             <tr>
                 <th class="left">注文日</th>
-                <td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
+                <td>{{$recieved->order_day}}</td>
                 <th class="left">発送日</th>
-                <td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
+                <td><input class="form-control" type="date" name="date" value="<?=$recieved->shipment_day?>"></td>
             </tr>
             <tr>
                 <th class="left">郵便番号</th>
@@ -100,12 +98,12 @@
             </tr>
             <tr>
                 <th class="left">メールアドレス</th>
-                <td><input class="form-control" type="email" name="mail" size="20" maxlength="40" value="" required></td>
+                <td><input class="form-control" type="email" name="mail" size="20" maxlength="40" value="<?=$recieved->mail?>" required></td>
                 <th class="left">電話番号</th>
                 <td class="row">
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value=""></div><div class="hyphen">-</div>
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value=""></div><div class="hyphen">-</div>
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value=""></div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value="{{$tel[0]}}"></div><div class="hyphen">-</div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value="{{$tel[1]}}"></div><div class="hyphen">-</div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="" size="4" maxlength="4" value="{{$tel[2]}}"></div>
                 </td>
             </tr>
             <tr>
