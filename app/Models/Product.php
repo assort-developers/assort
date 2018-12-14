@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+   protected $table = 'product';
+
     public function product_codename()
     {
-        return belongsTo('\App\Models\ProductCodename');
+        return $this->belongsTo('\App\Models\ProductCodename');
     }
 }

@@ -11,8 +11,17 @@
 		</tr>
 		<tr>
 			<th>発注伝票番号</th>
-			<td colspan="3">
+			<td >
 				<input class="form-control" type="text" name=""maxlength="40" value="" placeholder="発注伝票番号">
+			</td>
+			<th>発注状況</th>
+			<td>
+				<select name="order_status" id="" class="form-control">
+					<option value=""></option>
+					<option value="0">未確定</option>
+					<option value="1">発注済み</option>
+					<option value="2">入荷済み</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
@@ -88,11 +97,9 @@
 		</tr>
 		</tbody>
 	</table>
-	<div class="controll_buttons">
-		<a href="#" class="square_btn btn">
-			<i class="fa fa-caret-right"></i>検索</a>
-		<a href="/order_create" class="square_btn btn">
-			<i class="fa fa-caret-right"></i>新規登録</a>
+	<div class="controll_buttons overflow_btn">
+		<a href="/order/create" class="btn btn-dark">新規発注</a>
+		<a href="" class="btn btn-success">検索</a>
 	</div>
 	<table class="table-bordered search_result">
 		<tr>
@@ -112,15 +119,19 @@
 		@foreach($orders as $order)
 			<tr>
 				<td>{{$order->id}}</td>
-				<td>{{$order->bland_id}}</td>
+				<td>{{$order->brand_id}}</td>
 				<td>かなりいい感じのTシャツ 他</td>
 				<td>{{$order->order_date}}</td>
-				<td>{{$order->status}}</td>
+				<td>{{$order->getOrderStatus()}}</td>
 				<td>{{$order->delivery_date}}</td>
 				<td>{{$order->latest_updated}}</td>
 				<td>{{$order->update}}</td>
 				<td class="btn-outer">
-					<a href="/order/show/{{$order->id}}" class="btn btn-success">入荷登録</a>
+					@if($order->status == 0)
+						<a href="/order/{{$order->id}}/content/create/" class="btn btn-dark">商品登録</a>
+					@else
+						<a href="/order/show/{{$order->id}}" class="btn btn-success">入荷登録</a>
+					@endif
 				</td>
 			</tr>
 		@endforeach

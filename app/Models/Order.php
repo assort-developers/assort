@@ -10,9 +10,9 @@ class Order extends Model
 	protected $table = 'order';
 	const CREATED_AT = 'create';
 	const UPDATED_AT = 'update';
-	private static $order_status = ['未発送', '配送中', '着荷済み', '入庫済み'];
+	private static $order_status = ['未確定', '発注済み', '着荷済み', '入庫済み'];
 
-	protected $fillable= array('delivery_date','ordered_staffid', 'latest_updated');
+	protected $fillable= ['total', 'total_pay','delivery_date','ordered_staffid', 'latest_updated'];
 
 	public function brand()
 	{
