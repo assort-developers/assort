@@ -98,9 +98,13 @@ Route::get('/color/create', 'ColorController@create');
 Route::post('/color/store','ColorController@store');
 
 //サイズ管理
-Route::get('/size_search', function () {
-    return view('size/size_search');
-});
+Route::resource('size', 'SizeController');
+Route::get('/size_search','SizeController@index');
+Route::get('/size/show/{id?}','SizeController@show');
+Route::post('/size/update','SizeController@update');
+Route::get('/size/create', 'SizeController@create');
+Route::post('/size/store','SizeController@store');
+
 //棚番号管理
 Route::get('/stock_shelf_search', function () {
 	return view('stock_shelf/stock_shelf_search');

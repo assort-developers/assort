@@ -18,7 +18,7 @@ class Color extends Model
 			'print_color'
 		);
 
-		if($request->id != NULL) $color->where('id', '=', $request->color_id);
+		if($request->id != NULL) $color->where('id', '=', $request->id);
 		if($request->print_color != NULL) $color->where('print_color', 'LIKE', "%$request->print_color%");
 
 		return $color->get();
