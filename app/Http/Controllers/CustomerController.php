@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Models\Customer_address;
 
 class CustomerController extends Controller
 {
@@ -11,10 +13,16 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return view('customer/customer_search');
+        $request->all();
+        $customers = Customer::getJoinAll($request);
+        $customer_address = Customer_address::getjoinAll($request);
+        return view('customer/customer_search',[
+            'customers' => $customers,
+            'request' => $request
+        ]);
     }
 
     /**
@@ -24,8 +32,25 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
-        return('create');
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
+         //
+        return view('/customer.customer_register',[
+            'date'=>$date
+        ]);
+
+
+    }
+
+    public function address_create($customer_id)
+    {
+        $customer=Customer::getJoinAll_show($customer_id);
+        
+        return view('/customer.customer_address_register', [
+            'customer'=>$customer
+        ]);
+
+
     }
 
     /**
@@ -36,7 +61,56 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $create_customer=$request->all();
+        $create_zip_code=($create_customer['zip_code1']."-".$create_customer['zip_code2']);
+        
+        
+        //telの結合処理
+        $create_tel=$create_customer['tel1']."-".$create_customer['tel2']."-".$create_customer['tel3'];
+        $customer_id=Customer::insertGetId([
+            'family_name' => $create_customer['family_name'],
+            'first_name' => $create_customer['first_name'],
+            'birthday'=>$create_customer['birthday'],
+            'gender'=>$create_customer['gender'],
+            'family_name_kana'=>$create_customer['family_name_kana'],
+            'first_name_kana'=>$create_customer['first_name_kana'],
+            'phone' => $create_tel,
+            'mobile_phone' => $create_tel,
+            'create_date' => NOW(),
+            'update_time' => NOW(),
+            ]);
+            //dd($customer_id);
+
+        $customer_address=Customer_address::insertGetId([
+            'customer_id' => $customer_id,
+            'zip_code' => $create_zip_code,
+            'address_pref' => $create_customer['address_pref'],
+            'address_city' => $create_customer['address_city'],
+            'address_town' => $create_customer['address_town'],
+            'address_build' => $create_customer['address_build'],
+            'address_name' => $create_customer['address_name'],
+            'contact_tel' => $create_tel
+        ]);
+        return redirect('/customer/show/'.$customer_id);
+    }
+
+    public function address_store(Request $request)
+    {
+        $customer_address=$request->all();
+        //dd($customer_address);
+        $create_zip_code=($customer_address['zip_code1']."-".$customer_address['zip_code2']);
+        $create_tel=$customer_address['tel1']."-".$customer_address['tel2']."-".$customer_address['tel3'];
+        
+        $customer_addresss=Customer_address::insertGetId([
+            'customer_id' => $customer_id,
+            'zip_code' => $create_zip_code,
+            'address_pref' => $customer_address['address_pref'],
+            'address_city' => $customer_address['address_city'],
+            'address_town' => $customer_address['address_town'],
+            'address_build' => $customer_address['address_build'],
+            'address_name' => $customer_address['address_name'],
+            'contact_tel' => $create_tel
+        ]);
     }
 
     /**
@@ -45,10 +119,19 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($customer_id)
     {
-        //
-        return view('customer/customer');
+        $customer=Customer::getJoinAll_show($customer_id);
+        $tel=explode("-", $customer['contact_tel']);
+        $zip_code=explode("-", $customer['zip_code']);
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
+        return view('customer.customer', [
+            'customer'=>$customer,
+            'contact_tel'=>$tel,
+            'zip_code'=>$zip_code,
+            'date'=>$date,
+             ]);
     }
 
     /**
@@ -71,7 +154,28 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update_data=$request->all();
+        
+        //zip_codeの結合処理
+        $update_zip_code=($update_data['zip_code1']."-".$update_data['zip_code2']);
+        
+        //telの結合処理
+        $update_tel=$update_data['tel1']."-".$update_data['tel2']."-".$update_data['tel3'];
+        
+        //退職者の役職を'役職なし'にする処理
+        if($update_data['resigndate']!=null){
+            $update_data['customer_role_id']='1';
+        }
+        
+        $costomer = Customer::where('id',$update_data['id'])->update([
+            'family_name' => $update_data['family_name'],
+            'first_name' => $update_data['first_name'],
+            'birthday'=>$update_data['birthday'],
+            'gender'=>$update_date['gender'],
+            'family_name_kana'=>$update_data['family_name_kana'],
+            'first_name_kana'=>$update_data['first_name_kana'],
+            
+        ]);
     }
 
     /**

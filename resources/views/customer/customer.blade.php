@@ -1,96 +1,178 @@
 @extends('layout.common')
-@section('title', '顧客管理画面')
+@section('title', '顧客詳細画面')
+@section('header_title', '顧客詳細画面')
 
 @section('content')
-	<div class="main_content">
-	<h1 id="title">顧客管理画面</h1>
-
-	<table>
-		<tbody>
-		<tr>
-			<th colspan="2">顧客情報</th>
-		</tr>
-		<tr>
-		<th class="left">顧客コード</th>
-		<td></td>
-		</tr>
-		<tr>
-			<th class="left">顧客名</th>
-			<td><input type="text" name="" size="40" maxlength="40" value="" placeholder="OIC 太郎"></td>
-		</tr>
-		<tr>
-			<th class="left">顧客名（カナ）</th>
-			<td><input type="text" name="" size="40" maxlength="60" value="" placeholder="oic tarou"></td>
-		</tr>
-		<tr>
-			<th class="left">性別</th>
-			<td>
-					<select name="gender">
-							<option value="サンプル1">メンズ</option>
-							<option value="サンプル2">レディース</option>
-							<option value="サンプル3">ユニセックス</option>
-					</select>  
-			</td>
-		</tr>
-		<tr>
-			<th class="left">生年月日</th>
-			<td><input type="date" name="date" value="2018-01-01"></td>
-		</tr>
-		<tr> 
-			<th class="left">郵便番号</th>
-			<td>
-			<input type="tel" name="" size="3" maxlength="3"value="" placeholder="000">-
-					<input type="text" name="" size="4" maxlength="4" value="" placeholder="0000">  
-			</td>
-		</tr>
-		<tr>
+<div class="content_wrapper">
+		<table class="table-bordered">
+			<tbody>
+			<tr>
+				<th colspan="4">顧客情報</th>
+			</tr>
+			<tr>
+				<th>顧客コード</th>
+				<td><?=$customer->id?>
+				</td>
+                <th class="left">性別</th>
+				<td><?=$customer->gender?></td>
+			</tr>
+			<tr>
+				<th class="">顧客名</th>
+				<td><?=$customer->family_name?> <?=$customer->first_name?></td>
+				<th class="">顧客名（カナ）</th>
+				<td><?=$customer->family_name_kana?> <?=$customer->first_name_kana?></td>
+			</tr>
+			<tr>
+				<th class="left">生年月日</th>
+				<td><?=$customer->birthday?></td>
+				<th class="left">郵便番号</th>
+				<td><?=$customer->zip_code?></td>
+			</tr>
+			<tr>
 			<th class="left">都道府県</th>
-			<td>       
-					<select name="gender">
-							<option value="">大阪府</option>
-							<option value="">奈良県</option>
-							<option value="">琵琶湖</option>
-					</select></td>
-		</tr>
-		<tr>
+			<td></td>
 			<th class="left">市区町村</th>
-			<td><input type="text" name="" size="40" maxlength="40" value="" placeholder="市区町村">
-		</tr>
-				<tr>
-					<th class="left">番地建物名</th>
-			<td><input type="text" name="" size="40" maxlength="40" value="" placeholder="番地建物名">
-				</tr>
-		<tr>
-			<th class="left">メールアドレス</th>
-			<td><input type="email" name="" size="20" maxlength="40" value="" placeholder="xxxxx@xxx.xxx"></td>
-		</tr>
-		<tr>
-			<th class="left">電話番号</th>
+			<td><?=$customer->address_city?></td>
+			</tr>
+			<tr>
+				<th class="left">番地</th>
+				<td><?=$customer->address_town?></td>
+				<th class="left">建物名</th>
+				<td><?=$customer->address_build?></td>
+			</tr>
+			<tr>
+				<th class="left">電話番号</th>
+				<td><?=$customer->contact_tel?></td>
+				<th class="left">携帯番号</th>
+				<td><?=$customer->contact_tel?></td>
+			</tr>
+			<tr>
+				<th class="left">更新者</th>
+				<td><?=$customer->updateby_family_name?> <?=$customer->updateby_first_name?></td>
+				<th class="left">更新日</th>
+				<td><?=$customer->update?></td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="controll_buttons overflow_btn">
+            <a class="btn btn-dark" href="/customer_search">戻る</a>
+		</div>
+	<form action='/customer/update' method='post'>
+		<?= csrf_field()?>
+		<table class="table-bordered">
+			<tbody>
+			<tr>
+				<th colspan="4">顧客情報</th>
+			</tr>
+			<tr>
+				<th>顧客コード</th>
+				<td><input class="form-control" type="hidden" name="id" value="<?=$customer->id?>"></td>
+			</tr>
+			<tr>
+				<th class="">顧客名</th>
+				<td class="row">
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name" size="10" maxlength="40" value="<?=$customer->family_name?>" placeholder="性" required></div>
+					<div class="hyphen"> </div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="first_name" size="10" maxlength="40" value="<?=$customer->first_name?>" placeholder="名" required></div>
+				</td>
+				<th class="">顧客名（カナ）</th>
+				<td class="row">
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name_kana" size="10" maxlength="40" value="<?=$customer->family_name_kana?>" placeholder="セイ" required></div>
+					<div class="hyphen"> </div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="first_name_kana" size="10" maxlength="40" value="<?=$customer->first_name_kana?>" placeholder="メイ" required></div>
+				</td>
+			</tr>
+			<tr>
+				<th class="left">生年月日</th>
+				<td><input class="form-control" type="date" name="birthday" value="<?=$customer->birthday?>"></td>
+			</tr>
+			<tr>
+			<tr>
+				<th class="left">電話番号</th>
+				<td class="row">
+					<div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="4" maxlength="4" value="" required>
+					</div>
+					<div class="hyphen">-</div>
+					<div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="4" maxlength="4" value="" required>
+					</div>
+					<div class="hyphen">-</div>
+					<div class="col-xs-3"><input class="form-control" type="tel" name="tel3" size="4" maxlength="4" value="" required></div>
+				</td>
+				<th class="left">携帯番号</th>
+				<td class="row">
+					<div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="4" maxlength="4" value="" required>
+					</div>
+					<div class="hyphen">-</div>
+					<div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="4" maxlength="4" value="" required>
+					</div>
+					<div class="hyphen">-</div>
+					<div class="col-xs-3"><input class="form-control" type="tel" name="tel3" size="4" maxlength="4" value="" required></div>
+				</td>
+			</tr>
+			<tr>
+				<th class="left">更新者</th>
+				<td><input class="form-control" type="text" name="updateby" size="40" maxlength="40" value="" required placeholder="OIC 太郎"></td>
+				<th class="left">更新日</th>
+				<td><input class="form-control" type="date" name="update" value="<?=$date?>" readonly></td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="controll_buttons overflow_btn">
+			<input class="btn btn-success" type="submit" value="顧客更新">
+		</div>
+	</form>
+	<form action='/customer_address/update' method='post'>
+		<?= csrf_field()?>
+		<table class="table-bordered">
+			<tbody>
+			<tr>
+				<th colspan="4">顧客住所情報</th>
+			</tr>
+			<tr>
+				<th>顧客コード</th>
+				<td><input class="form-control" type="hidden" name="id" value="<?=$customer->id?>"></td>
+			</tr>
+			<tr>
+				<th class="left">郵便番号</th>
+				<td class="row">
+					<div class="col-xs-2">
+						<input class="form-control" type="tel" name="zip_code1" size="3" maxlength="3" value="" required>
+					</div>
+					<div class="hyphen">-</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="tel" name="zip_code2" size="4" maxlength="4"value="" required>
+					</div>
+				</td>
+			</tr>
+			<tr>
+			<th class="left">都道府県</th>
 			<td>
-					<input type="tel" name="" size="4" maxlength="4" value="" placeholder="0000">-
-					<input type="tel" name="" size="4" maxlength="4" value="" placeholder="1111">-
-					<input type="tel" name="" size="4" maxlength="4" value="" placeholder="2222">  
+				<select class="form-control" name="address_pref">
+					<option value="1">--</option>
+				    </select>
 			</td>
-		</tr>
-		<tr>
-			<th class="left">最終更新者</th>
-			<td><input type="text" name="" size="40" maxlength="40" value="" placeholder="OIC 太郎"></td>
-		</tr>
-		<tr>
-			<th class="left">最終更新日</th>
-			<td><input type="date" name="date" value="2018-01-01"></td>
-		</tr>
-		</tbody>
-	</table>
-	<div align="right">
-	<a href="#" class="square_btn">
-		<i class="fa fa-caret-right"></i>登録</a>
-	<a href="#" class="reseto_btn">
-		<i class="fa fa-caret-right"></i>リセット</a> 
-	<a href="#" class="update_btn">
-		<i class="fa fa-caret-right"></i>更新</a>
-	<a href="#" class="delete_btn">
-		<i class="fa fa-caret-right"></i>削除</a>
-	</div>
+			<th class="left">市区町村</th>
+			<td>
+				<input class="form-control" type="text" name="address_city" size="40" maxlength="40" value="" required>
+				</td>
+			</tr>
+			<tr>
+				<th class="left">番地</th>
+				<td><input class="form-control" type="text" name="address_town" size="40" maxlength="40" value="" required></td>
+				<th class="left">建物名</th>
+				<td><input class="form-control" type="text" name="address_build" size="40" maxlength="40" value="" ></td>
+			</tr>
+			<tr>
+				<th class="left">更新者</th>
+				<td><input class="form-control" type="text" name="updateby" size="40" maxlength="40" value="" required placeholder="OIC 太郎"></td>
+				<th class="left">更新日</th>
+				<td><input class="form-control" type="date" name="update" value="<?=$date?>" readonly></td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="controll_buttons overflow_btn">
+			<input class="btn btn-success" type="submit" value="顧客住所更新">
+		</div>
+	</form>
 </div>
 @endsection
