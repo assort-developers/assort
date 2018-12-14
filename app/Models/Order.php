@@ -12,7 +12,7 @@ class Order extends Model
 	const UPDATED_AT = 'update';
 	private static $order_status = ['未確定', '発注済み', '着荷済み', '入庫済み'];
 
-	protected $fillable= ['total', 'total_pay','delivery_date','ordered_staffid', 'latest_updated'];
+	protected $fillable= ['total', 'total_pay', 'status', 'delivery_date','ordered_staffid', 'latest_updated'];
 
 	public function brand()
 	{
