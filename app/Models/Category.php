@@ -59,7 +59,7 @@ class Category extends Model
 		$parent_cat = Category::select(
 			'category.id',
 			'category.name'
-			)->get();
+			)->where('category.parent_cat_id', '=',1)->get();
 	
 		return $parent_cat;
 	}
