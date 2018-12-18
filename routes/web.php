@@ -65,8 +65,12 @@ Route::get('/sales','SalesController@index');
 
 
 //カテゴリ管理
-Route::get('/category_search', 'CategoryController@index');
-Route::get('/category/create','CategoryController@create');
+Route::resource('category','CategoryController');
+Route::get('/category_search','CategoryController@index');
+Route::get('/category/show/{id?}', 'CategoryController@show');
+Route::post('/category/update', 'CategoryController@update');
+Route::get('/category/create', 'CategoryController@create');
+Route::post('/category/store', 'CategoryController@store');
 
 //ブランド管理
 Route::resource('brand','BrandController');
