@@ -59,7 +59,26 @@ class RecievedController extends Controller
 	 */
 	public function store(Request $request)
     {
-
+        $tel = $request->tel1."-".$request->tel2."-".$request->tel3;
+        $address_code = $request->address_code1."-".$request->address_code2;
+        DB::table('recieved')->insert([
+            'order_day' => $request ->order_day,
+            'shipment_day' => $request ->shipment_day,
+            'mail' => $request ->mail,
+            'price' => $request ->price,
+            'pay' => $request ->pay,
+           'staff_name' => $request->staff_name,
+            'update_day' => $request ->upde_day,
+            'code' => $request ->code,
+            'tel' => $tel,
+            'address_code' => $address_code,
+            'ken' => $request ->ken,
+            'town' => $request ->town,
+            'number' => $request ->number,
+            'builld' => $request ->builld,
+            'update_day' => NOW(),
+            'custmer_address_id' =>1
+        ]);
         return redirect('/recieved_search') ;
 	}
 
