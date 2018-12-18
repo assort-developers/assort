@@ -95,11 +95,11 @@ Route::get('/staff/create', 'StaffController@create');
 Route::post('/staff/store','StaffController@store');
 
 //色管理
-Route::get('/color_search','ColorController@index');
-Route::get('/color/show/{id?}','ColorController@show');
-Route::post('/color/update','ColorController@update');
-Route::get('/color/create', 'ColorController@create');
-Route::post('/color/store','ColorController@store');
+//Route::get('/color_search','ColorController@index');
+//Route::get('/color/show/{id?}','ColorController@show');
+//Route::post('/color/update','ColorController@update');
+//Route::get('/color/create', 'ColorController@create');
+//Route::post('/color/store','ColorController@store');
 
 //サイズ管理
 Route::resource('size', 'SizeController');
@@ -130,3 +130,33 @@ Route::get('/stock_shelf_change_search',
            'Stock_shelf_changeController@index');
 Route::get('/stock_shelf_change_detail',
            'Stock_shelf_changeController@show');
+
+//ユーザー権限関係
+//開発者のみ許可
+//ロール値が「1」のユーザのみ。
+//管理者以上
+//ロール値が「1～5」のユーザのみ。
+//一般ユーザ以上
+//ロール値が「1～10」のユーザ（現状全ユーザ）。
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//一般
+Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
+     // 色詳細閲覧
+     Route::get('/color_search','ColorController@index');
+     Route::get('/color/show/{id?}','ColorController@show');
+
+});
+
+//
+Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
+    Route::post('/color/update','ColorController@update');
+});
+  
+  // 開発者管理者のみ
+Route::group(['middleware' => ['auth', 'can:system-only']], function () {
+    Route::get('/color/create', 'ColorController@create');
+    Route::post('/color/store','ColorController@store');
+});
