@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -11,20 +12,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('category/category_search');
-    }
-    
-    public function category_detail()
-    {
-        // if(){
-        //     return view('category');
-        // }
-        // else{
-        //     return view('parent_category');
-        // }
+        $request->all();
+        $categorys=Category::getJoinAll($request);
         
+        return view('category.category_search', [
+            'categorys' => $categorys,
+            'request'=>$request
+        ]);
     }
 
     /**
@@ -34,7 +30,14 @@ class CategoryController extends Controller
      */
     public function create()
     {
-      return('create');
+        $parent_categorys=Category::getParentCat();
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
+        
+        return view('category.category_register',[
+            'date'=>$date,
+            'parent_categorys'=>$parent_categorys
+        ]);
     }
 
     /**
@@ -45,7 +48,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $create_category=$request->all();
+
+        $category=Category::where('name','=',$create_category['name'])->where('parent_cat_id','=',$create_category['parent_cat_id'])
+        ->first();
+
+        if(!empty($category)){
+            return redirect('/category/show/'.$category->id);
+        }else{
+            $category_id=Category::insertGetId([
+                'name'=>$create_category['name'],
+                'parent_cat_id'=>$create_category['parent_cat_id'],
+                'updateby'=>'1',
+                'update'=>NOW(),
+            ]);
+            return redirect('/category/show/'.$category_id);
+        }
+
+
+        /* return redirect('/category/show/'.$->id); */
     }
 
     /**
@@ -56,7 +77,16 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $parent_categorys=Category::getParentCat();
+        $category=Category::getCategory($id);
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
+        
+        return view('category.category',[
+            'category'=>$category,
+            'date'=>$date,
+            'parent_categorys'=>$parent_categorys
+        ]);
     }
 
     /**
@@ -77,9 +107,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $update_data=$request->all();
+
+
+        $category = Category::where('id',$update_data['id'])->update([
+            'name'=>$update_data['name'],
+            'parent_cat_id'=>$update_data['parent_cat_id'],
+            'updateby'=>'1',
+            'update'=>NOW(),
+        ]);
+
+        return redirect('/category/show/'.$request->id);
     }
 
     /**
