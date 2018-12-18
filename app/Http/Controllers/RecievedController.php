@@ -58,8 +58,9 @@ class RecievedController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
-	{
-		//
+    {
+
+        return redirect('/recieved_search') ;
 	}
 
 	/**
