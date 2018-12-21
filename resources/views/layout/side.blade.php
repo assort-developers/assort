@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="menu_item">
-        <a href="/recieved_search" class="menu_block_name">注文管理</a>
+        <a href="/recieved_search" class="menu_block_name">受注管理</a>
     </div>
     <div class="menu_item">
         <a href="/payment" class="menu_block_name">入金管理</a>

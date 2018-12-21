@@ -36,7 +36,7 @@
                 <th>電話番号</th>
                 <th>最終更新者</th>
                 <th>最終更新日</th>
-                <th colspan="3">詳細</th>
+                <th colspan="2">詳細</th>
             </tr>
             <?php foreach($recieved as $recieved):?>
             <tr>
@@ -45,7 +45,7 @@
                 <td>{{$recieved->tel}}</td>
                 <td>{{$recieved->update_day}}</td>
                 <td>最終更新者</td>
-                <td colspan="3"><a class="btn btn-success" href="/recieved/show/{{$recieved->id}}">詳細</a></td>
+                <td colspan="2"><a class="btn btn-success" href="/recieved/show/{{$recieved->id}}">詳細</a></td>
             </tr>
             <?php endforeach; ?>
             </tbody>
