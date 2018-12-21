@@ -34,8 +34,9 @@
                 <th>受注コード</th>
                 <th>受注者</th>
                 <th>電話番号</th>
-                <th>最終日</th>
-                <th>詳細</th>
+                <th>最終更新者</th>
+                <th>最終更新日</th>
+                <th colspan="3">詳細</th>
             </tr>
             <?php foreach($recieved as $recieved):?>
             <tr>
@@ -43,7 +44,8 @@
                 <td>{{$recieved->staff_name}}</td>
                 <td>{{$recieved->tel}}</td>
                 <td>{{$recieved->update_day}}</td>
-                <td><a class="btn btn-success" href="/recieved/show/{{$recieved->id}}">詳細</a></td>
+                <td>最終更新者</td>
+                <td colspan="3"><a class="btn btn-success" href="/recieved/show/{{$recieved->id}}">詳細</a></td>
             </tr>
             <?php endforeach; ?>
             </tbody>
