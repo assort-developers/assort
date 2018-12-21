@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 
+use \DateTimeImmutable;
 use Illuminate\Http\Request;
 
 class RecievedController extends Controller
@@ -17,25 +18,25 @@ class RecievedController extends Controller
         //dd($request);
         if ($request->recieved_code == NULL && $request->staff_name == NULL) {
             $recieved = DB::select("SELECT * FROM recieved");
-            return view("recieved/recieved_search", [
-                "recieved" => $recieved
-            ]);
+
+
         }else if($request->staff_name == NULL){
             $recieved = DB::select("SELECT * FROM recieved WHERE code = '$request->recieved_code'");
-            return view("recieved/recieved_search", [
-                "recieved" => $recieved
-            ]);
+
         }else if($request->recieved_code == NULL){
             $recieved = DB::select("SELECT * FROM recieved WHERE staff_name = '$request->staff_name'");
-            return view("recieved/recieved_search", [
-                "recieved" => $recieved
-                ]);
+
         }else{
             $recieved = DB::select("SELECT * FROM recieved WHERE staff_name = '$request->staff_name'and code = '$request->recieved_code'");
-            return view("recieved/recieved_search", [
-                "recieved" => $recieved
-            ]);
+
         }
+        foreach($recieved as $idx => $res){
+            $date = new DatetimeImmutable($res->update_day);
+            $recieved[$idx]->update_day =  $date->format('Y-m-d');
+        }
+        return view("recieved/recieved_search", [
+            "recieved" => $recieved
+        ]);
 
 
 	}
@@ -47,7 +48,6 @@ class RecievedController extends Controller
 	 */
 	public function create()
 	{
-		//
 		return view('Recieved/recieved_register');
 	}
 
@@ -57,8 +57,7 @@ class RecievedController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
-    {
+	public function store(Request $request){
         $tel = $request->tel1."-".$request->tel2."-".$request->tel3;
         $address_code = $request->address_code1."-".$request->address_code2;
         DB::table('recieved')->insert([
@@ -118,10 +117,10 @@ class RecievedController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request)
-	{
+    {
         $tel = $request->tel1."-".$request->tel2."-".$request->tel3;
         $address_code = $request->address_code1."-".$request->address_code2;
-        DB::table('recieved')->update([
+        DB::table('recieved')->where('id','=',intval($request->id))->update([
             'shipment_day' => $request ->shipment_day,
             'mail' => $request ->mail,
             'price' => $request ->price,
@@ -135,7 +134,7 @@ class RecievedController extends Controller
             'builld' => $request ->builld,
             'update_day' => NOW()
         ]);
-        return redirect('/recieved_search');
+        return redirect('/recieved/show/'.$request->id);
 	}
 
 	/**

@@ -13,7 +13,7 @@
             <tr>
                 <th>受注コード</th>
                 <td>
-                    <input class="form-control" type="text" name="recieved_code">
+                    <input class="form-control" type="text" name="recieved_code" autofocus>
                 </td>
                 <th class="left">受注者</th>
                 <td><input class="form-control" type="text" name="staff_name" size="40" maxlength="40"></td>

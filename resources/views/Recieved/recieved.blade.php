@@ -12,9 +12,7 @@
                 </tr>
                 <tr>
                     <th>受注コード</th>
-                    <td>{{$recieved->code}}</td>
-                    <th class="left">受注者</th>
-                    <td>{{$recieved->staff_name}}</td>
+                    <td colspan="4">{{$recieved->code}}</td>
                 </tr>
 
                 <tr>
@@ -24,6 +22,8 @@
                     <td>{{$recieved->shipment_day}}</td>
                 </tr>
                 <tr>
+                    <th class="left">受注者</th>
+                    <td>{{$recieved->staff_name}}</td>
                     <th>郵便番号</th>
                     <td colspan="3">{{$recieved->address_code}}</td>
                 </tr>
@@ -73,9 +73,7 @@
             </tr>
             <tr>
                 <th>受注コード</th>
-                <td>{{$recieved->code}}</td>
-                <th class="left">受注者</th>
-                <td><input class="form-control" type="text" name="staff_name" size="40" maxlength="40" value="{{$recieved->staff_name}}" required></td>
+                <td colspan="4">{{$recieved->code}}</td>
             </tr>
 
             <tr>
@@ -85,6 +83,8 @@
                 <td><input class="form-control" type="date" name="shipment_day" value="{{$recieved->shipment_day}}" required></td>
             </tr>
             <tr>
+                <th class="left">受注者</th>
+                <td><input class="form-control" type="text" name="staff_name" size="40" maxlength="40" value="{{$recieved->staff_name}}" required></td>
                 <th class="left">郵便番号</th>
                 <td class="row">
                     <div class="col-xs-2">
@@ -101,8 +101,8 @@
                 <td><input class="form-control" type="email" name="mail" size="20" maxlength="40" value="<?=$recieved->mail?>" required></td>
                 <th class="left">電話番号</th>
                 <td class="row">
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="4" minlength="2" maxlength="2" value="{{$tel[0]}}" required></div><div class="hyphen">-</div>
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="4" minlength="4" maxlength="4" value="{{$tel[1]}}" required></div><div class="hyphen">-</div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="3" minlength="3" maxlength="3" value="{{$tel[0]}}" required></div><div class="hyphen">-</div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="3" minlength="3" maxlength="3" value="{{$tel[1]}}" required></div><div class="hyphen">-</div>
                     <div class="col-xs-3"><input class="form-control" type="tel" name="tel3" size="4" minlength="4" maxlength="4" value="{{$tel[2]}}" required></div>
                 </td>
             </tr>
@@ -110,10 +110,9 @@
                 <th class="left">都道府県</th>
                 <td>
                     <select class="form-control" name="ken">
-                        <option value="1">北海道</option>
-                        <option value="2">東京</option>
-                        <option value="3">大阪</option>
-                        <option value="4">沖縄</option>
+                        @foreach(config('pref') as $index => $name)
+                            <option value="{{$name}}">{{$name}}</option>
+                        @endforeach
                     </select>
                 <th class="left">市区町村</th>
                 <td><input class="form-control" type="text" name="town" value="{{$recieved->town}}" required></td>
@@ -148,6 +147,7 @@
             </tbody>
         </table>
         <div class="controll_buttons overflow_btn">
+            <input type="hidden" name="id" value="{{$recieved->id}}">
             <input class="btn btn-success" type="submit" value="受注更新">
         </div>
         </form>

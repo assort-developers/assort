@@ -36,38 +36,38 @@
                         <input class="form-control" type="tel" name="address_code2" size="4" maxlength="4"value required>
                     </div>
                 </td>
+                <th class="left">電話番号</th>
+                <td class="row">
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="4" minlength="3" maxlength="3" value required></div><div class="hyphen">-</div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="4" minlength="3" maxlength="3" value required></div><div class="hyphen">-</div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel3" size="4" minlength="4" maxlength="4" value required></div>
+                </td>
             </tr>
             <tr>
                 <th class="left">メールアドレス</th>
                 <td><input class="form-control" type="email" name="mail" size="20" maxlength="40" value="" required></td>
-                <th class="left">電話番号</th>
-                <td class="row">
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="4" maxlength="4" value required></div><div class="hyphen">-</div>
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="4" maxlength="4" value required></div><div class="hyphen">-</div>
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel3" size="4" maxlength="4" value required></div>
-                </td>
-            </tr>
-            <tr>
                 <th class="left">都道府県</th>
                 <td>
                     <select class="form-control" name="ken">
-                        <option value="0">北海道</option>
-                        <option value="1">東京</option>
-                        <option value="2">大阪</option>
-                        <option value="3">沖縄</option>
+                        @foreach(config('pref') as $index => $name)
+                            <option value="{{$name}}">{{$name}}</option>
+                        @endforeach
                     </select>
+                </td>
+            </tr>
+            <tr>
                 <th class="left">市区町村</th>
                 <td><input class="form-control" type="text" name="town" value required></td>
-            </tr>
-            <tr>
                 <th class="left">番地</th>
                 <td><input class="form-control" type="text" name="number" value required></td>
-                <th class="left">建物名</th>
-                <td><input class="form-control" type="text" name="builld" value required></td>
             </tr>
             <tr>
-            <th class="left">支払い金額</th>
-            <td><input class="form-control" type="number" name="price" value required></td>
+                <th class="left">建物名</th>
+                <td><input class="form-control" type="text" name="builld" value required></td>
+                <th class="left">支払い金額</th>
+                <td><input class="form-control" type="number" name="price" value required></td>
+            </tr>
+            <tr>
                 <th class="left">支払い方法</th>
                 <td>
                     <select class="form-control" name="pay">
@@ -79,13 +79,10 @@
                         <option value="6">後払い</option>
                     </select>
                 </td>
-            </tr>
-            <tr>
                 <th class="left">更新者</th>
                 <td>取得したみ</td>
-                <th class="left">更新日</th>
-                <td>取得したいなぁ</td>
             </tr>
+
             </tbody>
         </table>
             <div class="controll_buttons overflow_btn">
