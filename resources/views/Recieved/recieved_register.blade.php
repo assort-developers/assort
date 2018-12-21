@@ -13,27 +13,27 @@
             <tr>
                 <th>受注コード</th>
                 <td>
-                    <input class="form-control" type="text" name="code">
+                    <input class="form-control" type="text" name="code" required>
                 </td>
                 <th class="left">受注者</th>
-                <td><input class="form-control" type="text" name="staff_name" size="40" maxlength="40" value=""></td>
+                <td><input class="form-control" type="text" name="staff_name" size="40" maxlength="40" value required></td>
             </tr>
 
             <tr>
                 <th class="left">注文日</th>
-                <td><input class="form-control" type="date" name="order_day" value="2018-01-01"></td>
+                <td><input class="form-control" type="date" name="order_day" value="2018-01-01" required></td>
                 <th class="left">発送日</th>
-                <td><input class="form-control" type="date" name="shipment_day" value="2018-01-01"></td>
+                <td><input class="form-control" type="date" name="shipment_day" value="2018-01-01" required></td>
             </tr>
             <tr>
                 <th class="left">郵便番号</th>
                 <td class="row">
                     <div class="col-xs-2">
-                        <input class="form-control" type="tel" name="address_code1" size="3" maxlength="3" value="">
+                        <input class="form-control" type="tel" name="address_code1" size="3" maxlength="3" value required>
                     </div>
                     <div class="hyphen">-</div>
                     <div class="col-xs-2">
-                        <input class="form-control" type="tel" name="address_code2" size="4" maxlength="4"value="">
+                        <input class="form-control" type="tel" name="address_code2" size="4" maxlength="4"value required>
                     </div>
                 </td>
             </tr>
@@ -42,9 +42,9 @@
                 <td><input class="form-control" type="email" name="mail" size="20" maxlength="40" value="" required></td>
                 <th class="left">電話番号</th>
                 <td class="row">
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="4" maxlength="4" value=""></div><div class="hyphen">-</div>
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="4" maxlength="4" value=""></div><div class="hyphen">-</div>
-                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel3" size="4" maxlength="4" value=""></div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="4" maxlength="4" value required></div><div class="hyphen">-</div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="4" maxlength="4" value required></div><div class="hyphen">-</div>
+                    <div class="col-xs-3"><input class="form-control" type="tel" name="tel3" size="4" maxlength="4" value required></div>
                 </td>
             </tr>
             <tr>
@@ -57,17 +57,17 @@
                         <option value="3">沖縄</option>
                     </select>
                 <th class="left">市区町村</th>
-                <td><input class="form-control" type="text" name="town" value=""></td>
+                <td><input class="form-control" type="text" name="town" value required></td>
             </tr>
             <tr>
                 <th class="left">番地</th>
-                <td><input class="form-control" type="text" name="number" value=""></td>
+                <td><input class="form-control" type="text" name="number" value required></td>
                 <th class="left">建物名</th>
-                <td><input class="form-control" type="text" name="builld" value=""></td>
+                <td><input class="form-control" type="text" name="builld" value required></td>
             </tr>
             <tr>
             <th class="left">支払い金額</th>
-            <td><input class="form-control" type="number" name="price" value=""></td>
+            <td><input class="form-control" type="number" name="price" value required></td>
                 <th class="left">支払い方法</th>
                 <td>
                     <select class="form-control" name="pay">

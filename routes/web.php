@@ -45,7 +45,7 @@ Route::get('/recieved_search','RecievedController@index');
 Route::get('/recieved_store','RecievedController@store');
 Route::get('/recieved/show/{id?}', 'RecievedController@show');
 Route::get('/recieved/create','RecievedController@create');
-
+Route::post('/recieved/update','RecievedController@update');
 //出金管理
 
 Route::resource('payment', 'PaymentController');
