@@ -153,6 +153,7 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
 //
 Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
     Route::post('/color/update','ColorController@update');
+    Route::post('/register', 'Auth\RegisterController@register');
 });
   
   // 開発者管理者のみ

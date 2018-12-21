@@ -44,4 +44,20 @@
             <a href="/stock_shelf_search" class="menu_block_subitem">棚番号管理</a>
         </div>
     </div>
+    <div class="menu_item">
+        @guest
+            <a class="menu_block_name" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+        @else
+            <a class="menu_block_name has_submenu">{{ Auth::user()->name }}</a>
+            <div class="menu_block_hiden">
+                <a class="menu_block_subitem" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('ログアウト') }}</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        @endguest
+    </div>
+    <div class="menu_item">
+        <a href="/register" class="menu_block_name">ユーザー登録</a>
+    </div>
 </div>
