@@ -142,7 +142,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//一般
+//一般以上test3
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
      // 色詳細閲覧
      Route::get('/color_search','ColorController@index');
@@ -150,13 +150,13 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
 
 });
 
-//
+//管理者以上test2
 Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
     Route::post('/color/update','ColorController@update');
     Route::post('/register', 'Auth\RegisterController@register');
 });
   
-  // 開発者管理者のみ
+  // 開発者管理者のみtest1
 Route::group(['middleware' => ['auth', 'can:system-only']], function () {
     Route::get('/color/create', 'ColorController@create');
     Route::post('/color/store','ColorController@store');
