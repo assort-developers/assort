@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Size;
 
-class CategoryController extends Controller
+
+class SizeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +16,10 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $request->all();
-        $categorys=Category::getJoinAll($request);
+        $sizes=Size::getSize($request);
         
-        return view('category.category_search', [
-            'categorys' => $categorys,
+        return view('size.size_search', [
+            'sizes' => $sizes,
             'request'=>$request
         ]);
     }
@@ -30,14 +31,14 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $parent_categorys=Category::getParentCat();
         $date = date_create(NOW()); 
         $date = date_format($date , 'Y-m-d');
-        
-        return view('category.category_register',[
+        $prefs = config('pref');
+
+        return view('size.size_register',[
             'date'=>$date,
-            'parent_categorys'=>$parent_categorys
-        ]);
+            'prefs'=>$prefs
+            ]);
     }
 
     /**
@@ -48,25 +49,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $create_category=$request->all();
+        $create_data=$request->all();
+        $size = Size::firstOrCreate([
+            'print_size' => $create_data['print_size'],
+            'gender'=>$create_data['gender']
+        ]);
 
-        $category=Category::where('name','=',$create_category['name'])->where('parent_cat_id','=',$create_category['parent_cat_id'])
-        ->first();
-
-        if(!empty($category)){
-            return redirect('/category/show/'.$category->id);
-        }else{
-            $category_id=Category::insertGetId([
-                'name'=>$create_category['name'],
-                'parent_cat_id'=>$create_category['parent_cat_id'],
-                'updateby'=>'1',
-                'update'=>NOW(),
-            ]);
-            return redirect('/category/show/'.$category_id);
-        }
-
-
-        /* return redirect('/category/show/'.$->id); */
+        return redirect('/size/show/'.$size->id);
     }
 
     /**
@@ -77,16 +66,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $parent_categorys=Category::getParentCat();
-        $category=Category::getCategory($id);
+        $size = Size::where('id',$id)->first();
         $date = date_create(NOW()); 
         $date = date_format($date , 'Y-m-d');
-        
-        return view('category.category',[
-            'category'=>$category,
+        return view('size.size', [
+            'size' => $size,
             'date'=>$date,
-            'parent_categorys'=>$parent_categorys
-        ]);
+            ]);
     }
 
     /**
@@ -110,18 +96,25 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $update_data=$request->all();
-
-
-        $category = Category::where('id',$update_data['id'])->update([
-            'name'=>$update_data['name'],
-            'parent_cat_id'=>$update_data['parent_cat_id'],
-            'updateby'=>'1',
-            'update'=>NOW(),
-        ]);
-
-        return redirect('/category/show/'.$request->id);
-    }
-
+        $size = Size::where('print_size', $update_data['print_size'])
+        ->where('gender',$update_data['gender'])
+        ->first();
+        
+        if (!empty($size)) {
+            $sizes=Size::getMatchSize($update_data,$size);
+            
+            return view('size.size_search', [
+                'sizes' => $sizes,
+                'request'=>$request
+            ]);
+        }else{
+            $size2 = Size::where('id',$update_data['id'])->update([
+                'gender'=>$update_data['gender'],
+                'print_size' => $update_data['print_size']
+            ]);
+            return redirect('/size/show/'.$request->id);
+            }
+        }
     /**
      * Remove the specified resource from storage.
      *

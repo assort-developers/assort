@@ -9,7 +9,9 @@ class OrderContent extends Model
 {
 		//
 	protected $table = 'order_content';
+	protected $fillable = ['order_id', 'product_id', 'amount', 'subtotal', 'is_arrival', 'arrival_date', 'arrival_staffid'];
 	const UPDATED_AT = null;
+	const CREATED_AT = null;
 
 	public function order()
 	{

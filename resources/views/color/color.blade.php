@@ -1,41 +1,28 @@
 @extends('layout.common')
-@section('title', '色管理画面')
+@section('title', '色情報詳細画面')
+@section('header_title', '色情報詳細画面')
 
 @section('content')
-	<div class="main_content">
-	<h1 id="title">色管理画面</h1>
-	<table>
-		<tbody>
-		<tr>
-			<th colspan="2">色情報</th>
-		</tr>
-		<tr>
-		<th class="left">色コード</th>
-		<td></td>
-		</tr>
-		<tr>
-			<th class="left">色名</th>
-			<td><input type="text" name="color_name" size="15" maxlength="415" value="" placeholder="色名"></td>
-		</tr>
-		<tr>
-			<th class="left">更新者</th>
-			<td><input type="text" name="" size="40" maxlength="40" value="" placeholder="OIC 太郎"></td>
-		</tr>
-		<tr>
-			<th class="left">更新日</th>
-			<td><input type="date" name="date" value="2018-01-01"></td>
-		</tr>
-		</tbody>
-	</table>
-	<div align="right">
-	<a href="#" class="square_btn">
-		<i class="fa fa-caret-right"></i>登録</a>
-	<a href="#" class="reseto_btn">
-		<i class="fa fa-caret-right"></i>リセット</a> 
-	<a href="#" class="update_btn">
-		<i class="fa fa-caret-right"></i>更新</a>
-	<a href="#" class="delete_btn">
-		<i class="fa fa-caret-right"></i>削除</a>
-	</div>
+<div class="content_wrapper">
+	<form action='/color/update' method='post'>
+		<?= csrf_field()?>
+		<table class="table-bordered">
+			<tbody>
+			<tr>
+				<th colspan="4">色情報</th>
+			</tr>
+			<tr>
+				<th class="left">色コード</th>
+				<td><input class="form-control" type="text" name="id" size="15" maxlength="415" value="<?=$color->id?>" readonly="readonly"></td>
+				<th class="left">色名</th>
+				<td><input class="form-control" type="text" name="print_color" size="15" maxlength="415" value="<?=$color->print_color?>" placeholder="色名" requrired></td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="controll_buttons overflow_btn">
+			<a class="btn btn-dark" href="/color_search">戻る</a>
+			<input class="btn btn-success" type="submit" value="色名更新">
+		</div>
+	</form>
 </div>
 @endsection

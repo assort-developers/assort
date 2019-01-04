@@ -24,9 +24,14 @@ Route::get('/', function () {
 //発注管理
 Route::get('/order_search', 'OrderController@index');
 Route::get('/order/create', 'OrderController@create');
+Route::post('/order/create', 'OrderController@create');
+Route::post('/order/store', 'OrderController@store');
 Route::get('/order/show/{id?}', 'OrderController@show');
 Route::post('/order/update', 'OrderController@update');
 Route::post('/order/content/update', 'OrderController@content_update');
+Route::post('/order/{id?}/content/create', 'OrderController@content_create');
+Route::get('/order/{id?}/content/create', 'OrderController@content_create');
+Route::post('/order/{id?}/content/store', 'OrderController@content_store');
 // Route::get('/order_delete', 'OrderController@destroy');
 
 Route::get('/arrival_search', 'ArrivalController@index');
@@ -64,8 +69,12 @@ Route::get('/sales','SalesController@index');
 
 
 //カテゴリ管理
-Route::get('/category_search', 'CategoryController@index');
-Route::get('/category/create','CategoryController@create');
+Route::resource('category','CategoryController');
+Route::get('/category_search','CategoryController@index');
+Route::get('/category/show/{id?}', 'CategoryController@show');
+Route::post('/category/update', 'CategoryController@update');
+Route::get('/category/create', 'CategoryController@create');
+Route::post('/category/store', 'CategoryController@store');
 
 //ブランド管理
 Route::resource('brand','BrandController');
@@ -90,13 +99,20 @@ Route::get('/staff/create', 'StaffController@create');
 Route::post('/staff/store','StaffController@store');
 
 //色管理
-Route::get('/color_search', function () {
-	return view('color/color_search');
-});
+Route::get('/color_search','ColorController@index');
+Route::get('/color/show/{id?}','ColorController@show');
+Route::post('/color/update','ColorController@update');
+Route::get('/color/create', 'ColorController@create');
+Route::post('/color/store','ColorController@store');
+
 //サイズ管理
-Route::get('/size_search', function () {
-    return view('size/size_search');
-});
+Route::resource('size', 'SizeController');
+Route::get('/size_search','SizeController@index');
+Route::get('/size/show/{id?}','SizeController@show');
+Route::post('/size/update','SizeController@update');
+Route::get('/size/create', 'SizeController@create');
+Route::post('/size/store','SizeController@store');
+
 //棚番号管理
 Route::get('/stock_shelf_search', function () {
 	return view('stock_shelf/stock_shelf_search');

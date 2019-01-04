@@ -1,41 +1,48 @@
 @extends('layout.common')
-@section('title', '色管理画面')
-@section('header_title', '色管理画面')
+@section('title', '色検索画面')
+@section('header_title', '色検索画面')
 
 @section('content')
-	<div class="content_wrapper">
+<div class="content_wrapper">
+	<form action='/color_search' method='GET'>
+		<?= csrf_field()?>	
+		<table class="table-bordered">
+			<tbody>
+				<tr>
+					<th colspan="4">色情報</th>
+				</tr>
+				<tr>
+					<th class="left">色コード</th>
+					<td><input class="form-control" type="text" name="id" size="15" maxlength="415" value="" placeholder="id"></td>
+					<th class="left">色名</th>
+					<td><input class="form-control" type="text" name="print_color" size="15" maxlength="415" value="<?=$request->color_print?>" placeholder="色名"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="controll_buttons overflow_btn">
+			<a class="btn btn-dark" href="/color/create">色登録</a>
+			<input class="btn btn-success" type="submit" value="検索">
+		</div>
+	</form>
 	<table class="table-bordered">
-		<tbody>
+		<tr>
+			<th colspan="3">検索結果</th>
+		</tr>
+		<tr>
+			<th>id</th>
+			<th>色名</th>
+			<th>詳細</th>
+		</tr>
+		
+		<?php foreach($colors as $color): ?>
 			<tr>
-				<th colspan="2">色情報</th>
+				<td><?=$color->id?></td>
+				<td><?=$color->print_color?></td>
+				<td class="btn-outer">
+					<a href="/color/show/<?=$color->id?>" class="btn btn-success" >詳細</a>
+				</td>
 			</tr>
-			<tr>
-				<th class="left">色コード</th>
-				<td></td>
-			</tr>
-			<tr>
-				<th class="left">色名</th>
-				<td><input class="form-control" type="text" name="color_name" size="15" maxlength="415" value="" placeholder="色名"></td>
-			</tr>
-			<tr>
-				<th class="left">更新者</th>
-				<td><input class="form-control" type="text" name="" size="40" maxlength="40" value="" placeholder="OIC 太郎"></td>
-			</tr>
-			<tr>
-				<th class="left">更新日</th>
-				<td><input class="form-control" type="date" name="date" value="2018-01-01"></td>
-			</tr>
-		</tbody>
+		<?php endforeach; ?>
 	</table>
-	<div class="controll_buttons">
-	<a href="#" class="square_btn btn">
-		<i class="fa fa-caret-right"></i>登録</a>
-	<a href="#" class="reseto_btn btn">
-		<i class="fa fa-caret-right "></i>リセット</a>
-	<a href="#" class="update_btn btn">
-		<i class="fa fa-caret-right"></i>更新</a>
-	<a href="#" class="delete_btn btn">
-		<i class="fa fa-caret-right"></i>削除</a>
-	</div>
 </div>
 @endsection
