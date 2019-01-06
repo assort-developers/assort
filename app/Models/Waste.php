@@ -10,5 +10,7 @@ class Waste extends Model
     public function brand()
     {
         return belongsTo('\App\Models\Brand');
+
+
     }
 }
