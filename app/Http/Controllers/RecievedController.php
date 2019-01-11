@@ -58,7 +58,6 @@ class RecievedController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request){
-	    dd($request->id);
         $tel = $request->tel1."-".$request->tel2."-".$request->tel3;
         $address_code = $request->address_code1."-".$request->address_code2;
         DB::table('recieved')->insert([

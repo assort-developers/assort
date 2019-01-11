@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnRecieved extends Migration
+class CreateRecievedColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,6 @@ class AddColumnRecieved extends Migration
     public function up()
     {
         Schema::table('recieved', function (Blueprint $table) {
-            $table->string('code',5);
             //
         });
     }
