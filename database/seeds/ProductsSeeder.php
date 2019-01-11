@@ -11,6 +11,8 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
+			DB::table('product_codename')->truncate();
+			DB::table('product')->truncate();
       DB::table('product_codename')->insert([
 				'name' => 'ヤバそうでヤバくないちょっとヤバいTシャツ(完全版)',
 				'category_id' => 1,
