@@ -38,7 +38,7 @@
         <div class="menu_block_hiden">
             <a href="/brand_search" class="menu_block_subitem">ブランド管理</a>
             <a href="/customer_search" class="menu_block_subitem">顧客管理</a>
-            <a href="/staff" class="menu_block_subitem">従業員管理</a>
+            <a href="/staff_search" class="menu_block_subitem">従業員管理</a>
             <a href="/color_search" class="menu_block_subitem">色管理</a>
             <a href="/size_search" class="menu_block_subitem">サイズ管理</a>
             <a href="/stock_shelf_search" class="menu_block_subitem">棚番号管理</a>
