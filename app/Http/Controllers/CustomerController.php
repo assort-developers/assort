@@ -34,9 +34,11 @@ class CustomerController extends Controller
     {
         $date = date_create(NOW()); 
         $date = date_format($date , 'Y-m-d');
+        $prefs = config('pref');
          //
         return view('/customer.customer_register',[
-            'date'=>$date
+            'date'=>$date,
+            'prefs'=>$prefs
         ]);
 
 
@@ -45,9 +47,13 @@ class CustomerController extends Controller
     public function address_create($customer_id)
     {
         $customer=Customer::getJoinAll_show($customer_id);
-        
+        $prefs = config('pref');
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
         return view('/customer.customer_address_register', [
-            'customer'=>$customer
+            'customer'=>$customer,
+            'date'=>$date,
+            'prefs'=>$prefs
         ]);
 
 
@@ -67,6 +73,7 @@ class CustomerController extends Controller
         
         //telの結合処理
         $create_tel=$create_customer['tel1']."-".$create_customer['tel2']."-".$create_customer['tel3'];
+        
         $customer_id=Customer::insertGetId([
             'family_name' => $create_customer['family_name'],
             'first_name' => $create_customer['first_name'],
@@ -102,7 +109,7 @@ class CustomerController extends Controller
         $create_tel=$customer_address['tel1']."-".$customer_address['tel2']."-".$customer_address['tel3'];
         
         $customer_addresss=Customer_address::insertGetId([
-            'customer_id' => $customer_id,
+            'customer_id' => $customer_address["customer_id"],
             'zip_code' => $create_zip_code,
             'address_pref' => $customer_address['address_pref'],
             'address_city' => $customer_address['address_city'],
@@ -111,6 +118,8 @@ class CustomerController extends Controller
             'address_name' => $customer_address['address_name'],
             'contact_tel' => $create_tel
         ]);
+
+        return redirect('/customer/show/'.$customer_address["customer_id"]);
     }
 
     /**
