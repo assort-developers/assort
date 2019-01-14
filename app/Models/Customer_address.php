@@ -26,8 +26,8 @@ class Customer_address extends Model
             'customer_address.address_name',
             'customer_address.contact_tel'
         )
-        ->where('customer.customer_id', '=', $customer_id);
-        return $customer_address->first();
+        ->where('customer_address.customer_id', '=', $customer_id);
+        return $customer_address->get();
     }
 
     public static function getJoinAll($request=null){

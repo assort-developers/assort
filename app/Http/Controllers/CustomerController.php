@@ -131,13 +131,19 @@ class CustomerController extends Controller
     public function show($customer_id)
     {
         $customer=Customer::getJoinAll_show($customer_id);
-        $tel=explode("-", $customer['contact_tel']);
+        $customer_address=Customer_address::getJoinAll_show($customer_id);
+        //var_dump($customer_address);
+        //dd($customer_address);
+        $phone=explode("-", $customer['phone']);
+        $mobile_phone=explode("-", $customer['mobile_phone']);
         $zip_code=explode("-", $customer['zip_code']);
         $date = date_create(NOW()); 
         $date = date_format($date , 'Y-m-d');
         return view('customer.customer', [
             'customer'=>$customer,
-            'contact_tel'=>$tel,
+            'customer_address'=>$customer_address,
+            'phone'=>$phone,
+            'mobile_phone'=>$mobile_phone,
             'zip_code'=>$zip_code,
             'date'=>$date,
              ]);
@@ -161,30 +167,30 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $update_data=$request->all();
         
-        //zip_codeの結合処理
-        $update_zip_code=($update_data['zip_code1']."-".$update_data['zip_code2']);
+        
         
         //telの結合処理
-        $update_tel=$update_data['tel1']."-".$update_data['tel2']."-".$update_data['tel3'];
-        
-        //退職者の役職を'役職なし'にする処理
-        if($update_data['resigndate']!=null){
-            $update_data['customer_role_id']='1';
-        }
+        $update_phone=$update_data['phone1']."-".$update_data['phone2']."-".$update_data['phone3'];
+        $update_mobilephone=$update_data['mphone1']."-".$update_data['mphone2']."-".$update_data['mphone3'];
         
         $costomer = Customer::where('id',$update_data['id'])->update([
             'family_name' => $update_data['family_name'],
             'first_name' => $update_data['first_name'],
             'birthday'=>$update_data['birthday'],
-            'gender'=>$update_date['gender'],
+            'gender'=>$update_data['gender'],
             'family_name_kana'=>$update_data['family_name_kana'],
             'first_name_kana'=>$update_data['first_name_kana'],
+            'phone'=>$update_phone,
+            'mobile_phone'=>$update_mobilephone,
+            'update_time'=>NOW(),
             
         ]);
+
+        return redirect('/customer/show/'.$update_data['id']);
     }
 
     /**

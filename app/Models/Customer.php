@@ -14,6 +14,9 @@ class Customer extends Model
 		return config('pref.'.$this->address_pref);
 	}
 
+    public function getGender() {
+		return config('gender.'.$this->gender);
+    }
 
     public static function getJoinAll_show($customer_id=null){
         $customer = Customer::select(
