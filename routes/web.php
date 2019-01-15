@@ -116,7 +116,10 @@ Route::get('/stock_shelf_search', function () {
 //不良品管理
 Route::resource('waste', 'WasteController');
 Route::get('/waste_search','WasteController@index');
-Route::get('/waste_detail','WasteController@show');
+Route::get('/waste/show/{id?}','WasteController@show');
+Route::post('/waste/update','WasteController@update');
+Route::get('/waste/create','WasteController@create');
+Route::post('/waste/store','WasteController@store');
 
 //棚卸し管理
 Route::resource('inventory', 'InventoryController');

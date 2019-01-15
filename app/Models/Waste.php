@@ -9,7 +9,8 @@ class Waste extends Model
     protected $table = 'waste_table';
     public function brand()
     {
-        return belongsTo('\App\Models\Brand');
+        return belongsTo('\App\Modewinls\Waste');
+
 
 
     }
