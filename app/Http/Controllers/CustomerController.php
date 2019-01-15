@@ -149,6 +149,25 @@ class CustomerController extends Controller
              ]);
     }
 
+
+    public function address_show($customer_id,$id){
+
+        $customer_address=Customer_address::getJoinAll_address_show($customer_id,$id);
+        $date = date_create(NOW()); 
+        $date = date_format($date , 'Y-m-d');
+        $tel=explode("-", $customer_address['contact_tel']);
+        $zip_code=explode("-", $customer_address['zip_code']);
+        $prefs = config('pref');
+
+        return view('customer.customer_address',[
+            'customer_address'=>$customer_address,
+            'date'=>$date,
+            'zip_code'=>$zip_code,
+            'tel'=>$tel,
+            'prefs'=>$prefs
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -191,6 +210,25 @@ class CustomerController extends Controller
         ]);
 
         return redirect('/customer/show/'.$update_data['id']);
+    }
+
+    public function address_update(Request $request){
+        $update_data=$request->all();
+        $zip_code=($update_data['zip_code1']."-".$update_data['zip_code2']);
+        $contact_tel=$update_data['tel1']."-".$update_data['tel2']."-".$update_data['tel3'];
+        
+        $costomer = Customer_address::where('id',$update_data['id'])->where('customer_id',$update_data['customer_id'])
+        ->update([
+            'zip_code' => $zip_code,
+            'address_pref' => $update_data['address_pref'],
+            'address_city' => $update_data['address_city'],
+            'address_town' => $update_data['address_town'],
+            'address_build' => $update_data['address_build'],
+            'address_name' => $update_data['address_name'],
+            'contact_tel' => $contact_tel,
+        ]);
+
+        return redirect('/customer/show/'.$update_data['customer_id']);
     }
 
     /**

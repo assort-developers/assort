@@ -14,7 +14,7 @@
 				<td><?=$customer->id?>
 				</td>
                 <th class="left">性別</th>
-				<td><?=$customer->gender?></td>
+				<td><?=$customer->getGender()?></td>
 			</tr>
 			<tr>
 				<th class="">顧客名</th>
@@ -104,7 +104,7 @@
 					<div class="col-xs-3"><input class="form-control" type="tel" name="phone2" size="4" maxlength="4" value="<?=$phone[1]?>" required>
 					</div>
 					<div class="hyphen">-</div>
-					<div class="col-xs-3"><input class="form-control" type="tel" name="phone3" size="4" maxlength="4" value="<?=$phone[1]?>" required></div>
+					<div class="col-xs-3"><input class="form-control" type="tel" name="phone3" size="4" maxlength="4" value="<?=$phone[2]?>" required></div>
 				</td>
 				<th class="left">携帯番号</th>
 				<td class="row">
@@ -119,7 +119,7 @@
 			</tr>
 			<tr>
 				<th class="left">更新者</th>
-				<td><input class="form-control" type="text" name="updateby" size="40" maxlength="40" value="" required placeholder="1"></td>
+				<td><input class="form-control" type="text" name="updateby" size="40" maxlength="40" value="1" required placeholder="1"></td>
 				<th class="left">更新日</th>
 				<td><input class="form-control" type="date" name="update" value="<?=$date?>" readonly></td>
 			</tr>
@@ -129,6 +129,27 @@
 			<input class="btn btn-success" type="submit" value="顧客更新">
 		</div>
 	</form>
-	
+	<table class="table-bordered">
+		<tr>
+			<th colspan="6">検索結果</th>
+		</tr>
+		<tr>
+			<th>顧客住所ID</th>
+			<th>宛名</th>
+			<th>住所</th>
+			<th>詳細</th>
+		</tr>
+		
+		<?php foreach($customer_address as $address): ?>
+			<tr>
+				<td><?=$address->id?></td>
+				<td><?=$address->address_name?></td>
+				<td><?=$address->getPrefName()?><?=$address->address_city?><?=$address->address_town?></td>
+				<td class="btn-outer">
+					<a href="/customer_address/<?=$address->customer_id?>/show/<?=$address->id?>" class="btn btn-success" >詳細</a>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
 </div>
 @endsection

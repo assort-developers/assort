@@ -13,29 +13,29 @@
 			</tr>
 			<tr>
 				<th>顧客コード</th>
-				<td><input class="form-control" type="text" name="id" value="<?=$request->id?>">
+				<td><input class="form-control" type="text" name="id" value="<?=$request->id??''?>">
 				</td>
 				<th class="left">性別</th>
-				<td><select class="form-control" name="gender">
-					<option value="">--</option>
-					<option value="0">男性</option>
-					<option value="1">女性</option>
-					<option value="2">その他</option>
-				</select>
-				</td>
+				<td>
+                    <select class="form-control" name="gender">
+                        <option value="">--</option>
+                        <option value="0">メンズ</option>
+                        <option value="1">レディース</option>
+                    </select>
+                </td>
 			</tr>
 			<tr>
-				<th class="">顧客名</th>
+			<th class="">顧客名</th>
 				<td class="row">
-					<div class="col-xs-1"><input class="form-control" type="text" name="family_name" size="10" maxlength="40" value="<?=$request->family_name?>" placeholder="性"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name" size="10" maxlength="40" value="<?=$request->family_name??''?>" placeholder="性"></div>
 					<div class="hyphen"> </div>
-					<div class="col-xs-1"><input class="form-control" type="text" name="first_name" size="10" maxlength="40" value="<?=$request->first_name?>" placeholder="名"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="first_name" size="10" maxlength="40" value="<?=$request->first_name??''?>" placeholder="名"></div>
 				</td>
 				<th class="">顧客名（カナ）</th>
 				<td class="row">
-					<div class="col-xs-1"><input class="form-control" type="text" name="family_name_kana" size="10" maxlength="40" value="<?=$request->family_name_kana?>" placeholder="セイ"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="family_name_kana" size="10" maxlength="40" value="<?=$request->family_name_kana??''?>" placeholder="セイ"></div>
 					<div class="hyphen"> </div>
-					<div class="col-xs-1"><input class="form-control" type="text" name="first_name_kana" size="10" maxlength="40" value="<?=$request->first_name_kana?>" placeholder="メイ"></div>
+					<div class="col-xs-1"><input class="form-control" type="text" name="first_name_kana" size="10" maxlength="40" value="<?=$request->first_name_kana??''?>" placeholder="メイ"></div>
 				</td>
 			</tr>
 			</tbody>
@@ -53,7 +53,7 @@
 		<tr>
 			<th>顧客コード</th>
 			<th>顧客名</th>
-			<th>電話番号</th>
+			<th>顧客名(カナ)</th>
 			<th>性別</th>
 			<th>住所登録</th>
 			<th>詳細</th>
@@ -63,9 +63,9 @@
 			<tr>
 				<td><?=$customer->id?></td>
 				<td><?=$customer->family_name?> <?=$customer->first_name?></td>
-				<td><?=$customer->phone?></td>
-				<td><?=$customer->gender?></td>
-				<td><a class="btn btn-dark" href="/customer_address_register/<?=$customer->id?>">住所登録</a></td>
+				<td><?=$customer->family_name_kana?> <?=$customer->first_name_kana?></td>
+				<td><?=$customer->getGender()?></td>
+				<td><a class="btn btn-dark" href="/customer_address_register/<?=$customer->id?>">住所追加登録</a></td>
 				<td class="btn-outer">
 					<a href="/customer/show/<?=$customer->id?>" class="btn btn-success" >詳細</a>
 				</td>

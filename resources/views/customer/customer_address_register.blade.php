@@ -1,5 +1,5 @@
 @extends('layout.common')
-@section('title', '顧客住所詳細画面')
+@section('title', '顧客住所登録画面')
 @section('header_title', '顧客住所登録画面')
 
 @section('content')
@@ -14,7 +14,7 @@
 				<td><?=$customer->id?>
 				</td>
 				<th class="left">性別</th>
-				<td><?=$customer->gender?></td>
+				<td><?=$customer->getGender()?></td>
 			</tr>
 			<tr>
 				<th class="">顧客名</th>
