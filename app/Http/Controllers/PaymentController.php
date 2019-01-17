@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Models\Brand;
 
 class PaymentController extends Controller
 {
@@ -13,7 +14,10 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('payment/payment_search');
+        $brands = Brand::select('name')->get();
+        return view('payment/payment_search',[
+            'brands' => $brands,
+        ]);
     }
 
     /**

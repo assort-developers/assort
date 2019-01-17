@@ -13,7 +13,8 @@ class ProductsController extends Controller
 	// 商品検索
 	public function index(){
         $parent_category = Category::getParentCat(true);
-        $child_category = Category::getChildCat();
+        // $child_category = Category::getChildCat();
+        $child_category = [];
 
         $product_codenames = ProductCodename::all();
 		return view('product/product_search',[

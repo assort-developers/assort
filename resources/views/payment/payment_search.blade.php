@@ -41,8 +41,14 @@
 							</select>
 						</div>
 					</td>
-					<th class="left">出金額</th>
-					<td>発注からの値表示</td>
+					<th>仕入先名</th>
+					<td>
+						<select name="" id="" class="form-control">
+							@foreach($brands as $brand)
+								<option value="">{{$brand->name}}</option>
+							@endforeach
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th class="left">出金先金融機関</th>
@@ -55,15 +61,8 @@
 						</div>
 					</td>
 					<th class="left">仕入先口座番号</th>
-					<td>どこからか取ってくる</td>
+					<td><input type="text" class="form-control"></td>
 				</tr>
-				<tr>
-					<th class="left">最終更新者</th>
-					<td></td>
-					<th class="left">最終更新日</th>
-					<td></td>
-				</tr>
-				<tr>
 					
 				</tr>
 			</tbody>
