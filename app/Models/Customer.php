@@ -60,7 +60,8 @@ class Customer extends Model
 		if($request->first_name != NULL) $customer->where('customer.first_name', 'LIKE', "%$request->first_name%");
 		if($request->family_name_kana != NULL) $customer->where('customer.family_name_kana', 'LIKE', "%$request->family_name_kana%");
         if($request->first_name_kana != NULL) $customer->where('customer.first_name_kana', 'LIKE', "%$request->first_name_kana%");
-        
+        if($request->gender != NULL) $customer->where('customer.gender',$request->gender);
+
         return $customer->get();
     }
 }

@@ -46,12 +46,6 @@
 				<th class="left">携帯番号</th>
 				<td><?=$customer->mobile_phone?></td>
 			</tr>
-			<tr>
-				<th class="left">更新者</th>
-				<td><?=$customer->updateby_family_name?> <?=$customer->updateby_first_name?></td>
-				<th class="left">更新日</th>
-				<td><?=$customer->update?></td>
-			</tr>
 			</tbody>
 		</table>
 		<div class="controll_buttons overflow_btn">
