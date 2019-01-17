@@ -19,13 +19,16 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    protected $maxAttempts = 2;     // ログイン試行回数（回）
+    protected $decayMinutes = 10;   // ログインロックタイム（分）
+
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/order_search';
 
     /**
      * Create a new controller instance.
