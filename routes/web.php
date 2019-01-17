@@ -84,7 +84,14 @@ Route::post('/brand/store', 'BrandController@store');
 //顧客管理
 Route::resource('customer','CustomerController');
 Route::get('/customer_search','CustomerController@index');
-Route::get('/customer_detail','CustomerController@show');
+Route::get('/customer/show/{id?}', 'CustomerController@show');
+Route::post('/customer/update', 'CustomerController@update');
+Route::get('/customer/create', 'CustomerController@create');
+Route::post('/customer/store', 'CustomerController@store');
+Route::get('/customer_address/{customer_id?}/show/{id?}','CustomerController@address_show');
+Route::post('/customer_address/update', 'CustomerController@address_update');
+Route::get('/customer_address_register/{id?}','CustomerController@address_create');
+Route::post('/customer_address_register/store','CustomerController@address_store');
 
 //従業員管理
 Route::resource('staff', 'StaffController');
