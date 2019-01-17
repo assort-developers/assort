@@ -26,5 +26,16 @@ class CustomerTableSeeder extends Seeder
             'update_time' => '2018-01-31 01:11:11',
             'password' => '1'
         ]);
+
+        DB::table('customer_adress')->insert([
+            'customer_id'=>'1',
+            'zip_code'=>'581-0000',
+            'address_pref'=>'27',
+            'address_city'=>'大阪市',
+            'address_town'=>'天王寺区上本町1−1',
+            'address_build'=>'oic本社',
+            'address_name'=>'滝谷典子',
+            'contact_tel'=>'090-0000-0000'
+        ]);
     }
 }

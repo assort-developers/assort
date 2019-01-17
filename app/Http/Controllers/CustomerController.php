@@ -73,7 +73,8 @@ class CustomerController extends Controller
         
         //telの結合処理
         $create_tel=$create_customer['tel1']."-".$create_customer['tel2']."-".$create_customer['tel3'];
-        
+        $create_mobile=$create_customer['mobile1']."-".$create_customer['mobile2']."-".$create_customer['mobile3'];
+
         $customer_id=Customer::insertGetId([
             'family_name' => $create_customer['family_name'],
             'first_name' => $create_customer['first_name'],
@@ -82,7 +83,7 @@ class CustomerController extends Controller
             'family_name_kana'=>$create_customer['family_name_kana'],
             'first_name_kana'=>$create_customer['first_name_kana'],
             'phone' => $create_tel,
-            'mobile_phone' => $create_tel,
+            'mobile_phone' => $create_mobile,
             'create_date' => NOW(),
             'update_time' => NOW(),
             ]);

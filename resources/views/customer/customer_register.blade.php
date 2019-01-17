@@ -84,13 +84,13 @@
 				</td>
 				<th class="left">携帯番号</th>
 				<td class="row">
-					<div class="col-xs-3"><input class="form-control" type="tel" name="tel1" size="4" maxlength="4" value="" required>
+					<div class="col-xs-3"><input class="form-control" type="tel" name="mobile1" size="4" maxlength="4" value="" required>
 					</div>
 					<div class="hyphen">-</div>
-					<div class="col-xs-3"><input class="form-control" type="tel" name="tel2" size="4" maxlength="4" value="" required>
+					<div class="col-xs-3"><input class="form-control" type="tel" name="mobile2" size="4" maxlength="4" value="" required>
 					</div>
 					<div class="hyphen">-</div>
-					<div class="col-xs-3"><input class="form-control" type="tel" name="tel3" size="4" maxlength="4" value="" required></div>
+					<div class="col-xs-3"><input class="form-control" type="tel" name="mobile3" size="4" maxlength="4" value="" required></div>
 				</td>
 			</tr>
 			<tr>
