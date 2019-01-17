@@ -45,10 +45,17 @@ Route::resource('product', 'ProductsController');
 Route::get('product/{product_id?}/size/{size_id?}', 'ProductsController@size_show');
 Route::delete('product/{product_id?}/size/{size_id?}', 'ProductsController@size_destroy');
 
-//注文管理
+//受注管理
 Route::get('/recieved_search','RecievedController@index');
+Route::post('/recieved_store','RecievedController@store');
+Route::get('/recieved/show/{id?}', 'RecievedController@show');
+Route::get('/recieved/create','RecievedController@create');
+Route::post('/recieved/update','RecievedController@update');
 
+Route::get('/recieved/{id?}/content_create', 'RecievedController@content_create');
+Route::post('/recieved/{id?}/content/store', 'RecievedController@content_store');
 //出金管理
+
 Route::resource('payment', 'PaymentController');
 Route::get('/payment_search','PaymentController@index');
 Route::get('/payment_detail','PaymentController@show');

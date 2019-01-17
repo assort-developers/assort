@@ -8,6 +8,8 @@ class Customer extends Model
 {
     protected $table = 'customer';
     public $timestamps = false;
+    const CREATED_AT = 'create_date';
+    const UPDATED_AT = 'update_time';
     protected $guarded = ['id'];
 
     public function getPrefName() {

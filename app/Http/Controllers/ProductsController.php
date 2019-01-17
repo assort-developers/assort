@@ -4,11 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductCodename;
+
 class ProductsController extends Controller
 {
 	// 商品検索
 	public function index(){
-		return view('product/product_search');
+        $parent_category = Category::getParentCat(true);
+        $child_category = Category::getChildCat();
+
+        $product_codenames = ProductCodename::all();
+		return view('product/product_search',[
+            'parent_category' => $parent_category,
+            'child_category' => $child_category,
+            'product_codenames' => $product_codenames,
+        ]);
 	}
 	// 商品デザイン管理
 	public function show(){
@@ -72,5 +84,24 @@ class ProductsController extends Controller
     {
 				//
 			return('size'.$product_id.$size_id.'destroy');
+    }
+
+    public function search_api_products(Request $request)
+    {
+        //dd($request->product_id,$request->product_name);
+        $products = Product::select('product.id', 'product_codename.name', 'size.print_size', 'color.print_color')
+        ->leftJoin('product_codename','product_codename.id', '=', 'product.product_codename_id')
+        ->leftJoin('size', 'size.id', '=','product.size_id')
+        ->leftJoin('color', 'color.id', '=', 'product.color_id')
+        ->leftJoin('brand', 'brand.id', '=', 'product_codename.brand_id')->get();
+        // if($request->product_id != null){$products->where('product.id', '=', $request->product_id)->get();}
+        // if($request->product_name != null){$products->where('product_codename.name', 'LIKE', $request->product_name);}
+        // if($request->brand_id != null){$products->where('brand.id', '=', $request->brand_id);}
+        // if($request->brand_name != null){$products->where('brand.name', '=', $request->brand_name);}
+        // $products->get();
+
+        return [
+            'products' => $products
+        ];
     }
 }
