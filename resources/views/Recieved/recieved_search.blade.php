@@ -32,22 +32,20 @@
             </tr>
             <tr>
                 <th>受注コード</th>
-                <th>受注者</th>
-                <th>電話番号</th>
-                <th>最終更新者</th>
-                <th>最終更新日</th>
+                <th>連絡先電話番号</th>
+                <th>受注日</th>
+                <th>顧客名</th>
                 <th colspan="2">詳細</th>
             </tr>
-            <?php foreach($recieved as $recieved):?>
+            @foreach($recieved_list as $recieved)
             <tr>
-                <td>{{$recieved->code}}</td>
-                <td>{{$recieved->staff_name}}</td>
-                <td>{{$recieved->tel}}</td>
-                <td>{{$recieved->update_day}}</td>
-                <td>最終更新者</td>
+                <td>{{$recieved->id}}</td>
+                <td>{{$recieved->customer_address->contact_tel}}</td>
+                <td>{{$recieved->updated_at}}</td>
+                <td>{{$recieved->customer->family_name.$recieved->customer->first_name}}</td>
                 <td colspan="2"><a class="btn btn-success" href="/recieved/show/{{$recieved->id}}">詳細</a></td>
             </tr>
-            <?php endforeach; ?>
+            @endforeach
             </tbody>
         </table>
         </div>

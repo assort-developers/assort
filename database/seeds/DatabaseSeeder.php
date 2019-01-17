@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder
       $this->call(create_staff::class);
       $this->call(ProductsSeeder::class);
       $this->call(StaffRoleSeeder::class);
-      $this->call(recieved_seeder::class);
+      //$this->call(recieved_seeder::class);
       $this->call(SizeTableseeder::class);
       $this->call(ColorSeeder::class);
       $this->call(CategorySeeder::class);
+      $this->call(RecievedTableSeeder::class);
     }
 }
