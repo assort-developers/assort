@@ -11,6 +11,7 @@ class SizeTableseeder extends Seeder
      */
     public function run()
     {
+        DB::table('size')->truncate();
         DB::table('size')->insert([
             [
                 'id'=>'1',

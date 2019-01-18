@@ -11,6 +11,7 @@ class ColorSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('color')->truncate();
         DB::table('color')->insert([
             [
                 'print_color'=>'赤'

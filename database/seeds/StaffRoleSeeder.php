@@ -11,6 +11,7 @@ class StaffRoleSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('staff_role')->truncate();
         DB::table('staff_role')->insert([
             [
                 'name' => '株主'

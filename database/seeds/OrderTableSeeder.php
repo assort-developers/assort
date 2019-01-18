@@ -12,6 +12,7 @@ class OrderTableSeeder extends Seeder
     public function run()
     {
 			//
+			DB::table('brand')->truncate();
 			DB::table('brand')->insert([
 				'code' => 'BR001',
 				'name' => 'やばくないTシャツ屋さん',

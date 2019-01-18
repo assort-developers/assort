@@ -11,6 +11,7 @@ class recieved_seeder extends Seeder
      */
     public function run()
     {
+            DB::table('recieved')->truncate();
             DB::table('recieved')->insert([
                 'order_day'=>NOW(),
                 'shipment_day'=>NOW(),

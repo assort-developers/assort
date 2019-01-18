@@ -11,6 +11,7 @@ class OrderContentSeeder extends Seeder
      */
     public function run()
     {
+			DB::table('order_content')->truncate();
       DB::table('order_content')->insert(
 				[
 					'order_id' => 1,

@@ -25,6 +25,8 @@ class AddColumnToBrand extends Migration
      */
     public function down()
     {
-        $table->dropColumn('code');
+        Schema::table('brand', function (Blueprint $table) {
+            $table->dropColumn('code');
+        });
     }
 }

@@ -12,6 +12,7 @@ class CustomerTableSeeder extends Seeder
     public function run()
     {
         //
+        DB::table('customer')->truncate();
         DB::table('customer')->insert([
             'family_name' => 'OIC',
             'first_name' => '太郎',
@@ -27,7 +28,8 @@ class CustomerTableSeeder extends Seeder
             'password' => '1'
         ]);
 
-        DB::table('customer_adress')->insert([
+        DB::table('customer_address')->truncate();
+        DB::table('customer_address')->insert([
             'customer_id'=>'1',
             'zip_code'=>'581-0000',
             'address_pref'=>'27',

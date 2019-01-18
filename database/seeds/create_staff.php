@@ -11,6 +11,7 @@ class create_staff extends Seeder
      */
     public function run()
     {
+        DB::table('staff')->truncate();
         DB::table('staff')->insert([
             [
             'code' => 'tyokinuhata',
