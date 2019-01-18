@@ -29,7 +29,7 @@ class RecievedController extends Controller
             $recieved_list = Recieved::select()->where('id', '=', $request->recieved_code)->get();
 
         }
-        return view("recieved/recieved_search", [
+        return view("Recieved/recieved_search", [
             "recieved_list" => $recieved_list
         ]);
 
@@ -81,7 +81,7 @@ class RecievedController extends Controller
         //     'builld' => $request ->builld,
         //     'update_day' => NOW(),
         ]);
-        return redirect('/recieved/'.$recieved.'/content_create');
+        return redirect('/Recieved/'.$recieved.'/content_create');
     }
     public function content_store($id, Request $request)
     {   $recieved_content = json_decode($request->order_content);
@@ -98,7 +98,7 @@ class RecievedController extends Controller
                 break;
             }
         }
-        return redirect('/recieved_search');
+        return redirect('/Recieved_search');
     }
 
 	/**
@@ -119,7 +119,7 @@ class RecievedController extends Controller
         foreach($recieved_contents as $content){
             $total_price += $content->price;
         }
-        return view("recieved/recieved",[
+        return view("Recieved/recieved",[
             "recieved" => $recieved,
             "recieved_contents" => $recieved_contents,
             "total_price" => $total_price
